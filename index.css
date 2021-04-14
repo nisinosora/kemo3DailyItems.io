@@ -2,11 +2,15 @@ header{
   background-color: rgb(15, 221, 204);
 }
 #images{
-  height: 60px;
-  margin: auto;
-  padding: auto;
+  margin-bottom: 5px;
+  padding: 10px;
+  border: black solid 1px;
+}
+#hr{
+  margin: 10px;
 }
 #images img{
+  margin: 0;
   width: 50px;
   height: 50px;
   position: static;
@@ -14,17 +18,21 @@ header{
 #lists{
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 50px;
+  max-width: 350px;
+  max-height: 350px;
+  width: 350px;
+  height: 350px;
+  border: black solid 1px;
   display: block;
 }
-.img_list{
+#lists li{
   list-style: none;
   display: inline-block;
 }
-.img_list img{
-  margin: 0;
-  padding: 0;
+.img_list{
   width: 50px;
   height: 50px;
+}
+#canvas_2d{
+  border: black solid 1px;
 }

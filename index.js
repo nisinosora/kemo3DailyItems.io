@@ -1,7 +1,30 @@
-$(function(){
+document.addEventListener('DOMContentLoaded',function(){
   $("#images > img").on('click', function(){
-    var img_src = $(this).attr('src');
-    var img_alt = $(this).attr('alt');
-    $("ul#lists").append(`<li class=\"img_list\"><img src=\"${img_src}\" alt=\"${img_alt}\"></li>`);
+    if($("#lists li").length <= 41){
+      var img_src = $(this).attr('src');
+      var img_alt = $(this).attr('alt');
+      $("ul#lists").append(`<li><img src=\"${img_src}\" alt=\"${img_alt}\" class=\"img_list\"></li>`);
+    }else{
+      alert("これ以上は追加できません。");
+    }
+  });
+  $("#input_submit").on('click', function(){
+    var lists = document.getElementById("canvas_2d").getContext('2d');
+    var x_ind = 0;
+    var y_ind = 0;
+    var arys = [];
+    $("#lists").find('img').each(function(i){
+      arys[i] = new Image()
+      arys[i].src = $(this).attr('src')
+    });
+
+    $.each(arys, function(i){
+      lists.drawImage(arys[i], x_ind * 50, y_ind * 50, 50, 50);
+      x_ind++;
+      if(x_ind == 7){
+        x_ind = 0;
+        y_ind++;
+      }
+    })
   });
 });
