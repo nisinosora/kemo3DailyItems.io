@@ -38,8 +38,10 @@ document.addEventListener('DOMContentLoaded',function(){
       }
     })
     var links = document.getElementById("canvas_2d").toDataURL('image/png')
-    $("#canvas_link").href = links;
-    $("#canvas_img").src = links;
+    var link_href = document.getElementById("canvas_link")
+    var link_img = document.getElementById("canvas_img")
+    link_href.href = links;
+    link_img.src = links;
     $("#canvas_link").css("display","block");
   });
   $("#download").on('click', function(){
