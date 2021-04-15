@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded',function(){
     var link_href = document.getElementById("canvas_link")
     var link_img = document.getElementById("canvas_img")
     link_href.href = links;
+    link_href.download = links;
     link_img.src = links;
     $("#canvas_link").css("display","block");
   });
