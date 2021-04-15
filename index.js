@@ -37,7 +37,8 @@ document.addEventListener('DOMContentLoaded',function(){
         y_ind++;
       }
     })
-    $("#canvas_link").href = lists.toDataURL('image/png');
+    var links = document.getElementById("canvas_2d")
+    $("#canvas_link").href = links.toDataURL('image/png');
     $("#canvas_link").css("display","block");
   });
   $("#download").on('click', function(){
