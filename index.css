@@ -42,3 +42,6 @@ header{
 #canvas_2d{
   border: black solid 1px;
 }
+#usage{
+  background-color: rgb(233, 185, 97);
+}
