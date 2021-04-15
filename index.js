@@ -2,15 +2,11 @@ document.addEventListener('DOMContentLoaded',function(){
   function imagecheck(url) {
     var img = new Image();
     var check = true;
-    img.src = url;
-    // 画像があった時の処理
-    img.onload = function() {
-      check = true;
-    }
- 
-    // 画像がなかった時の処理
-    img.onerror = function() {
-      check = false;
+    try{
+      img.src = url;
+      check = true
+    }catch{
+      check = false
     }
     return check;
   }
@@ -45,13 +41,8 @@ document.addEventListener('DOMContentLoaded',function(){
   $("#download").on('click', function(){
     var check1 = false;
     var check2 = false;
-    if($("#lists li").length > 0){
-      check1 = true
-    }
-
-    if (imagecheck($("#canvas_2d").src) == true){
-      check2 = true
-    }
+    if($("#lists li").length > 0){check1 = true}
+    check2 = imagecheck($("#canvas_2d").src)
 
     if(check1 && check2){
       let canvas = document.getElementById("canvas_2d");
