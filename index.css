@@ -52,4 +52,6 @@ header{
   max-width: 350px;
   max-height: 350px;
   width: 350px;
+  column-width: 350px;
+  height: 350px;
 }
