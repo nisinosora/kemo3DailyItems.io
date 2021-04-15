@@ -45,20 +45,4 @@ document.addEventListener('DOMContentLoaded',function(){
     link_img.src = links;
     $("#canvas_link").css("display","block");
   });
-  $("#download").on('click', function(){
-    var check1 = false;
-    var check2 = false;
-    if($("#lists li").length > 0){check1 = true}
-    check2 = imagecheck($("#canvas_2d").src)
-
-    if(check1 && check2){
-      let canvas = document.getElementById("canvas_2d");
-      let link = document.createElement("a");
-      link.href = canvas.toDataURL('image/png');
-      link.download = "ダウンロード.png";
-      link.click();
-    }else{
-      alert("ダウンロード用ファイルがないため、ダウンロードできません。");
-    }
-  });
 });
