@@ -37,8 +37,7 @@ document.addEventListener('DOMContentLoaded',function(){
         y_ind++;
       }
     })
-    var canvas = document.getElementById("canvas_2d");
-    $("#canvas_img").src = canvas.toDataURL('image/png');
+    $("#canvas_img").src = lists.toDataURL('image/png');
     $("#canvas_img").css("display","block");
   });
   $("#download").on('click', function(){
