@@ -15,6 +15,9 @@ header{
   height: 50px;
   position: static;
 }
+#images img:hover{
+  cursor: pointer;
+}
 #lists{
   margin: 0;
   padding: 0;
@@ -53,4 +56,6 @@ header{
 #canvas_img{
   max-width: 350px;
   max-height: 350px;
+  width: auto;
+  height: auto;
 }
