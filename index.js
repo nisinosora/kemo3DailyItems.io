@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded',function(){
     if($("#lists li").length > 0){
       let canvas = document.getElementById("canvas_2d");
       let link = document.createElement("a");
-      link.href = canvas.toDataURL();
+      link.href = canvas.toDataURL('image/png');
       link.download = "ダウンロード.png";
       link.click();
     }else{
