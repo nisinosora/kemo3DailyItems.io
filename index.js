@@ -27,4 +27,15 @@ document.addEventListener('DOMContentLoaded',function(){
       }
     })
   });
+  $("#download").on('click', function(){
+    if($("#lists li").length > 0){
+      let canvas = document.getElementById("canvas_2d");
+      let link = document.createElement("a");
+      link.href = canvas.toDataURL();
+      link.download = "ダウンロード.png";
+      link.click();
+    }else{
+      alert("ダウンロード用ファイルがないため、ダウンロードできません");
+    }
+  });
 });
