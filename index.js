@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded',function(){
         var item = value;
         var selecting = document.getElementById("item_select");
         var reset_check = document.getElementById("change_hidden");
-        var pat = /.png|.jpg|.jpeg\Z/
+        var pat = /.png|.jpg|.jpeg|.JPG|.JPEG\Z/
         if(selecting.src.match(pat)){
           item.src = selecting.src;
           item.alt = selecting.alt;
