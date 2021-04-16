@@ -34,6 +34,7 @@ header{
   width: 350px;
   height: 350px;
   border: black solid 1px;
+  background-color: gray;
   display: block;
   margin: 0;
 }
@@ -62,4 +63,8 @@ header{
   max-height: 350px;
   width: auto;
   height: auto;
+}
+#calendar{
+  max-width: 350px;
+  max-height: 350px;
 }
