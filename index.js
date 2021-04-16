@@ -1,43 +1,28 @@
 document.addEventListener('DOMContentLoaded',function(){
   $("#images > img").on('click', function(){
     var item = $(this);
-    $.confirm({
-      'title' : 'アイテム選択',
-      'message': '追加or置き換えを選択してください。',
-      'buttons': {
-         '追加': {
-           'action': function() {
-              if($("#lists li").length <= 41){
-                var img_src = item.attr('src');
-                var img_alt = item.attr('alt');
-                $("ul#lists").append(`<li class=\"li_lists\"><img src=\"${img_src}\" alt=\"${img_alt}\" class=\"img_list\"></li>`);
-              }else{
-                alert("これ以上は追加できません");
-              }              
-              // ダイアログを閉じる
-              return false;
-           }
-         },
-         '置き換え': {
-           'action': function() {
-              /* キャンセルボタンの処理を記述 */
-              if($("#lists li").length > 0){
-                var items = document.getElementById("item_select")
-                items.src = item.attr('src');
-                items.alt = item.attr('alt');
-                $("#item_selecting").css("display", "inline");
-              }else{
-                alert("アイテム枠にアイテムがないため選択できません");
-              }
-              // ダイアログを閉じる
-              return false;
-           }
-         },
-         'キャンセル': function(){
-           return false
-         }
-      }
-    });
+    var select = document.getElementById("choice_mode");
+    switch(select.value){
+      case 'add':
+        if($("#lists li").length <= 41){
+          var img_src = item.attr('src');
+          var img_alt = item.attr('alt');
+          $("ul#lists").append(`<li class=\"li_lists\"><img src=\"${img_src}\" alt=\"${img_alt}\" class=\"img_list\"></li>`);
+        }else{
+          alert("これ以上は追加できません");
+        }              
+        break;
+      case 'change':
+        if($("#lists li").length > 0){
+          var items = document.getElementById("item_select")
+          items.src = item.attr('src');
+          items.alt = item.attr('alt');
+          $("#item_selecting").css("display", "inline");
+        }else{
+          alert("アイテム枠にアイテムがないため選択できません");
+        }
+        break;
+    }
   });
 
   $("#item_reselect").on('click', function(){
@@ -53,10 +38,16 @@ document.addEventListener('DOMContentLoaded',function(){
       value.addEventListener('click', function(){
         var item = value;
         var selecting = document.getElementById("item_select");
-        var pat = /png|jpg\Z/
+        var reset_check = document.getElementById("change_hidden");
+        var pat = /.png|.jpg|.jpeg\Z/
         if(selecting.src.match(pat)){
           item.src = selecting.src;
           item.alt = selecting.alt;
+          if(reset_check.checked){
+            selecting.src = ""
+            selecting.alt = ""
+            $("#item_selecting").css("display", "none");
+          }
         }
       });
     });
