@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded',function(){
     var links = document.getElementById("canvas_2d").toDataURL('image/png')
     var link_img = document.getElementById("canvas_img")
     link_img.src = links;
-    link_img.css("display","block");
+    link_img.style.display = "inline";
   });
   $("#mode-select").on('change', function(){
     var select = document.getElementById("mode-select");
