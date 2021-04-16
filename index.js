@@ -58,6 +58,12 @@ document.addEventListener('DOMContentLoaded',function(){
       var check = confirm("最後に追加したアイコンを削除します。よろしいですか？")
       if (check == true){
         $("#lists li:last").remove();
+        if($("#lists li").length < 1){
+          var selecting = document.getElementById("item_select");
+          selecting.src = ""
+          selecting.alt = ""
+          $("#item_selecting").css("display", "none");
+        }
       }
     }else{
       alert("削除するアイコンがありません。");
@@ -69,6 +75,10 @@ document.addEventListener('DOMContentLoaded',function(){
       var check = confirm("全てを削除します。よろしいですか？")
       if (check == true){
         $("#lists li").remove();
+        var selecting = document.getElementById("item_select");
+        selecting.src = ""
+        selecting.alt = ""
+        $("#item_selecting").css("display", "none");
       }
     }else{
       alert("削除するアイコンがありません。");
@@ -96,7 +106,7 @@ document.addEventListener('DOMContentLoaded',function(){
     var links = document.getElementById("canvas_2d").toDataURL('image/png')
     var link_img = document.getElementById("canvas_img")
     link_img.src = links;
-    window.open(link_img.src, "_blank")
+    link_img.style.display = "inline"
   });
 
   $("#mode-select").on('change', function(){

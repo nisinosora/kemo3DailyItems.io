@@ -6,6 +6,8 @@ header{
   padding: 10px;
   border: black solid 1px;
   background-color: gray;
+  overflow: auto;
+  max-height: 100px;
 }
 #hr{
   margin: 10px;
