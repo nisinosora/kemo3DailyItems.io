@@ -48,12 +48,8 @@ header{
 #usage{
   background-color: rgb(233, 185, 97);
 }
-#canvas_link{
-  display: none;
-  max-width: 350px;
-  max-height: 350px;
-}
 #canvas_img{
+  display: none;
   max-width: 350px;
   max-height: 350px;
   width: auto;

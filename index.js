@@ -38,11 +38,33 @@ document.addEventListener('DOMContentLoaded',function(){
       }
     })
     var links = document.getElementById("canvas_2d").toDataURL('image/png')
-    var link_href = document.getElementById("canvas_link")
     var link_img = document.getElementById("canvas_img")
-    link_href.href = links;
-    link_href.download = "download.png";
     link_img.src = links;
-    $("#canvas_link").css("display","block");
+    link_img.css("display","block");
+  });
+  $("#mode-select").on('change', function(){
+    var select = document.getElementById("mode-select");
+    switch(select.value){
+      case 'all':
+        $(".first_little").css("display", "inline");
+        $(".standard").css("display", "inline");
+        $(".gorgeous").css("display", "inline");
+        break;
+      case 'first_little':
+        $(".first_little").css("display", "inline");
+        $(".standard").css("display", "none");
+        $(".gorgeous").css("display", "none");
+        break;
+      case 'standard':
+        $(".first_little").css("display", "none");
+        $(".standard").css("display", "inline");
+        $(".gorgeous").css("display", "none");
+        break;
+      case 'gorgeous':
+        $(".first_little").css("display", "none");
+        $(".standard").css("display", "none");
+        $(".gorgeous").css("display", "inline");
+        break;
+    }
   });
 });
