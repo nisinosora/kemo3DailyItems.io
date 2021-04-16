@@ -1,24 +1,67 @@
 document.addEventListener('DOMContentLoaded',function(){
-  function imagecheck(url) {
-    var img = new Image();
-    var check = true;
-    try{
-      img.src = url;
-      check = true
-    }catch{
-      check = false
-    }
-    return check;
-  }
   $("#images > img").on('click', function(){
-    if($("#lists li").length <= 41){
-      var img_src = $(this).attr('src');
-      var img_alt = $(this).attr('alt');
-      $("ul#lists").append(`<li><img src=\"${img_src}\" alt=\"${img_alt}\" class=\"img_list\"></li>`);
-    }else{
-      alert("これ以上は追加できません。");
-    }
+    var item = $(this);
+    $.confirm({
+      'title' : 'アイテム選択',
+      'message': '追加or置き換えを選択してください。',
+      'buttons': {
+         '追加': {
+           'action': function() {
+              if($("#lists li").length <= 41){
+                var img_src = item.attr('src');
+                var img_alt = item.attr('alt');
+                $("ul#lists").append(`<li class=\"li_lists\"><img src=\"${img_src}\" alt=\"${img_alt}\" class=\"img_list\"></li>`);
+              }else{
+                alert("これ以上は追加できません");
+              }              
+              // ダイアログを閉じる
+              return false;
+           }
+         },
+         '置き換え': {
+           'action': function() {
+              /* キャンセルボタンの処理を記述 */
+              if($("#lists li").length > 0){
+                var items = document.getElementById("item_select")
+                items.src = item.attr('src');
+                items.alt = item.attr('alt');
+                $("#item_selecting").css("display", "inline");
+              }else{
+                alert("アイテム枠にアイテムがないため選択できません");
+              }
+              // ダイアログを閉じる
+              return false;
+           }
+         },
+         'キャンセル': function(){
+           return false
+         }
+      }
+    });
   });
+
+  $("#item_reselect").on('click', function(){
+    var items = document.getElementById("item_select");
+    items.src = ""
+    items.alt = ""
+    $("#item_selecting").css("display", "none");
+  });
+
+  $("#lists").on('mouseenter', function(){
+    var mouse_img_list = document.querySelectorAll(".img_list")
+    mouse_img_list.forEach(function(value){
+      value.addEventListener('click', function(){
+        var item = value;
+        var selecting = document.getElementById("item_select");
+        var pat = /png|jpg\Z/
+        if(selecting.src.match(pat)){
+          item.src = selecting.src;
+          item.alt = selecting.alt;
+        }
+      });
+    });
+  });
+
   $("#input_submit").on('click', function(){
     var lists = document.getElementById("canvas_2d").getContext('2d');
     var x_ind = 0;
@@ -42,6 +85,7 @@ document.addEventListener('DOMContentLoaded',function(){
     link_img.src = links;
     link_img.style.display = "inline";
   });
+
   $("#mode-select").on('change', function(){
     var select = document.getElementById("mode-select");
     switch(select.value){
