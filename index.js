@@ -53,6 +53,28 @@ document.addEventListener('DOMContentLoaded',function(){
     });
   });
 
+  $("#last_delete").on('click', function(){
+    if($("#lists li").length > 0){
+      var check = confirm("最後に追加したアイコンを削除します。よろしいですか？")
+      if (check == true){
+        $("#lists li:last").remove();
+      }
+    }else{
+      alert("削除するアイコンがありません。");
+    }
+  });
+
+  $("#all_delete").on('click', function(){
+    if($("#lists li").length > 0){
+      var check = confirm("全てを削除します。よろしいですか？")
+      if (check == true){
+        $("#lists li").remove();
+      }
+    }else{
+      alert("削除するアイコンがありません。");
+    }
+  });
+
   $("#input_submit").on('click', function(){
     var lists = document.getElementById("canvas_2d").getContext('2d');
     var x_ind = 0;
