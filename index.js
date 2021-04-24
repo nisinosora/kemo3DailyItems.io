@@ -15,8 +15,10 @@ document.addEventListener('DOMContentLoaded',function(){
       case 'change':
         if($("#lists li").length > 0){
           var items = document.getElementById("item_select")
+          var file_name = document.getElementById("file_name")
           items.src = item.attr('src');
           items.alt = item.attr('alt');
+          file_name.value = item.attr('alt');
           $("#item_selecting").css("display", "inline");
         }else{
           alert("アイテム枠にアイテムがないため選択できません");
@@ -118,14 +120,14 @@ document.addEventListener('DOMContentLoaded',function(){
         $(".gorgeous").css("display", "inline");
         break;
       case 'first_little':
-        $(".first_little").css("display", "inline");
         $(".standard").css("display", "none");
         $(".gorgeous").css("display", "none");
+        $(".first_little").css("display", "inline");
         break;
       case 'standard':
         $(".first_little").css("display", "none");
-        $(".standard").css("display", "inline");
         $(".gorgeous").css("display", "none");
+        $(".standard").css("display", "inline");
         break;
       case 'gorgeous':
         $(".first_little").css("display", "none");
