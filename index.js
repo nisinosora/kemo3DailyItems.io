@@ -92,6 +92,7 @@ document.addEventListener('DOMContentLoaded',function(){
     var x_ind = 0;
     var y_ind = 0;
     var arys = [];
+    lists.clearRect(0, 0, 350, 350))
     $("#lists").find('img').each(function(i){
       arys[i] = new Image()
       arys[i].src = $(this).attr('src')
