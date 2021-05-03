@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded',function(){
           $("ul#lists").append(`<li class=\"li_lists\"><img src=\"${img_src}\" alt=\"${img_alt}\" class=\"img_list\"></li>`);
         }else{
           alert("これ以上は追加できません");
-        }              
+        }
         break;
       case 'change':
         if($("#lists li").length > 0){
@@ -81,6 +81,8 @@ document.addEventListener('DOMContentLoaded',function(){
         selecting.src = ""
         selecting.alt = ""
         $("#item_selecting").css("display", "none");
+        document.getElementById("choice_mode").value = "add";
+        document.getElementById("change_hidden").checked = false;
       }
     }else{
       alert("削除するアイコンがありません。");
