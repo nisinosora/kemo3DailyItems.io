@@ -20,34 +20,58 @@
   <main>
     <div id="usage">
       <h3>使い方</h3>
-      <ul>
-        <li>リスト：デフォルト「すべて」</li>
-          <ul>
-            <li>「すべて」、「はじめて・ちょこっと」「すたんだーど」、「ごーじゃす」の4つで切り替えると「アイテム一覧」の枠内が切り替わります。</li>
-          </ul>
-        <li>リスト：デフォルト「追加」</li>
-        <ul>
-          <li>「追加」状態だと、「アイテム一覧」の枠内をタップした時に「生成ファイル」にアイコンを追加します。</li>
-          <li>「置き換え」状態だと、「アイテム一覧」の枠内をタップした時に「選択中アイテム」を表示します。</li>
-          <li>「選択中アイテム」が表示状態の時に、「生成ファイル」枠内のアイコンをタップorクリックすると「選択中アイテム」に置き換えます。</li>
-          <li>置き換え後の選択解除は、ボタン「選択解除」を押すか、チェックボックス「置き換え後選択解除」にチェックを入れていると自動的に解除します。</li>
-        </ul>
-        <li>生成・ダウンロード</li>
-        <ul><li>ボタン「生成」を押すと、「ダウンロードファイル」にダウンロード用のファイルを生成します。ここからダウンロードできます。</li></ul>
-        <li>削除</li>
-        <ul>
-          <li>ボタン「最後尾のアイコンを削除」を選択すると最後に追加したアイコンを削除します。</li>
-          <li>ボタン「全てのアイコンを削除」を選択すると追加してあるアイコン全てを削除します。</li>
-        </ul>
-      </ul>
+      <section>
+        <div class="ac-cap">
+          <input type="checkbox" id="ac-cap1-1" name="ac-cap">
+          <label for="ac-cap1-1" class="ac-title">リスト：パスポート</label>
+          <div class="content">
+            このリストは、切り替えると「アイテム一覧」の枠内が切り替わります。
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="ac-cap">
+          <input type="checkbox" id="ac-cap1-2" name="ac-cap">
+          <label for="ac-cap1-2" class="ac-title">リスト：モード</label>
+          <div class="content">
+            「追加」：「アイテム一覧」のアイコンを選択すると「生成ファイル」にアイコンを追加します。<br>
+            「置き換え」：「アイテム一覧」のアイコンを選択すると「選択中アイテム」を表示します。<br>
+            「選択中アイテム」表示中に、「生成ファイル」枠内のアイコンを選択すると「選択中アイテム」に置き換えます。<br>
+            置き換え後の選択解除は、ボタン「選択解除」を押すか、チェックボックス「置き換え後選択解除」にチェックを入れていると自動的に解除します。
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="ac-cap">
+          <input type="checkbox" id="ac-cap1-3" name="ac-cap">
+          <label for="ac-cap1-3" class="ac-title">生成・ダウンロード</label>
+          <div class="content">
+            ボタン「生成」を押すと、「ダウンロードファイル」にダウンロード用のファイルを生成します。ここからダウンロードできます。
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="ac-cap">
+          <input type="checkbox" id="ac-cap1-4" name="ac-cap">
+          <label for="ac-cap1-4" class="ac-title">削除</label>
+          <div class="content">
+            ボタン「最後尾のアイコンを削除」:最後に追加したアイコンを削除します。<br>
+            ボタン「全てのアイコンを削除」:追加してあるアイコン全てを削除します。
+          </div>
+        </div>
+      </section>
     </div>
+
     <div id="selecter">
+      <label for="passport">パスポート：</label>
       <select name="mode" id="mode-select">
         <option value="all">すべて</option>
         <option value="first_little">はじめて・ちょこっと</option>
         <option value="standard">すたんだーど</option>
         <option value="gorgeous">ごーじゃす</option>
       </select>
+      <br>
+      <label for="mode">モード：</label>
       <select name="choice_mode" id="choice_mode">
         <option value="add">追加</option>
         <option value="change">置き換え</option>
