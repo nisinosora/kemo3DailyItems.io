@@ -94,7 +94,7 @@ header{
 .ac-cap .content{
   height: 0;
   width: 100%;
-  overflow: scroll;
+  overflow-y: auto;
   transition: 1s;
 }
 .ac-cap input:checked + .ac-title + .content{
