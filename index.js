@@ -116,8 +116,7 @@ document.addEventListener('DOMContentLoaded',function(){
           y_ind++;
         }
       })
-      lists.width = $("#wrapper").offsetWidth;
-      lists.height = $("#wrapper").offsetHeight;
+      
       var links = document.getElementById("canvas_2d").toDataURL('image/png')
       var link_img = document.getElementById("canvas_img")
       link_img.src = links;
