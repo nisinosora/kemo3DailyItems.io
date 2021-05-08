@@ -76,7 +76,8 @@
         <option value="add">追加</option>
         <option value="change">置き換え</option>
       </select><br>
-      置き換え後選択解除：<input type="checkbox" name="change_hidden" id="change_hidden">
+      置き換え後選択解除：<input type="checkbox" name="change_hidden" id="change_hidden"><br>
+      空白マスを透過する：<input type="checkbox" name="blank_cell" id="blank_cell">
     </div>
     <h5>アイテム一覧</h5>
     <div id="images">
@@ -134,7 +135,7 @@
       <ul id="lists"></ul>
     </div>
     <h5>ダウンロードファイル</h5>
-    <canvas id="canvas_2d" width="350" height="300" hidden></canvas>
+    <div id="wrapper"><canvas id="canvas_2d" hidden></canvas></div>
     <img src="./" alt="file" id="canvas_img">
   </main>
 </body>

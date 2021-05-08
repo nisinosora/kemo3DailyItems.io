@@ -116,6 +116,10 @@ header{
   width: auto;
   height: auto;
 }
+#wrapper{
+  max-width: 350px;
+  max-height: 350px;
+}
 #calendar{
   max-width: 350px;
   max-height: 350px;

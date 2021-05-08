@@ -90,31 +90,41 @@ document.addEventListener('DOMContentLoaded',function(){
   });
 
   $("#input_submit").on('click', function(){
-    var lists = document.getElementById("canvas_2d").getContext('2d');
-    var x_ind = 0;
-    var y_ind = 0;
-    var arys = [];
-    lists.clearRect(0, 0, 350, 350);
-    $("#lists").find('img').each(function(i){
-      arys[i] = new Image()
-      arys[i].src = $(this).attr('src')
-      arys[i].alt = $(this).attr('alt')
-    });
+    if($("#lists li").length > 0){
+      var lists = document.getElementById("canvas_2d").getContext('2d');
+      var blank_cell = document.getElementById("blank_cell");
+      var x_ind = 0, y_ind = 0;
+      var arys = [], output_check;
+      lists.clearRect(0, 0, 350, 350);
+      $("#lists").find('img').each(function(i){
+        arys[i] = new Image()
+        arys[i].src = $(this).attr('src')
+        arys[i].alt = $(this).attr('alt')
+      });
 
-    $.each(arys, function(i){
-      if(arys[i].alt != "空白"){
-        lists.drawImage(arys[i], x_ind * 50, y_ind * 50, 50, 50);
-      }
-      x_ind++;
-      if(x_ind == 7){
-        x_ind = 0;
-        y_ind++;
-      }
-    })
-    var links = document.getElementById("canvas_2d").toDataURL('image/png')
-    var link_img = document.getElementById("canvas_img")
-    link_img.src = links;
-    link_img.style.display = "inline"
+      $.each(arys, function(i){
+        output_check = true;
+        if(arys[i].alt == "空白" && blank_cell.checked){
+          output_check = false
+        }
+        if(output_check){
+          lists.drawImage(arys[i], x_ind * 50, y_ind * 50, 50, 50);
+        }
+        x_ind++;
+        if(x_ind == 7){
+          x_ind = 0;
+          y_ind++;
+        }
+      })
+      lists.width = $("#wrapper").offsetWidth;
+      lists.height = $("#wrapper").offsetHeight;
+      var links = document.getElementById("canvas_2d").toDataURL('image/png')
+      var link_img = document.getElementById("canvas_img")
+      link_img.src = links;
+      link_img.style.display = "inline"
+    }else{
+      alert("アイコンがありません")
+    }
   });
 
   $("#mode-select").on('change', function(){
