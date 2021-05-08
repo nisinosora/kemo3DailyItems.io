@@ -98,10 +98,13 @@ document.addEventListener('DOMContentLoaded',function(){
     $("#lists").find('img').each(function(i){
       arys[i] = new Image()
       arys[i].src = $(this).attr('src')
+      arys[i].alt = $(this).attr('alt')
     });
 
     $.each(arys, function(i){
-      lists.drawImage(arys[i], x_ind * 50, y_ind * 50, 50, 50);
+      if(arys[i].alt != "空白"){
+        lists.drawImage(arys[i], x_ind * 50, y_ind * 50, 50, 50);
+      }
       x_ind++;
       if(x_ind == 7){
         x_ind = 0;
