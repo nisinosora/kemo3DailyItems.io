@@ -90,8 +90,12 @@ document.addEventListener('DOMContentLoaded',function(){
   });
 
   $("#input_submit").on('click', function(){
+    var message = "";
     for (var count = 0; count < 2; count++) {
-      create();
+      message = create();
+    }
+    if(message != ""){
+      alert(message);
     }
   });
 
@@ -168,7 +172,7 @@ document.addEventListener('DOMContentLoaded',function(){
       link_img.src = links;
       link_img.style.display = "inline"
     }else{
-      alert("アイコンがありません")
+      return "アイコンがありません";
     }
   }
 });
