@@ -171,6 +171,7 @@ document.addEventListener('DOMContentLoaded',function(){
       canvas_2d.height = canvas_img_height * 150;
       link_img.src = links;
       link_img.style.display = "inline"
+      return "";
     }else{
       return "アイコンがありません";
     }
