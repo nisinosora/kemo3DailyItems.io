@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded',function(){
       var blank_cell = document.getElementById("blank_cell");
       var x_ind = 0, y_ind = 0;
       var arys = [], output_check;
-      lists.clearRect(0, 0, 350, 350);
+      lists.clearRect(0, 0, 1050, 900);
 
       $("#lists").find('img').each(function(i){
         arys[i] = new Image()
