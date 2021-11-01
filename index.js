@@ -1,32 +1,19 @@
 document.addEventListener('DOMContentLoaded',function(){
+  //画像クリック時の処理
   $("#images > img").on('click', function(){
     var item = $(this);
     var select = document.getElementById("choice_mode");
     switch(select.value){
       case 'add':
-        if($("#lists li").length <= 41){
-          var img_src = item.attr('src');
-          var img_alt = item.attr('alt');
-          $("ul#lists").append(`<li class=\"li_lists\"><img src=\"${img_src}\" alt=\"${img_alt}\" class=\"img_list\"></li>`);
-        }else{
-          alert("これ以上は追加できません");
-        }
+        add(item);
         break;
       case 'change':
-        if($("#lists li").length > 0){
-          var items = document.getElementById("item_select")
-          var file_name = document.getElementById("file_name")
-          items.src = item.attr('src');
-          items.alt = item.attr('alt');
-          file_name.value = item.attr('alt');
-          $("#item_selecting").css("display", "inline");
-        }else{
-          alert("アイテム枠にアイテムがないため選択できません");
-        }
+        change(item);
         break;
     }
   });
 
+  //アイテム選択解除ボタン処理
   $("#item_reselect").on('click', function(){
     var items = document.getElementById("item_select");
     items.src = ""
@@ -34,6 +21,7 @@ document.addEventListener('DOMContentLoaded',function(){
     $("#item_selecting").css("display", "none");
   });
 
+  //生成アイテム処理
   $("#lists").on('mouseenter', function(){
     var mouse_img_list = document.querySelectorAll(".img_list")
     mouse_img_list.forEach(function(value){
@@ -55,6 +43,7 @@ document.addEventListener('DOMContentLoaded',function(){
     });
   });
 
+  //最後のアイコンを削除
   $("#last_delete").on('click', function(){
     if($("#lists li").length > 0){
       var check = confirm("最後に追加したアイコンを削除します。よろしいですか？")
@@ -72,6 +61,7 @@ document.addEventListener('DOMContentLoaded',function(){
     }
   });
 
+  //全てのアイコンを削除
   $("#all_delete").on('click', function(){
     if($("#lists li").length > 0){
       var check = confirm("全てを削除します。よろしいですか？")
@@ -89,6 +79,7 @@ document.addEventListener('DOMContentLoaded',function(){
     }
   });
 
+  //生成処理
   $("#input_submit").on('click', function(){
     if($("#lists li").length > 0){
       for (var count = 0; count < 2; count++) {
@@ -99,6 +90,7 @@ document.addEventListener('DOMContentLoaded',function(){
     }
   });
 
+  //モード切替
   $("#mode-select").on('change', function(){
     var select = document.getElementById("mode-select");
     switch(select.value){
@@ -125,6 +117,7 @@ document.addEventListener('DOMContentLoaded',function(){
     }
   });
 
+  //生成関数
   function create() {
     var lists = document.getElementById("canvas_2d").getContext('2d');
     var blank_cell = document.getElementById("blank_cell");
@@ -170,5 +163,30 @@ document.addEventListener('DOMContentLoaded',function(){
     canvas_2d.height = canvas_img_height * 150;
     link_img.src = links;
     link_img.style.display = "inline"
+  }
+
+  //追加関数
+  function add(item){
+    if($("#lists li").length <= 41){
+      var img_src = item.attr('src');
+      var img_alt = item.attr('alt');
+      $("ul#lists").append(`<li class=\"li_lists\"><img src=\"${img_src}\" alt=\"${img_alt}\" class=\"img_list\"></li>`);
+    }else{
+      alert("これ以上は追加できません");
+    }
+  }
+
+  //切り替え関数
+  function change(item){
+    if($("#lists li").length > 0){
+      var items = document.getElementById("item_select")
+      var file_name = document.getElementById("file_name")
+      items.src = item.attr('src');
+      items.alt = item.attr('alt');
+      file_name.value = item.attr('alt');
+      $("#item_selecting").css("display", "inline");
+    }else{
+      alert("アイテム枠にアイテムがないため選択できません");
+    }
   }
 });
