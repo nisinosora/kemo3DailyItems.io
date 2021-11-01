@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded',function(){
         String(myCanvas.width / devicePixelRatio) + "px";
       myCanvas.style.height =
         String(myCanvas.height / devicePixelRatio) + "px";
-        
+
       $("#lists").find('img').each(function(i){
         arys[i] = new Image()
         arys[i].src = $(this).attr('src')
@@ -132,6 +132,8 @@ document.addEventListener('DOMContentLoaded',function(){
       
       var links = document.getElementById("canvas_2d").toDataURL('image/png')
       var link_img = document.getElementById("canvas_img")
+      link_img.style.width = myCanvas.width;
+      link_img.style.height = myCanvas.height;
       link_img.src = links;
       link_img.style.display = "inline"
     }else{
