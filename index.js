@@ -154,10 +154,10 @@ document.addEventListener('DOMContentLoaded',function(){
         if(x_ind == 7){
           x_ind = 0;
           y_ind++;
-          canvas_img_height += 1;
         }
       })
-      
+
+      canvas_img_height = Math.ceil(parseFloat($("#lists li").length / 7))
       
       var links = document.getElementById("canvas_2d").toDataURL('image/png')
       var link_img = document.getElementById("canvas_img")
