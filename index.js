@@ -90,12 +90,12 @@ document.addEventListener('DOMContentLoaded',function(){
   });
 
   $("#input_submit").on('click', function(){
-    var message = "";
-    for (var count = 0; count < 2; count++) {
-      message = create();
-    }
-    if(message != ""){
-      alert(message);
+    if($("#lists li").length > 0){
+      for (var count = 0; count < 2; count++) {
+        create();
+      }
+    }else{
+      alert("アイコンがありません");
     }
   });
 
@@ -126,54 +126,49 @@ document.addEventListener('DOMContentLoaded',function(){
   });
 
   function create() {
-    if($("#lists li").length > 0){
-      var lists = document.getElementById("canvas_2d").getContext('2d');
-      var blank_cell = document.getElementById("blank_cell");
-      var x_ind = 0, y_ind = 0;
-      var canvas_2d = document.getElementById("canvas_2d");
-      var arys = [], output_check;
-      lists.clearRect(0, 0, 1050, 900);
+    var lists = document.getElementById("canvas_2d").getContext('2d');
+    var blank_cell = document.getElementById("blank_cell");
+    var x_ind = 0, y_ind = 0;
+    var canvas_2d = document.getElementById("canvas_2d");
+    var arys = [], output_check;
+    lists.clearRect(0, 0, 1050, 900);
 
-      $("#lists").find('img').each(function(i){
-        arys[i] = new Image()
-        arys[i].src = $(this).attr('src')
-        arys[i].alt = $(this).attr('alt')
-      });
+    $("#lists").find('img').each(function(i){
+      arys[i] = new Image()
+      arys[i].src = $(this).attr('src')
+      arys[i].alt = $(this).attr('alt')
+    });
 
-      var canvas_img_width, canvas_img_height;
-      canvas_img_width = 0;
-      canvas_img_height = 1;
-      $.each(arys, function(i){
-        output_check = true;
-        if(arys[i].alt == "空白" && blank_cell.checked){
-          output_check = false
+    var canvas_img_width, canvas_img_height;
+    canvas_img_width = 0;
+    canvas_img_height = 1;
+    $.each(arys, function(i){
+      output_check = true;
+      if(arys[i].alt == "空白" && blank_cell.checked){
+        output_check = false
+      }
+      if(output_check){
+        lists.drawImage(arys[i], x_ind * 150, y_ind * 150, 150, 150);
+        if(y_ind == 0){
+          canvas_img_width += 1;
         }
-        if(output_check){
-          lists.drawImage(arys[i], x_ind * 150, y_ind * 150, 150, 150);
-          if(y_ind == 0){
-            canvas_img_width += 1;
-          }
-        }
-        x_ind++;
-        if(x_ind == 7){
-          x_ind = 0;
-          y_ind++;
-        }
-      })
+      }
+      x_ind++;
+      if(x_ind == 7){
+        x_ind = 0;
+        y_ind++;
+      }
+    })
 
-      canvas_img_height = Math.ceil(parseFloat($("#lists li").length / 7))
-      
-      var links = document.getElementById("canvas_2d").toDataURL('image/png')
-      var link_img = document.getElementById("canvas_img")
-      link_img.style.width = canvas_img_width * 50 + "px";
-      link_img.style.height = canvas_img_height * 50 + "px";
-      canvas_2d.width = canvas_img_width * 150;
-      canvas_2d.height = canvas_img_height * 150;
-      link_img.src = links;
-      link_img.style.display = "inline"
-      return "";
-    }else{
-      return "アイコンがありません";
-    }
+    canvas_img_height = Math.ceil(parseFloat($("#lists li").length / 7))
+    
+    var links = document.getElementById("canvas_2d").toDataURL('image/png')
+    var link_img = document.getElementById("canvas_img")
+    link_img.style.width = canvas_img_width * 50 + "px";
+    link_img.style.height = canvas_img_height * 50 + "px";
+    canvas_2d.width = canvas_img_width * 150;
+    canvas_2d.height = canvas_img_height * 150;
+    link_img.src = links;
+    link_img.style.display = "inline"
   }
 });
