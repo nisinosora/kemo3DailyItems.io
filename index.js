@@ -90,6 +90,38 @@ document.addEventListener('DOMContentLoaded',function(){
   });
 
   $("#input_submit").on('click', function(){
+    for (var count = 0; count < 2; count++) {
+      create();
+    }
+  });
+
+  $("#mode-select").on('change', function(){
+    var select = document.getElementById("mode-select");
+    switch(select.value){
+      case 'all':
+        $(".first_little").css("display", "inline");
+        $(".standard").css("display", "inline");
+        $(".gorgeous").css("display", "inline");
+        break;
+      case 'first_little':
+        $(".standard").css("display", "none");
+        $(".gorgeous").css("display", "none");
+        $(".first_little").css("display", "inline");
+        break;
+      case 'standard':
+        $(".first_little").css("display", "none");
+        $(".gorgeous").css("display", "none");
+        $(".standard").css("display", "inline");
+        break;
+      case 'gorgeous':
+        $(".first_little").css("display", "none");
+        $(".standard").css("display", "none");
+        $(".gorgeous").css("display", "inline");
+        break;
+    }
+  });
+
+  function create() {
     if($("#lists li").length > 0){
       var lists = document.getElementById("canvas_2d").getContext('2d');
       var blank_cell = document.getElementById("blank_cell");
@@ -138,31 +170,5 @@ document.addEventListener('DOMContentLoaded',function(){
     }else{
       alert("アイコンがありません")
     }
-  });
-
-  $("#mode-select").on('change', function(){
-    var select = document.getElementById("mode-select");
-    switch(select.value){
-      case 'all':
-        $(".first_little").css("display", "inline");
-        $(".standard").css("display", "inline");
-        $(".gorgeous").css("display", "inline");
-        break;
-      case 'first_little':
-        $(".standard").css("display", "none");
-        $(".gorgeous").css("display", "none");
-        $(".first_little").css("display", "inline");
-        break;
-      case 'standard':
-        $(".first_little").css("display", "none");
-        $(".gorgeous").css("display", "none");
-        $(".standard").css("display", "inline");
-        break;
-      case 'gorgeous':
-        $(".first_little").css("display", "none");
-        $(".standard").css("display", "none");
-        $(".gorgeous").css("display", "inline");
-        break;
-    }
-  });
+  }
 });
