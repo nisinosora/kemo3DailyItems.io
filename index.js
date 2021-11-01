@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded',function(){
           output_check = false
         }
         if(output_check){
-          lists.drawImage(arys[i], x_ind * 50, y_ind * 50, 50, 50);
+          lists.drawImage(arys[i], x_ind * 150, y_ind * 150, 150, 150);
         }
         x_ind++;
         if(x_ind == 7){
@@ -132,8 +132,8 @@ document.addEventListener('DOMContentLoaded',function(){
       
       var links = document.getElementById("canvas_2d").toDataURL('image/png')
       var link_img = document.getElementById("canvas_img")
-      link_img.width = myCanvas.width;
-      link_img.height = myCanvas.height;
+      link_img.css("width", myCanvas.width)
+      link_img.css("height", myCanvas.height)
       link_img.src = links;
       link_img.style.display = "inline"
     }else{
