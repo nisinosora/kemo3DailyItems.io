@@ -97,18 +97,6 @@ document.addEventListener('DOMContentLoaded',function(){
       var arys = [], output_check;
       lists.clearRect(0, 0, 350, 350);
 
-      var myCanvas = document.getElementById("canvas_2d");
-
-      // 1. canvas要素のwidth属性とheight属性をdevicePixelRatio分だけ拡大する。
-      myCanvas.width *= devicePixelRatio;
-      myCanvas.height *= devicePixelRatio;
-
-      // 2. canvas要素のstyle属性のwidthとheightをdevicePixelRatio分だけ縮小する。
-      myCanvas.style.width =
-        String(myCanvas.width / devicePixelRatio) + "px";
-      myCanvas.style.height =
-        String(myCanvas.height / devicePixelRatio) + "px";
-
       $("#lists").find('img').each(function(i){
         arys[i] = new Image()
         arys[i].src = $(this).attr('src')
