@@ -117,6 +117,16 @@ document.addEventListener('DOMContentLoaded',function(){
     }
   });
 
+  //ツイート
+  $("#tweet").on('click', function(){
+    var a = document.createElement('a');
+    var link_img = document.getElementById("canvas_img")
+    if(link_img.style.display == "inline"){
+      a.href = link_img.src;
+      alert(a.href);
+    }
+  });
+
   //生成関数
   function create() {
     var lists = document.getElementById("canvas_2d").getContext('2d');
