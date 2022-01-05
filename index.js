@@ -119,6 +119,17 @@ document.addEventListener('DOMContentLoaded',function(){
 
   //ツイート
   $("#tweet").on('click', function(){
+    var link_img = document.getElementById("canvas_img")
+    var metaDiscre = document.head.children;
+    var metaLength = metaDiscre.length;
+    for(var i = 0;i < metaLength;i++){
+      var proper = metaDiscre[i].getAttribute('name');
+      if(proper === 'twitter:image'){
+        var dis = metaDiscre[i];
+        dis.setAttribute('content', link_img.src);
+      }
+    }
+
     var infos
     infos = {
       "text":"ログインボーナスまとめ！",
