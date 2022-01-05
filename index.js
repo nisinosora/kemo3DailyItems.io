@@ -119,7 +119,13 @@ document.addEventListener('DOMContentLoaded',function(){
 
   //ツイート
   $("#tweet").on('click', function(){
-    window.open("http://twitter.com/intent/tweet?text=ログインボーナスまとめ！&url=https://nisinosora.github.io/kemo3DailyItems.io/");
+    var infos
+    infos = {
+      "text":"ログインボーナスまとめ！",
+      "url": "url=https://nisinosora.github.io/kemo3DailyItems.io/",
+      "hashtags": "ログボマトメールP"
+    }
+    window.open(`http://twitter.com/intent/tweet?text=${infos["text"]}&url=${infos["url"]}&hashtags=${infos["hashtags"]}`);
   });
 
   //生成関数
