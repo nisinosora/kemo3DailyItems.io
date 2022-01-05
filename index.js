@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded',function(){
       var metaLength = metaDiscre.length;
       for(var i = 0;i < metaLength;i++){
         var proper = metaDiscre[i].getAttribute('property');
-        if(proper === 'description'){
+        if(proper === 'og:image'){
           var dis = metaDiscre[i];
           dis.setAttribute("content", link_img.src)
         }
