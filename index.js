@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded',function(){
     var infos
     infos = {
       "text":"ログインボーナスまとめ！",
-      "url": "url=https://nisinosora.github.io/kemo3DailyItems.io/",
+      "url": "https://nisinosora.github.io/kemo3DailyItems.io/",
       "hashtags": "ログボマトメールP"
     }
     window.open(`http://twitter.com/intent/tweet?text=${infos["text"]}&url=${infos["url"]}&hashtags=${infos["hashtags"]}`);
