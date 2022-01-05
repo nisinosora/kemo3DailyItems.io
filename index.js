@@ -122,7 +122,6 @@ document.addEventListener('DOMContentLoaded',function(){
     var a = document.createElement('a');
     var link_img = document.getElementById("canvas_img")
     if(link_img.src != "./"){
-      a.href = link_img.src;
       var metaDiscre = document.head.children;
       var metaLength = metaDiscre.length;
       for(var i = 0;i < metaLength;i++){
@@ -132,6 +131,8 @@ document.addEventListener('DOMContentLoaded',function(){
           dis.setAttribute("content", link_img.src)
         }
       }
+      a.href = "http://twitter.com/intent/tweet?text=ログインボーナスまとめ！&url=https://nisinosora.github.io/kemo3DailyItems.io/";
+      a.click;
     }
   });
 
