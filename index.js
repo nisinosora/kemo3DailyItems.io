@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded',function(){
     var link_img = document.getElementById("canvas_img")
     if(link_img.src != "./"){
       a.href = link_img.src;
-      alert(a.href);
+      $("#meta_image").count = link_img.src;
     }
   });
 
