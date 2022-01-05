@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded',function(){
   $("#tweet").on('click', function(){
     var a = document.createElement('a');
     var link_img = document.getElementById("canvas_img")
-    if(link_img.style.display == "inline"){
+    if(link_img.src != "./"){
       a.href = link_img.src;
       alert(a.href);
     }
