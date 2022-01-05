@@ -119,19 +119,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
   //ツイート
   $("#tweet").on('click', function(){
-    var link_img = document.getElementById("canvas_img")
-    if(link_img.src != "./"){
-      var metaDiscre = document.head.children;
-      var metaLength = metaDiscre.length;
-      for(var i = 0;i < metaLength;i++){
-        var proper = metaDiscre[i].getAttribute('property');
-        if(proper === 'og:image'){
-          var dis = metaDiscre[i];
-          dis.setAttribute("content", link_img.src)
-        }
-      }
-      window.open("http://twitter.com/intent/tweet?text=ログインボーナスまとめ！&url=https://nisinosora.github.io/kemo3DailyItems.io/");
-    }
+    window.open("http://twitter.com/intent/tweet?text=ログインボーナスまとめ！&url=https://nisinosora.github.io/kemo3DailyItems.io/");
   });
 
   //生成関数
