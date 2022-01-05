@@ -123,7 +123,15 @@ document.addEventListener('DOMContentLoaded',function(){
     var link_img = document.getElementById("canvas_img")
     if(link_img.src != "./"){
       a.href = link_img.src;
-      $("#meta_image").count = link_img.src;
+      var metaDiscre = document.head.children;
+      var metaLength = metaDiscre.length;
+      for(var i = 0;i < metaLength;i++){
+        var proper = metaDiscre[i].getAttribute('property');
+        if(proper === 'description'){
+          var dis = metaDiscre[i];
+          dis.setAttribute("content", link_img.src)
+        }
+      }
     }
   });
 
