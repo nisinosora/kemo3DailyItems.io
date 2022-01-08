@@ -126,8 +126,8 @@ document.addEventListener('DOMContentLoaded',function(){
       "hashtags": "ログボマトメールP"
     }
     //window.open(`http://twitter.com/intent/tweet?text=${infos["text"]}&url=${infos["url"]}&hashtags=${infos["hashtags"]}`);
-    var link_img = document.getElementById("canvas_img");
-    image = link_img.src;
+    var links = document.getElementById("canvas_2d").toDataURL('image/png');
+    image = links;
     navigator.share({
       text: `${infos["text"]}`,
       url: `${infos["url"]}`,
