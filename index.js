@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded',function(){
       "hashtags": "ログボマトメールP"
     }
     var links = document.getElementById("canvas_img");
-    fetch("url_to_the_file")
+    fetch(`${links.src}`)
     .then(function(response) {
       return response.blob();
     }).then(function(blob) {
