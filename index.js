@@ -125,7 +125,18 @@ document.addEventListener('DOMContentLoaded',function(){
       "url": "https://nisinosora.github.io/kemo3DailyItems.io/",
       "hashtags": "ログボマトメールP"
     }
-    window.open(`http://twitter.com/intent/tweet?text=${infos["text"]}&url=${infos["url"]}&hashtags=${infos["hashtags"]}`);
+    //window.open(`http://twitter.com/intent/tweet?text=${infos["text"]}&url=${infos["url"]}&hashtags=${infos["hashtags"]}`);
+    var link_img = document.getElementById("canvas_img");
+    image = link_img.src;
+    navigator.share({
+      text: `${infos["text"]}`,
+      url: `${infos["url"]}`,
+      files: [image]
+    }).then(() => {
+      console.log('Share was successful.')
+    }).catch((error) => {
+      console.log('Sharing failed', error)
+    })
   });
 
   //生成関数
