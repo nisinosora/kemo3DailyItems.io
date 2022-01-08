@@ -126,16 +126,21 @@ document.addEventListener('DOMContentLoaded',function(){
       "hashtags": "ログボマトメールP"
     }
     var links = document.getElementById("canvas_2d").toDataURL('image/png');
-    var file = new File([blob], links, {type: "image/png"});
-    navigator.share({
-      text: `${infos["text"]}`,
-      url: `${infos["url"]}`,
-      files: [file]
-    }).then(() => {
-      console.log('Share was successful.')
-    }).catch((error) => {
-      console.log('Sharing failed', error)
+    fetch("url_to_the_file")
+    .then(function(response) {
+      return response.blob()
     })
+    .then(function(blob) {
+      var file = new File([blob], links, {type: "image/png"});
+      var filesArray = [file];
+
+      if(navigator.canShare && navigator.canShare({ files: filesArray })) {
+        navigator.share({
+          text: `${infos["text"]}`,
+          files: filesArray,
+          url: `${infos["url"]}`
+        });
+      }
   });
 
   //生成関数
