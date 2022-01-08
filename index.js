@@ -128,19 +128,19 @@ document.addEventListener('DOMContentLoaded',function(){
     var links = document.getElementById("canvas_2d").toDataURL('image/png');
     fetch("url_to_the_file")
     .then(function(response) {
-      return response.blob()
-    })
-    .then(function(blob) {
-      var file = new File([blob], links, {type: "image/png"});
+      return response.blob();
+    }).then(function(blob) {
+      var file = new File([blob], links, {type: 'image/jpeg'});
       var filesArray = [file];
 
       if(navigator.canShare && navigator.canShare({ files: filesArray })) {
         navigator.share({
           text: `${infos["text"]}`,
-          files: filesArray,
-          url: `${infos["url"]}`
+          url: `${infos["url"]}`,
+          files: [file]
         });
       }
+    });
   });
 
   //生成関数
