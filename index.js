@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded',function(){
       lists.clearRect(0, 0, 1050, 900);
       var link_img = document.getElementById("canvas_img");
       link_img.src = ""
-      link_img.hidden = true;
+      link_img.style.display = "none";
     }else{
       alert("削除するアイコンがありません。");
     }
