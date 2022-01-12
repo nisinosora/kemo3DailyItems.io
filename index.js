@@ -22,14 +22,13 @@ document.addEventListener('DOMContentLoaded',function(){
     var canvas_img = document.getElementById("canvas_img");
     var lists = document.getElementById("lists");
     var calendar = document.getElementById("calendar");
-    console.log(select.value);
     switch(select.value){
-      case 'add':
+      case 'change':
         canvas_img.hidden = true;
         calendar.hidden = false;
         lists.hidden = false;
         break;
-      case 'change':
+      case 'add':
         canvas_img.hidden = false;
         calendar.hidden = true;
         lists.hidden = true;
