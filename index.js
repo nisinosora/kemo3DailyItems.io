@@ -24,12 +24,12 @@ document.addEventListener('DOMContentLoaded',function(){
     console.log(select.value);
     switch(select.value){
       case 'add':
-        canvas_img.hidden = true;
-        calendar.hidden = false;
-        break;
-      case 'change':
         canvas_img.hidden = false;
         calendar.hidden = true;
+        break;
+      case 'change':
+        canvas_img.hidden = true;
+        calendar.hidden = false;
         break;
     }
   });
