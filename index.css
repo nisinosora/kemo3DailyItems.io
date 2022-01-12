@@ -108,6 +108,11 @@ header{
   content: "[-]";
 }
 
+#div_submit input[type="button"]{
+  margin-right: 3px;
+  margin-bottom: 5px;
+}
+
 #canvas_img{
   display: none;
   max-width: 350px;

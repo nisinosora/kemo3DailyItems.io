@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded',function(){
   });
 
   //共有
-  $("#tweet").on('click', function(){
+  $("#share").on('click', function(){
     var infos
     infos = {
       "text":"ログインボーナスまとめ！",
@@ -133,13 +133,9 @@ document.addEventListener('DOMContentLoaded',function(){
         text: infos["text"],
         url: infos["url"],
         files: [imageFile],
-      }).then(() => {
-        console.log("共有成功.");
-      }).catch((error) => {
-        console.log(error);
-      });
+      })
     }catch{
-      alert("作成ボタンを押しましょう。\nもし押している場合は、端末もしくはブラウザが非対応の可能性があります。");
+      alert("「作成」ボタンを押しましょう。\nもし作成済みの場合は、ブラウザが非対応の可能性があります。");
     }
   });
 
