@@ -19,14 +19,15 @@ document.addEventListener('DOMContentLoaded',function(){
 
   $("#choice_mode").on('change', function(){
     var select = $(this);
+    console.log(select.value);
     switch(select.value){
       case 'add':
         $("#canvas_img").css("display", "none");
-        $("#lists li").css("display", "inline");
+        $("#calendar").css("display", "inline");
         break;
       case 'change':
         $("#canvas_img").css("display", "inline");
-        $("#lists li").css("display", "none");
+        $("#calendar").css("display", "none");
         break;
     }
   });
