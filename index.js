@@ -123,9 +123,22 @@ document.addEventListener('DOMContentLoaded',function(){
     infos = {
       "text":"ログインボーナスまとめ！",
       "url": "https://nisinosora.github.io/kemo3DailyItems.io/",
-      "hashtags": "ログボマトメールP"
+      "hashtags": "ログボマトメールP",
+      "image": document.getElementById("canvas_img").src
     }
-    window.open(`http://twitter.com/intent/tweet?text=${infos["text"]}&url=${infos["url"]}&hashtags=${infos["hashtags"]}`);
+    const blob = toBlob(infos["image"]);
+
+    const imageFile = new File([blob], "image.png", {type: "image/png"});
+
+    navigator.share({
+      text: infos["text"],
+      url: infos["url"],
+      files: [imageFile],
+    }).then(() => {
+      console.log("共有成功.");
+    }).catch((error) => {
+      console.log(error);
+    });
   });
 
   //生成関数
@@ -200,4 +213,20 @@ document.addEventListener('DOMContentLoaded',function(){
       alert("アイテム枠にアイテムがないため選択できません");
     }
   }
+
+  const toBlob = (base64) => {
+    const decodedData = atob(base64.replace(/^.*,/, ""));
+    const buffers = new Uint8Array(decodedData.length);
+    for (let i = 0; i < decodedData.length; i++) {
+      buffers[i] = decodedData.charCodeAt(i);
+    }
+    try {
+      const blob = new Blob([buffers.buffer], {
+        type: "image/png",
+      });
+      return blob;
+    } catch (e) {
+      return null;
+    }
+  };
 });
