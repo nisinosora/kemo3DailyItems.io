@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded',function(){
     }
   });
 
-  //ツイート
+  //共有
   $("#tweet").on('click', function(){
     var infos
     infos = {
@@ -126,19 +126,23 @@ document.addEventListener('DOMContentLoaded',function(){
       "hashtags": "ログボマトメールP",
       "image": document.getElementById("canvas_img").src
     }
-    const blob = toBlob(infos["image"]);
+    try{
+      const blob = toBlob(infos["image"]);
 
-    const imageFile = new File([blob], "image.png", {type: "image/png"});
+      const imageFile = new File([blob], "image.png", {type: "image/png"});
 
-    navigator.share({
-      text: infos["text"],
-      url: infos["url"],
-      files: [imageFile],
-    }).then(() => {
-      console.log("共有成功.");
-    }).catch((error) => {
-      console.log(error);
-    });
+      navigator.share({
+        text: infos["text"],
+        url: infos["url"],
+        files: [imageFile],
+      }).then(() => {
+        console.log("共有成功.");
+      }).catch((error) => {
+        console.log(error);
+      });
+    }catch{
+      alert("作成ボタンを押しましょう。\nもし押している場合は、端末もしくはブラウザが非対応の可能性があります。");
+    }
   });
 
   //生成関数
