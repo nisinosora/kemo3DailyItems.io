@@ -6,9 +6,13 @@ document.addEventListener('DOMContentLoaded',function(){
     switch(select.value){
       case 'add':
         add(item);
+        create();
+        create();
         break;
       case 'change':
         change(item);
+        create();
+        create();
         break;
     }
   });
@@ -56,6 +60,8 @@ document.addEventListener('DOMContentLoaded',function(){
           $("#item_selecting").css("display", "none");
         }
       }
+      create();
+      create();
     }else{
       alert("削除するアイコンがありません。");
     }
@@ -76,17 +82,6 @@ document.addEventListener('DOMContentLoaded',function(){
       }
     }else{
       alert("削除するアイコンがありません。");
-    }
-  });
-
-  //生成処理
-  $("#input_submit").on('click', function(){
-    if($("#lists li").length > 0){
-      for (var count = 0; count < 2; count++) {
-        create();
-      }
-    }else{
-      alert("アイコンがありません");
     }
   });
 
@@ -135,7 +130,7 @@ document.addEventListener('DOMContentLoaded',function(){
         files: [imageFile],
       })
     }catch{
-      alert("「作成」ボタンを押しましょう。\nもし作成済みの場合は、ブラウザが非対応の可能性があります。");
+      alert("エラーが発生しました。\nブラウザが非対応の可能性があります。");
     }
   });
 

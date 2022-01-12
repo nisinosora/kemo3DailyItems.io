@@ -58,7 +58,7 @@
           <input type="checkbox" id="ac-cap1-3" name="ac-cap">
           <label for="ac-cap1-3" class="ac-title">生成・ダウンロード</label>
           <div class="content">
-            ボタン<b>「生成」</b>を押すと、「ダウンロードファイル」にダウンロード用のファイルを生成します。ここからダウンロードできます。
+            各アイテムアイコンをタップすると、自動生成します。
           </div>
         </div>
       </section>
@@ -78,7 +78,7 @@
           <label for="ac-cap1-5" class="ac-title">共有</label>
           <div class="content">
             作成後は共有ボタンで、結果を共有しましょう！<br>
-            ボタン<b>「作成」</b>を押した後に、ボタン<b>「共有」</b>をタップすることで画像を添付して共有できます。<br>
+            <b>「共有」</b>をタップすることで画像を添付して共有できます。<br>
             <b>※一部ブラウザは非対応の可能性があります。非対応の場合は画像添付の共有ができない、共有自体ができない等の可能性があるため、予めご了承ください。</b><br>
             推奨ブラウザは、chromeやFireFoxです。
           </div>
@@ -164,15 +164,13 @@
         <img src="" alt="" id="item_select"><br>
         選択中のアイテム:<input type="text" id="file_name" readonly><input type="button" value="選択解除" id="item_reselect"> 
     </div>
-    <div id="div_submit">
-      <input type="button" value="作成" id="input_submit">
-      <input type="button" value="共有" id="share">
+    <div class="class_submit">
       <input type="button" value="最後尾のアイコンを削除" id="last_delete">
       <input type="button" value="全てのアイコンを削除" id="all_delete">
+      <input type="button" value="共有" id="share">
     </div>
-    <hr id="hr">
-    <h5>生成ファイル</h5>
-    <div id="calendar">
+    <hr class="hr">
+    <div id="calendar" hidden>
       <ul id="lists"></ul>
     </div>
     <h5>ダウンロードファイル</h5>
