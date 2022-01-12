@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded',function(){
   });
 
   $("#choice_mode").on('change', function(){
-    var select = $(this);
+    var select = document.getElementById("choice_mode");
     console.log(select.value);
     switch(select.value){
       case 'add':
