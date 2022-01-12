@@ -80,6 +80,8 @@ document.addEventListener('DOMContentLoaded',function(){
         document.getElementById("choice_mode").value = "add";
         document.getElementById("change_hidden").checked = false;
       }
+      var lists = document.getElementById("canvas_2d").getContext('2d');
+      lists.clearRect(0, 0, 1050, 900);
     }else{
       alert("削除するアイコンがありません。");
     }
