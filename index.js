@@ -17,19 +17,16 @@ document.addEventListener('DOMContentLoaded',function(){
 
   $("#choice_mode").on('change', function(){
     var select = document.getElementById("choice_mode");
-    var canvas_img = document.getElementById("canvas_img");
-    var lists = document.getElementById("lists");
+    var download_img = document.getElementById("download_image");
     var calendar = document.getElementById("calendar");
     switch(select.value){
-      case 'change':
-        canvas_img.hidden = true;
-        calendar.hidden = false;
-        lists.hidden = false;
-        break;
       case 'add':
-        canvas_img.hidden = false;
+        download_img.hidden = false;
         calendar.hidden = true;
-        lists.hidden = true;
+        break;
+      case 'change':
+        download_img.hidden = true;
+        calendar.hidden = false;
         break;
     }
   });
