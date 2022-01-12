@@ -17,6 +17,20 @@ document.addEventListener('DOMContentLoaded',function(){
     }
   });
 
+  $("#choice_mode").on('change', function(){
+    var select = $(this);
+    switch(select.value){
+      case 'add':
+        $("#canvas_img").css("display", "none");
+        $("#lists li").css("display", "inline");
+        break;
+      case 'change':
+        $("#canvas_img").css("display", "inline");
+        $("#lists li").css("display", "none");
+        break;
+    }
+  });
+
   //アイテム選択解除ボタン処理
   $("#item_reselect").on('click', function(){
     var items = document.getElementById("item_select");
