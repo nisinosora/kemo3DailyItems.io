@@ -11,8 +11,6 @@ document.addEventListener('DOMContentLoaded',function(){
         break;
       case 'change':
         change(item);
-        create();
-        create();
         break;
     }
   });
@@ -56,6 +54,8 @@ document.addEventListener('DOMContentLoaded',function(){
         if(selecting.src.match(pat)){
           item.src = selecting.src;
           item.alt = selecting.alt;
+          create();
+          create();
           if(reset_check.checked){
             selecting.src = ""
             selecting.alt = ""
