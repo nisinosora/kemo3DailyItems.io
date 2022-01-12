@@ -121,16 +121,14 @@ document.addEventListener('DOMContentLoaded',function(){
   $("#tweet").on('click', function(){
     var infos
     infos = {
-      "text":"ログインボーナスまとめ！",
+      "text":"ログインボーナスまとめ！\n#ログボマトメールP",
       "url": "https://nisinosora.github.io/kemo3DailyItems.io/",
       "hashtags": "ログボマトメールP",
       "image": document.getElementById("canvas_img").src
     }
     try{
       const blob = toBlob(infos["image"]);
-
       const imageFile = new File([blob], "image.png", {type: "image/png"});
-
       navigator.share({
         text: infos["text"],
         url: infos["url"],
