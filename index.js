@@ -98,6 +98,9 @@ document.addEventListener('DOMContentLoaded',function(){
       }
       var lists = document.getElementById("canvas_2d").getContext('2d');
       lists.clearRect(0, 0, 1050, 900);
+      var link_img = document.getElementById("canvas_img");
+      link_img.src = "./"
+      link_img.hidden = true;
     }else{
       alert("削除するアイコンがありません。");
     }
