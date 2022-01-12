@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded',function(){
   $("#tweet").on('click', function(){
     var infos
     infos = {
-      "text":"ログインボーナスまとめ！\n#ログボマトメールP",
+      "text":"ログインボーナスまとめ！",
       "url": "https://nisinosora.github.io/kemo3DailyItems.io/",
       "hashtags": "ログボマトメールP",
       "image": document.getElementById("canvas_img").src
