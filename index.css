@@ -43,7 +43,7 @@ header{
   padding: 0;
   max-width: 350px;
   max-height: 350px;
-  width: auto;
+  width: 350px;
   height: auto;
   border: black solid 1px;
   background-color: gray;
