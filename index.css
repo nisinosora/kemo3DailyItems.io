@@ -59,6 +59,7 @@ header{
   margin: 0;
   padding: 0;
   max-height: 50px;
+  max-width: 50px;
 }
 .img_list{
   width: 50px;
