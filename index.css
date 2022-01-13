@@ -50,8 +50,11 @@ header{
   display: block;
   margin: 0;
 }
+#lists{
+  font-size: 0;
+}
 #lists li{
-  list-style: none;
+  list-style-type: none;
   display: inline-block;
   margin: 0;
   padding: 0;

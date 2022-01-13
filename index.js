@@ -6,8 +6,6 @@ document.addEventListener('DOMContentLoaded',function(){
     switch(select.value){
       case 'add':
         add(item);
-        create();
-        create();
         break;
       case 'change':
         change(item);
@@ -151,7 +149,7 @@ document.addEventListener('DOMContentLoaded',function(){
         files: [imageFile],
       })
     }catch{
-      alert("エラーが発生しました。\nブラウザが非対応の可能性があります。");
+      alert("エラーが発生しました。\n画像が存在しないか、ブラウザが非対応の可能性があります。");
     }
   });
 
@@ -209,6 +207,8 @@ document.addEventListener('DOMContentLoaded',function(){
       var img_src = item.attr('src');
       var img_alt = item.attr('alt');
       $("ul#lists").append(`<li class=\"li_lists\"><img src=\"${img_src}\" alt=\"${img_alt}\" class=\"img_list\"></li>`);
+      create();
+      create();
     }else{
       alert("これ以上は追加できません");
     }
@@ -223,6 +223,8 @@ document.addEventListener('DOMContentLoaded',function(){
       items.alt = item.attr('alt');
       file_name.value = item.attr('alt');
       $("#item_selecting").css("display", "inline");
+      create();
+      create();
     }else{
       alert("アイテム枠にアイテムがないため選択できません");
     }
