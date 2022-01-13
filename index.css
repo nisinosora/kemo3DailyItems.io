@@ -44,7 +44,7 @@ header{
   max-width: 350px;
   max-height: 350px;
   width: 350px;
-  height: auto;
+  height: 350px;
   border: black solid 1px;
   background-color: gray;
   display: block;
