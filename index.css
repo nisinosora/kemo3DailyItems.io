@@ -41,10 +41,10 @@ header{
 #lists{
   margin: 0;
   padding: 0;
-  max-width: 400px;
-  max-height: 350px;
+  max-width: 350px;
+  max-height: 300px;
   width: 350px;
-  height: 350px;
+  height: 300px;
   border: black solid 1px;
   background-color: gray;
   display: block;
