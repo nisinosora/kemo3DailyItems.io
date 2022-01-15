@@ -157,8 +157,9 @@ document.addEventListener('DOMContentLoaded',function(){
         url: infos["url"],
         files: images,
       })
-    }catch{
+    }catch(e){
       alert("エラーが発生しました。\n画像が存在しないか、ブラウザが非対応の可能性があります。");
+      console.log(e.message);
     }
   });
 
