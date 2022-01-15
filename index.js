@@ -240,6 +240,8 @@ document.addEventListener('DOMContentLoaded',function(){
     var src;
     var sum = $("#lists li").length
     var sum_par = 0;
+    var space_count = $("#lists li img[alt=\"空白\"]").length;
+    console.log(space_count);
     $("#lists").find('img').each(function(){
       item_name = $(this).attr('alt');
       src = $(this).attr('src');
