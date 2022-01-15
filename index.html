@@ -87,7 +87,19 @@
       <section>
         <div class="ac-cap">
           <input type="checkbox" id="ac-cap1-6" name="ac-cap">
-          <label for="ac-cap1-6" class="ac-title">その他</label>
+          <label for="ac-cap1-6" class="ac-title">排出率算出</label>
+          <div class="content">
+            入力結果から各アイテムの排出率を計算します。<br>
+            計算方式は、各アイテムごとで「（アイテムの個数/全アイテムの合計数）×100」の小数点第4位での切り捨てです。<br>
+            また排出率の合計が100%にならないことがありますが、仕様です。<br>
+            <a href="https://kemono-friends.sega.jp/webview/game/other/detail/000518Lie3UZ9b.html?wvt=1913" target="_blank">参考（公式サイトに移動します）</a>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="ac-cap">
+          <input type="checkbox" id="ac-cap1-7" name="ac-cap">
+          <label for="ac-cap1-7" class="ac-title">その他</label>
           <div class="content">
               【お問い合わせはこちらまで。】<br>
               Twitter：<a href="https://twitter.com/KM_Paffin_love" target="_blank">@KM_Paffin_love</a><br>
@@ -167,7 +179,8 @@
     <div class="class_submit">
       <input type="button" value="最後尾のアイコンを削除" id="last_delete">
       <input type="button" value="全てのアイコンを削除" id="all_delete">
-      <input type="button" value="共有" id="share">
+      <input type="button" value="排出率算出" id="result_output">
+      <input type="button" value="画像を共有する" id="share">
     </div>
     <hr class="hr">
     <div id="calendar" hidden>
@@ -178,6 +191,17 @@
       <h5>ダウンロードファイル</h5>
       <canvas id="canvas_2d" width="1050" height="900" hidden></canvas>
       <img src="./" alt="file" id="canvas_img">
+    </div>
+    <hr class="hr">
+    <div id="result_list">
+      <h5>排出個数・排出率リスト</h5>
+      <table id="result_table">
+        <thead>
+          <tr>
+            <th>アイテム画像</th><th>アイテム名</th><th>個数</th><th>排出率</th>
+          </tr>
+        </thead>
+      </table>
     </div>
   </main>
 </body>

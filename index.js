@@ -153,6 +153,10 @@ document.addEventListener('DOMContentLoaded',function(){
     }
   });
 
+  $("#result_output").on('click', function(){
+    result_table();
+  })
+
   //生成関数
   function create() {
     var lists = document.getElementById("canvas_2d").getContext('2d');
@@ -230,6 +234,35 @@ document.addEventListener('DOMContentLoaded',function(){
     }
   }
 
+  function result_table(){
+    var result_lists = {};
+    var item_name;
+    var src;
+    var sum = $("#lists li").length
+    var sum_par = 0;
+    $("#lists").find('img').each(function(){
+      item_name = $(this).attr('alt');
+      src = $(this).attr('src');
+      if (item_name in result_lists){
+        result_lists[item_name].count++;
+        var count = result_lists[item_name].count
+        result_lists[item_name].parsent = round(count/sum*100,4)
+      }else{
+        result_lists[item_name] = {count: 1 ,src: src, parsent: round(1/sum*100,4)};
+      }
+    });
+
+    var table = $("#result_table tbody")
+    table.remove();
+    $("#result_table").append("<tbody></tbody>");
+    for(let [key, value] of Object.entries(result_lists)){
+      sum_par = sum_par + value.parsent;
+      $("#result_table tbody").append(`<tr><td><img src=\"${value.src}\" alt=\"${key}\"></td><td>${key}</td><td>${value.count}</td><td>${value.parsent}%</td></tr>`);
+    }
+    sum_par = round(sum_par, 4)
+    $("#result_table tbody").append(`<tr><td colspan="2">合計</td><td>${sum}</td><td>${sum_par}%</td></tr>`)
+  }
+
   const toBlob = (base64) => {
     const decodedData = atob(base64.replace(/^.*,/, ""));
     const buffers = new Uint8Array(decodedData.length);
@@ -245,4 +278,9 @@ document.addEventListener('DOMContentLoaded',function(){
       return null;
     }
   };
+
+  function round(num, digit) {
+    var digitVal = Math.pow( 10, digit );
+    return Math.trunc( num * digitVal ) / digitVal;
+  }
 });
