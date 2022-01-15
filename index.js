@@ -238,10 +238,8 @@ document.addEventListener('DOMContentLoaded',function(){
     var result_lists = {};
     var item_name;
     var src;
-    var sum = $("#lists li").length
+    var sum = $("#lists li").length - space_count();
     var sum_par = 0;
-    var space_count = $("#lists li img[alt=\"空白\"]").length;
-    console.log(space_count);
     $("#lists").find('img').each(function(){
       item_name = $(this).attr('alt');
       src = $(this).attr('src');
@@ -286,5 +284,17 @@ document.addEventListener('DOMContentLoaded',function(){
   function round(num, digit) {
     var digitVal = Math.pow( 10, digit );
     return Math.trunc( num * digitVal ) / digitVal;
+  }
+
+  function space_count(){
+    var item_name;
+    var count = 0;
+    $("#lists").find('img').each(function(){
+      item_name = $(this).attr('alt');
+      if(item_name == "空白"){
+        count++;
+      }
+    });
+    return count;
   }
 });
