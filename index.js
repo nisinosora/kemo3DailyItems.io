@@ -243,12 +243,14 @@ document.addEventListener('DOMContentLoaded',function(){
     $("#lists").find('img').each(function(){
       item_name = $(this).attr('alt');
       src = $(this).attr('src');
-      if (item_name in result_lists){
-        result_lists[item_name].count++;
-        var count = result_lists[item_name].count
-        result_lists[item_name].parsent = round(count/sum*100,4)
-      }else{
-        result_lists[item_name] = {count: 1 ,src: src, parsent: round(1/sum*100,4)};
+      if(item_name != "空白"){
+        if (item_name in result_lists){
+          result_lists[item_name].count++;
+          var count = result_lists[item_name].count
+          result_lists[item_name].parsent = round(count/sum*100,4)
+        }else{
+          result_lists[item_name] = {count: 1 ,src: src, parsent: round(1/sum*100,4)};
+        }
       }
     });
 
