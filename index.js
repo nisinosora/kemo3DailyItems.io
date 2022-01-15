@@ -142,9 +142,9 @@ document.addEventListener('DOMContentLoaded',function(){
       "image": [document.getElementById("canvas_img").src]
     }
 
-    if($("#result_table tbody tr").length > 0){
-      infos["image"].push(result_table_image());
-    }
+    // if($("#result_table tbody tr").length > 0){
+    //   infos["image"].push(result_table_image());
+    // }
 
     try{
       infos["image"].forEach(function(value){
@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded',function(){
       })
     }catch(e){
       alert("エラーが発生しました。\n画像が存在しないか、ブラウザが非対応の可能性があります。");
-      console.log(e.message);
+      console.log(e);
     }
   });
 
