@@ -134,19 +134,28 @@ document.addEventListener('DOMContentLoaded',function(){
   //共有
   $("#share").on('click', function(){
     var infos
+    var images = []
     infos = {
       "text":"ログインボーナスまとめ！",
       "url": "https://nisinosora.github.io/kemo3DailyItems.io/",
       "hashtags": "ログボマトメールP",
-      "image": document.getElementById("canvas_img").src
+      "image": [document.getElementById("canvas_img").src]
     }
+
+    if($("#result_table tbody tr").length > 0){
+      infos["image"].push(result_table_image());
+    }
+
     try{
-      const blob = toBlob(infos["image"]);
-      const imageFile = new File([blob], "image.png", {type: "image/png"});
+      infos["image"].forEach(function(value){
+        const blob = toBlob(value);
+        const imageFile = new File([blob], "image.png", {type: "image/png"});
+        images.push(imageFile)
+      });
       navigator.share({
         text: infos["text"],
         url: infos["url"],
-        files: [imageFile],
+        files: images,
       })
     }catch{
       alert("エラーが発生しました。\n画像が存在しないか、ブラウザが非対応の可能性があります。");
@@ -263,6 +272,12 @@ document.addEventListener('DOMContentLoaded',function(){
     }
     sum_par = round(sum_par, 4)
     $("#result_table tbody").append(`<tr><td colspan="2">合計</td><td>${sum}</td><td>${sum_par}%</td></tr>`)
+  }
+
+  function result_table_image(){
+    html2canvas(document.querySelector("#result_list")).then(canvas => { 
+      return canvas.toDataURL("image/png");
+    });
   }
 
   const toBlob = (base64) => {
