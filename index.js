@@ -143,7 +143,6 @@ document.addEventListener('DOMContentLoaded',function(){
     }
 
     if($("#result_table tbody tr").length > 0){
-      result_table_image();
       var resule_image = document.getElementById("result_table_image");
       infos["image"].push(resule_image.src);
     }
@@ -167,6 +166,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
   $("#result_output").on('click', function(){
     result_table();
+    result_table_image();
   })
 
   //生成関数
