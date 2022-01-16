@@ -145,6 +145,8 @@ document.addEventListener('DOMContentLoaded',function(){
     // if($("#result_table tbody tr").length > 0){
     //   infos["image"].push(result_table_image());
     // }
+    var test_img = document.getElementById("test_image")
+    test_img.src = result_table_image();
 
     try{
       infos["image"].forEach(function(value){
