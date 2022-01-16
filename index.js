@@ -142,10 +142,9 @@ document.addEventListener('DOMContentLoaded',function(){
       "image": [document.getElementById("canvas_img").src]
     }
 
-    // if($("#result_table tbody tr").length > 0){
-    //   infos["image"].push(result_table_image());
-    // }
-    result_table_image();
+    if($("#result_table tbody tr").length > 0){
+      infos["image"].push(result_table_image());
+    }
 
     try{
       infos["image"].forEach(function(value){
@@ -278,8 +277,10 @@ document.addEventListener('DOMContentLoaded',function(){
 
   function result_table_image(){
     html2canvas(document.querySelector("#result_list")).then(canvas => { 
-      var s = canvas.toDataURL("image/png");
-      console.log(s);
+      var src = canvas.toDataURL("image/png");
+      var file = document.getElementById("result_table_image")
+      file.src = src;
+      return src
     });
   }
 
