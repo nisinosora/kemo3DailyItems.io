@@ -279,7 +279,8 @@ document.addEventListener('DOMContentLoaded',function(){
 
   function result_table_image(){
     html2canvas(document.querySelector("#result_list")).then(canvas => { 
-      return canvas.toDataURL("image/png");
+      var s = canvas.toDataURL("image/png");
+      return s;
     });
   }
 
