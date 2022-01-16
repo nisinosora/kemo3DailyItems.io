@@ -143,7 +143,9 @@ document.addEventListener('DOMContentLoaded',function(){
     }
 
     if($("#result_table tbody tr").length > 0){
-      infos["image"].push(result_table_image());
+      result_table_image();
+      var resule_image = document.getElementById("result_table_image");
+      infos["image"].push(resule_image.src);
     }
 
     try{
@@ -280,7 +282,6 @@ document.addEventListener('DOMContentLoaded',function(){
       var src = canvas.toDataURL("image/png");
       var file = document.getElementById("result_table_image")
       file.src = src;
-      return src
     });
   }
 
