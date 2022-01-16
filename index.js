@@ -145,6 +145,7 @@ document.addEventListener('DOMContentLoaded',function(){
     // if($("#result_table tbody tr").length > 0){
     //   infos["image"].push(result_table_image());
     // }
+    result_table_image();
 
     try{
       infos["image"].forEach(function(value){
@@ -278,9 +279,7 @@ document.addEventListener('DOMContentLoaded',function(){
   function result_table_image(){
     html2canvas(document.querySelector("#result_list")).then(canvas => { 
       var s = canvas.toDataURL("image/png");
-      var test_img = document.getElementById("test_image")
       console.log(s);
-      test_img.src = s;
     });
   }
 
