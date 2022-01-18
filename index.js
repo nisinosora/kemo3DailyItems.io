@@ -225,11 +225,6 @@ document.addEventListener('DOMContentLoaded',function(){
       $("ul#lists").append(`<li class=\"li_lists\"><img src=\"${img_src}\" alt=\"${img_alt}\" class=\"img_list\"></li>`);
       create();
       create();
-      html2canvas(document.querySelector("#calendar")).then(canvas => { 
-        var src = canvas.toDataURL("image/png");
-        var file = document.getElementById("test_image")
-        file.src = src;
-      });
     }else{
       alert("これ以上は追加できません");
     }
