@@ -133,6 +133,9 @@ document.addEventListener('DOMContentLoaded',function(){
 
   //共有
   $("#share").on('click', function(){
+    $(this).disabled = true;
+    $(this).value = '処理中...';
+
     var infos
     var images = []
     infos = {
@@ -158,6 +161,8 @@ document.addEventListener('DOMContentLoaded',function(){
         url: infos["url"],
         files: images,
       })
+      $(this).disabled = false;
+      $(this).value = '画像・排出率結果を共有する';
     }catch(e){
       alert("エラーが発生しました。\n画像が存在しないか、ブラウザが非対応の可能性があります。");
       console.log(e);
