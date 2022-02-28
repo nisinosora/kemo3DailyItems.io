@@ -64,15 +64,12 @@ document.addEventListener('DOMContentLoaded',function(){
   //最後のアイコンを削除
   $("#last_delete").on('click', function(){
     if($("#lists li").length > 0){
-      var check = confirm("最後に追加したアイコンを削除します。よろしいですか？")
-      if (check == true){
-        $("#lists li:last").remove();
-        if($("#lists li").length < 1){
-          var selecting = document.getElementById("item_select");
-          selecting.src = ""
-          selecting.alt = ""
-          $("#item_selecting").css("display", "none");
-        }
+      $("#lists li:last").remove();
+      if($("#lists li").length < 1){
+        var selecting = document.getElementById("item_select");
+        selecting.src = ""
+        selecting.alt = ""
+        $("#item_selecting").css("display", "none");
       }
       create();
       create();
@@ -93,12 +90,12 @@ document.addEventListener('DOMContentLoaded',function(){
         $("#item_selecting").css("display", "none");
         document.getElementById("choice_mode").value = "add";
         document.getElementById("change_hidden").checked = false;
+        link_img.style.display = "none";
+        var lists = document.getElementById("canvas_2d").getContext('2d');
+        lists.clearRect(0, 0, 1050, 900);
+        var link_img = document.getElementById("canvas_img");
+        link_img.src = ""
       }
-      var lists = document.getElementById("canvas_2d").getContext('2d');
-      lists.clearRect(0, 0, 1050, 900);
-      var link_img = document.getElementById("canvas_img");
-      link_img.src = ""
-      link_img.style.display = "none";
     }else{
       alert("削除するアイコンがありません。");
     }
