@@ -90,10 +90,10 @@ document.addEventListener('DOMContentLoaded',function(){
         $("#item_selecting").css("display", "none");
         document.getElementById("choice_mode").value = "add";
         document.getElementById("change_hidden").checked = false;
-        link_img.style.display = "none";
         var lists = document.getElementById("canvas_2d").getContext('2d');
         lists.clearRect(0, 0, 1050, 900);
         var link_img = document.getElementById("canvas_img");
+        link_img.style.display = "none";
         link_img.src = ""
       }
     }else{
