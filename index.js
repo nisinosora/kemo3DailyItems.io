@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded',function(){
           item.src = selecting.src;
           item.alt = selecting.alt;
           create();
-          create();
+          //create();
           if(reset_check.checked){
             selecting.src = ""
             selecting.alt = ""
