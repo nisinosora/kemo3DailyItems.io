@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded',function(){
           item.src = selecting.src;
           item.alt = selecting.alt;
           create();
-          create();
+          //create();
           if(reset_check.checked){
             selecting.src = ""
             selecting.alt = ""
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded',function(){
         $("#item_selecting").css("display", "none");
       }
       create();
-      create();
+      //create();
     }else{
       alert("削除するアイコンがありません。");
     }
@@ -203,13 +203,13 @@ document.addEventListener('DOMContentLoaded',function(){
     })
 
     canvas_img_height = Math.ceil(parseFloat($("#lists li").length / 7))
-    
-    var links = document.getElementById("canvas_2d").toDataURL('image/png')
     var link_img = document.getElementById("canvas_img")
     link_img.style.width = canvas_img_width * 50 + "px";
     link_img.style.height = canvas_img_height * 50 + "px";
     canvas_2d.width = canvas_img_width * 150;
     canvas_2d.height = canvas_img_height * 150;
+    var links = document.getElementById("canvas_2d").toDataURL('image/png')
+    
     link_img.src = links;
     link_img.style.display = "inline"
   }
@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded',function(){
       var img_alt = item.attr('alt');
       $("ul#lists").append(`<li class=\"li_lists\"><img src=\"${img_src}\" alt=\"${img_alt}\" class=\"img_list\"></li>`);
       create();
-      create();
+      //create();
     }else{
       alert("これ以上は追加できません");
     }
@@ -237,7 +237,7 @@ document.addEventListener('DOMContentLoaded',function(){
       file_name.value = item.attr('alt');
       $("#item_selecting").css("display", "inline");
       create();
-      create();
+      //create();
     }else{
       alert("アイテム枠にアイテムがないため選択できません");
     }
