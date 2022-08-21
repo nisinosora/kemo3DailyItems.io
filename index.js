@@ -50,7 +50,6 @@ document.addEventListener('DOMContentLoaded',function(){
           item.src = selecting.src;
           item.alt = selecting.alt;
           create();
-          //create();
           if(reset_check.checked){
             selecting.src = ""
             selecting.alt = ""
@@ -71,7 +70,6 @@ document.addEventListener('DOMContentLoaded',function(){
         selecting.alt = ""
         $("#item_selecting").css("display", "none");
       }
-      create();
       create();
     }else{
       alert("削除するアイコンがありません。");
@@ -236,7 +234,6 @@ document.addEventListener('DOMContentLoaded',function(){
       var img_alt = item.attr('alt');
       $("ul#lists").append(`<li class=\"li_lists\"><img src=\"${img_src}\" alt=\"${img_alt}\" class=\"img_list\"></li>`);
       create();
-      create();
     }else{
       alert("これ以上は追加できません");
     }
@@ -251,7 +248,6 @@ document.addEventListener('DOMContentLoaded',function(){
       items.alt = item.attr('alt');
       file_name.value = item.attr('alt');
       $("#item_selecting").css("display", "inline");
-      create();
       create();
     }else{
       alert("アイテム枠にアイテムがないため選択できません");
