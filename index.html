@@ -24,32 +24,33 @@
   <title>【けものフレンズ3】ログボマトメールP</title>
 </head>
 <body>
-  <header>
+  <header id="header">
     <p>
-      けものフレンズ3でのログインボーナスをまとめるサイトです。<br>
-      ただしデータを一時保存する等は不可能なので、メモ帳に記載しこのサイトで画像を生成する。という感じにするのがおススメです。<br>
+      けものフレンズ3でのスペシャルデイリーミッションの結果をまとめるサイトです。<br>
+      データの一時保存は出来ません。メモ帳等に記載しておき、このサイトにて画像を生成して下さい。
     </p>
   </header>
   <main>
+    <br>
     <div id="usage">
-      <h3>使い方</h3>
+      <h3 id="HowToUse">使い方</h3>
       <section>
         <div class="ac-cap">
           <input type="checkbox" id="ac-cap1-1" name="ac-cap">
-          <label for="ac-cap1-1" class="ac-title">リスト：パスポート</label>
+          <label for="ac-cap1-1" class="ac-title" id="Usage_PassportList">リスト：パスポート</label>
           <div class="content">
-            このリストは、切り替えると「アイテム一覧」の枠内が切り替わります。
+            選択したコースに応じて「アイテム一覧」枠内の項目が切り替わります。
           </div>
         </div>
       </section>
       <section>
         <div class="ac-cap">
           <input type="checkbox" id="ac-cap1-2" name="ac-cap">
-          <label for="ac-cap1-2" class="ac-title">リスト：モード</label>
+          <label for="ac-cap1-2" class="ac-title" id="Usage_ModeList">リスト：モード</label>
           <div class="content">
-            <b>「追加」</b>：「アイテム一覧」のアイコンを選択すると「生成ファイル」にアイコンを追加します。<br>
+            <b>「追加」</b>：「アイテム一覧」のアイコンを選択すると「画像生成結果」にアイコンを追加します。<br>
             <b>「置き換え」</b>：「アイテム一覧」のアイコンを選択すると「選択中アイテム」を表示します。<br>
-            「選択中アイテム」表示中に、「生成ファイル」枠内のアイコンを選択すると「選択中アイテム」に置き換えます。<br>
+            「選択中アイテム」表示中に、「画像生成結果」枠内のアイコンを選択すると「選択中アイテム」に置き換えます。<br>
             置き換え後の選択解除は、ボタン<b>「選択解除」</b>を押すか、チェックボックス<b>「置き換え後選択解除」</b>にチェックを入れていると自動的に解除します。
           </div>
         </div>
@@ -57,18 +58,19 @@
       <section>
         <div class="ac-cap">
           <input type="checkbox" id="ac-cap1-3" name="ac-cap">
-          <label for="ac-cap1-3" class="ac-title">生成・ダウンロード</label>
+          <label for="ac-cap1-3" class="ac-title" id="Usage_Create_Download">生成・ダウンロード</label>
           <div class="content">
-            各アイテムアイコンをタップすると、自動生成します。
+            各アイテムアイコンをタップすると、画像生成結果」下に画像ファイルを出力します。<br>
+            そこから画像ファイルをダウンロードできます。
           </div>
         </div>
       </section>
       <section>
         <div class="ac-cap">
           <input type="checkbox" id="ac-cap1-4" name="ac-cap">
-          <label for="ac-cap1-4" class="ac-title">削除</label>
+          <label for="ac-cap1-4" class="ac-title" id="Usage_Remove">削除</label>
           <div class="content">
-            ボタン<b>「最後尾のアイコンを削除」</b>:最後に追加したアイコンを削除します。<br>
+            ボタン<b>「最後尾のアイコンを削除」</b>:最後尾にあるアイコンを削除します。<br>
             ボタン<b>「全てのアイコンを削除」</b>:追加してあるアイコン全てを削除します。
           </div>
         </div>
@@ -76,21 +78,20 @@
       <section>
         <div class="ac-cap">
           <input type="checkbox" id="ac-cap1-5" name="ac-cap">
-          <label for="ac-cap1-5" class="ac-title">共有</label>
+          <label for="ac-cap1-5" class="ac-title" id="Usage_Share">共有</label>
           <div class="content">
             作成後は共有ボタンで、結果を共有しましょう！<br>
             <b>「共有」</b>をタップすることで画像を添付して共有できます。<br>
             <b>※一部ブラウザは非対応の可能性があります。非対応の場合は画像添付の共有ができない、共有自体ができない等の可能性があるため、予めご了承ください。</b><br>
-            推奨ブラウザは、chromeやFireFoxです。<br>
-            PCで共有を行う場合は、あらかじめPCストアからツイッター等のSNSをインストールした上で行ってください。<br>
-            例：WindowsならMicrosoftStore等
+            推奨ブラウザは、Google Chrome又はMozilla FireFox最新版です。<br>
+            PCで共有をする際は、ツイッターや他のSNSを（MicroSoft Store等の）PCストアからインストールして行って下さい。
           </div>
         </div>
       </section>
       <section>
         <div class="ac-cap">
           <input type="checkbox" id="ac-cap1-6" name="ac-cap">
-          <label for="ac-cap1-6" class="ac-title">排出率算出</label>
+          <label for="ac-cap1-6" class="ac-title" id="Usage_EmissionRate">排出率算出</label>
           <div class="content">
             入力結果から各アイテムの排出率を計算します。<br>
             計算方式は、各アイテムごとで「（アイテムの個数/全アイテムの合計数）×100」の小数点第4位での切り捨てです。<br>
@@ -102,9 +103,9 @@
       <section>
         <div class="ac-cap">
           <input type="checkbox" id="ac-cap1-7" name="ac-cap">
-          <label for="ac-cap1-7" class="ac-title">その他</label>
+          <label for="ac-cap1-7" class="ac-title" id="Usage_Other">その他</label>
           <div class="content">
-              【お問い合わせはこちらまで。】<br>
+              【お問い合わせはこちらまで】<br>
               Twitter：<a href="https://twitter.com/KM_Puffin_love" target="_blank">@KM_Puffin_love</a><br>
           </div>
         </div>
@@ -112,7 +113,7 @@
     </div>
 
     <div id="selecter">
-      <label for="passport">パスポート：</label>
+      <label for="passport" id="Label_Passport">パスポート：</label>
       <select name="mode" id="mode-select">
         <option value="all">すべて</option>
         <option value="first_little">はじめて・ちょこっと</option>
@@ -187,7 +188,7 @@
       <ul id="lists"></ul>
     </div>
     <div id="download_image">
-      <h5>ダウンロードファイル</h5>
+      <h5>画像生成結果</h5>
       <canvas id="canvas_2d" width="1050" height="900" hidden></canvas>
       <img src="./" alt="file" id="canvas_img">
     </div>
