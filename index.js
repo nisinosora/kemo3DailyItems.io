@@ -151,6 +151,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
     const url = new URL(window.location.href);
     url.searchParams.set('lang', $lang)
+    console.log(url.href)
   })
 
   //画像クリック時の処理
