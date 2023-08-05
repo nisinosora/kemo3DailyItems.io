@@ -105,6 +105,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
   var $shareContent = {"ja": "スペシャルデイリーボーナスの結果です！", "zh-TW": "特別每日任務獎勵的結果！"}
 
+  //翻訳モードの切り替え時の処理
   $('input[name="lang"]:radio').change(function(){
     $lang = $(this).val();
 
@@ -428,8 +429,8 @@ document.addEventListener('DOMContentLoaded',function(){
       var file = document.getElementById("result_table_image")
       file.src = src;
     });
-    document.getElementById("result_table").css("display", "none")
-    document.getElementById("result_table_image").css("display", "inline")
+    document.getElementById("result_table").hidden = true;
+    document.getElementById("result_table_image").hidden = false;
   }
 
   const toBlob = (base64) => {
