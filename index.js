@@ -33,8 +33,8 @@ document.addEventListener('DOMContentLoaded',function(){
     "#Usage_Share":{"ja":"共有","zh-TW":"分享"},
     "#Usage_EmissionRate":{"ja":"排出率算出","zh-TW":"計算機率"},
     "#Usage_Other":{"ja":"その他","zh-TW":"其他"},
-    "#Label_Passport":{"ja":"パスポート","zh-TW":"月通行證"},
-    "#Label_Mode":{"ja":"モード","zh-TW":"方式"},
+    "#Label_Passport":{"ja":"パスポート：","zh-TW":"月通行證："},
+    "#Label_Mode":{"ja":"モード：","zh-TW":"方式："},
   }
 
   var $options = {
