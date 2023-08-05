@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded',function(){
     const ItemIds = url.searchParams.get('items');
     if(ItemIds){
       for(let element of ItemIds.split(".")){
-        if($(`#${element}`).size()){
+        if(document.getElementById(element) != null){
           var item = $(`#${element}`)
           var img_src = item.attr('src');
           var img_alt = item.attr('alt');
