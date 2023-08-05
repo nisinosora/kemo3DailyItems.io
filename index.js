@@ -119,39 +119,12 @@ document.addEventListener('DOMContentLoaded',function(){
         element.checked = false
       }
     }
+    translate();
   });
 
   //翻訳モードの切り替え時の処理
   $('input[name="lang"]:radio').change(function(){
-    $lang = $(this).val();
-
-    //独自変換部
-    for(let [key, value] of Object.entries($labels)){
-      $(`${key}`).text(value[$lang]);
-    }
-
-    for(let [key, value] of Object.entries($options)){
-      var optionElement = document.getElementById(key);
-      if (optionElement){
-        optionElement.textContent = value[$lang];
-      }
-    }
-
-    for(let [key, value] of Object.entries($buttons)){
-      $(`${key}`).val(value[$lang]);
-    }
-
-    for(let [key, value] of Object.entries($iconsImages)){
-      $(`${key}`).attr('alt', value[$lang]);
-    }
-
-    for(let [key, value] of Object.entries($tablesTh)){
-      $(`${key}`).text(value[$lang]);
-    }
-
-    const url = new URL(window.location.href);
-    url.searchParams.set('lang', $lang)
-    console.log(url.href)
+    translate();
   })
 
   //画像クリック時の処理
@@ -482,5 +455,37 @@ document.addEventListener('DOMContentLoaded',function(){
       }
     });
     return count;
+  }
+
+  function translate(){
+    $lang = $(this).val();
+
+    //独自変換部
+    for(let [key, value] of Object.entries($labels)){
+      $(`${key}`).text(value[$lang]);
+    }
+
+    for(let [key, value] of Object.entries($options)){
+      var optionElement = document.getElementById(key);
+      if (optionElement){
+        optionElement.textContent = value[$lang];
+      }
+    }
+
+    for(let [key, value] of Object.entries($buttons)){
+      $(`${key}`).val(value[$lang]);
+    }
+
+    for(let [key, value] of Object.entries($iconsImages)){
+      $(`${key}`).attr('alt', value[$lang]);
+    }
+
+    for(let [key, value] of Object.entries($tablesTh)){
+      $(`${key}`).text(value[$lang]);
+    }
+
+    const url = new URL(window.location.href);
+    url.searchParams.set('lang', $lang)
+    console.log(url.href)
   }
 });
