@@ -103,6 +103,8 @@ document.addEventListener('DOMContentLoaded',function(){
     "#th_EmissionRate":{"ja":"排出率","zh-TW":"機率"}
   }
 
+  var $shareContent = {"ja": "スペシャルデイリーボーナスの結果です！", "zh-TW": "特別每日任務獎勵的結果！"}
+
   $('input[name="lang"]:radio').change(function(){
     $lang = $(this).val();
 
@@ -263,9 +265,9 @@ document.addEventListener('DOMContentLoaded',function(){
     var infos
     var images = []
     infos = {
-      "text":"ログインボーナスまとめ！",
+      "text": $shareContent[$lang],
       "url": "https://nisinosora.github.io/kemo3DailyItems.io/",
-      "hashtags": "ログボマトメールP",
+      "hashtags": $labels["title"][$lang],
       "image": [document.getElementById("canvas_img").src]
     }
 
