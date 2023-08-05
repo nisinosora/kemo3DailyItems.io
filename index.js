@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded',function(){
     var langs = document.querySelectorAll('input[type="radio"][name="lang"]');
     console.log(urlParam);
     for(let element of langs){
-      if(element.val == urlParam){
+      if(element.value() == urlParam){
         element.checked = true
         $lang = element.val
       }else{
