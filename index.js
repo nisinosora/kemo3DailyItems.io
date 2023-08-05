@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded',function(){
   //翻訳（独自）
+  var $itemList = []
   var $lang = "ja"
   var $alerts = {
     "nullIcons":{
@@ -126,6 +127,19 @@ document.addEventListener('DOMContentLoaded',function(){
       translate(urlParam);
       document.querySelector('html').setAttribute('lang' , urlParam)
     }
+    const ItemIds = url.searchParams.get('items');
+    if(ItemIds){
+      for(let element of ItemIds.split(".")){
+        if($(`#${element}`).size()){
+          var item = $(`#${element}`)
+          var img_src = item.attr('src');
+          var img_alt = item.attr('alt');
+          $itemList.push(item.attr('id'));
+          $("ul#lists").append(`<li class=\"li_lists\"><img src=\"${img_src}\" alt=\"${img_alt}\" class=\"img_list\"></li>`);
+        }
+      }
+      create();
+    }
   });
 
   //翻訳モードの切り替え時の処理
@@ -198,6 +212,7 @@ document.addEventListener('DOMContentLoaded',function(){
   $("#last_delete").on('click', function(){
     if($("#lists li").length > 0){
       $("#lists li:last").remove();
+      $itemList.pop()
       if($("#lists li").length < 1){
         var selecting = document.getElementById("item_select");
         selecting.src = ""
@@ -216,6 +231,7 @@ document.addEventListener('DOMContentLoaded',function(){
       var check = confirm($alerts["AllIconsRemove"][$lang])
       if (check == true){
         $("#lists li").remove();
+        $itemList = [];
         var selecting = document.getElementById("item_select");
         selecting.src = ""
         selecting.alt = ""
@@ -369,6 +385,7 @@ document.addEventListener('DOMContentLoaded',function(){
     if($("#lists li").length <= 41){
       var img_src = item.attr('src');
       var img_alt = item.attr('alt');
+      $itemList.push(item.attr('id'));
       $("ul#lists").append(`<li class=\"li_lists\"><img src=\"${img_src}\" alt=\"${img_alt}\" class=\"img_list\"></li>`);
       create();
     }else{
@@ -494,6 +511,11 @@ document.addEventListener('DOMContentLoaded',function(){
     
     var ParamCheck = false
     var urlParam = url.searchParams.get('lang')
+    if($itemList.length > 0){
+      url.searchParams.set('items', $itemList.join("."))
+    }else{
+      if(urlParam){url.searchParams.delete('items')}
+    }
     if(urlParam != _lang){ParamCheck = true}
 
     if(ParamCheck){
