@@ -105,6 +105,21 @@ document.addEventListener('DOMContentLoaded',function(){
 
   var $shareContent = {"ja": "スペシャルデイリーボーナスの結果です！", "zh-TW": "特別每日任務獎勵的結果！"}
 
+  //初期起動時の処理
+  $(document).ready(function(){
+    const url = new URL(window.location.href);
+    const urlParam = url.searchParams.get('lang');
+    var langs = document.querySelectorAll('input[type="radio"][name="lang"]');
+    for(let element of langs){
+      if(element.val == urlParam){
+        element.checked = true
+        $lang = element.val
+      }else{
+        element.checked = false
+      }
+    }
+  });
+
   //翻訳モードの切り替え時の処理
   $('input[name="lang"]:radio').change(function(){
     $lang = $(this).val();
@@ -132,6 +147,9 @@ document.addEventListener('DOMContentLoaded',function(){
     for(let [key, value] of Object.entries($tablesTh)){
       $(`${key}`).text(value[$lang]);
     }
+
+    const url = new URL(window.location.href);
+    url.searchParams.set('lang', $lang)
   })
 
   //画像クリック時の処理
