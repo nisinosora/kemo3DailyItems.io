@@ -429,8 +429,6 @@ document.addEventListener('DOMContentLoaded',function(){
       var file = document.getElementById("result_table_image")
       file.src = src;
     });
-    document.getElementById("result_table").hidden = true;
-    document.getElementById("result_table_image").hidden = false;
   }
 
   const toBlob = (base64) => {
