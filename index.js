@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded',function(){
+  translateCss();
   //翻訳（独自）
   var $lang = "ja"
   var $alerts = {
@@ -109,17 +110,19 @@ document.addEventListener('DOMContentLoaded',function(){
   $(document).ready(function(){
     const url = new URL(window.location.href);
     const urlParam = url.searchParams.get('lang');
-    var langs = document.querySelectorAll('input[type="radio"][name="lang"]');
-    console.log(urlParam);
+    var langs = document.querySelectorAll("input[type='radio'][name='lang']");
+    var passCheck = false
     for(let element of langs){
-      if(element.value() == urlParam){
+      if(element.value == urlParam){
         element.checked = true
-        $lang = element.val
-      }else{
-        element.checked = false
+        passCheck = true
+        break;
       }
     }
-    translate($lang);
+    if(passCheck){
+      translate(urlParam);
+      document.querySelector('html').setAttribute('lang' , urlParam)
+    }
   });
 
   //翻訳モードの切り替え時の処理
@@ -485,7 +488,43 @@ document.addEventListener('DOMContentLoaded',function(){
     }
 
     const url = new URL(window.location.href);
+    
+    if(!url.searchParams.get('lang')){
+      location.href = url
+    }
     url.searchParams.set('lang', $lang)
-    console.log(url.href)
+  }
+
+  function translateCss(){
+    switch(document.readyState){
+      case 'complete':
+        new multi_language()
+        break
+      default:
+        window.addEventListener('load' , (()=>{
+          new multi_language()
+        }))
+    }
+    
+    function multi_language(){
+      this.set_current_lang()
+    }
+    multi_language.prototype.get_lang_lists = function(){
+      return document.querySelectorAll(`input[type='radio'][name='lang']`)
+    }
+    multi_language.prototype.set_current_lang = function(){
+      const current_lang = document.querySelector('html').getAttribute('lang')
+      this.checked_lang_list(current_lang)
+    }
+    multi_language.prototype.checked_lang_list = function(current_lang){
+      const elms = this.get_lang_lists()
+      for(const elm of elms){
+        elm.addEventListener('click' , this.click_lang.bind(this))
+      }
+    }
+    multi_language.prototype.click_lang = function(e){
+      const lang = e.target.value
+      document.querySelector('html').setAttribute('lang' , lang)
+    }
   }
 });
