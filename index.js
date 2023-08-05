@@ -428,6 +428,8 @@ document.addEventListener('DOMContentLoaded',function(){
       var file = document.getElementById("result_table_image")
       file.src = src;
     });
+    document.getElementById("result_table").css("display", "none")
+    document.getElementById("result_table_image").css("display", "inline")
   }
 
   const toBlob = (base64) => {
