@@ -139,6 +139,7 @@ document.addEventListener('DOMContentLoaded',function(){
         }
       }
       create();
+      create();
     }
   });
 
