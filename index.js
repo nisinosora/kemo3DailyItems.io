@@ -119,12 +119,12 @@ document.addEventListener('DOMContentLoaded',function(){
         element.checked = false
       }
     }
-    translate();
+    translate($lang);
   });
 
   //翻訳モードの切り替え時の処理
   $('input[name="lang"]:radio').change(function(){
-    translate();
+    translate($(this).val());
   })
 
   //画像クリック時の処理
@@ -457,8 +457,8 @@ document.addEventListener('DOMContentLoaded',function(){
     return count;
   }
 
-  function translate(){
-    $lang = $(this).val();
+  function translate(_lang){
+    $lang = _lang
 
     //独自変換部
     for(let [key, value] of Object.entries($labels)){
