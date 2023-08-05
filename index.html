@@ -21,25 +21,35 @@
   <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="index.js"></script>
-  <title>【けものフレンズ3】ログボマトメールP</title>
+  <script src="./translation.js"></script>
+  <title lang="ja">【けものフレンズ3】ログボマトメールP</title>
 </head>
 <body>
   <header id="header">
-    <p>
+    <p lang="ja">
       けものフレンズ3でのスペシャルデイリーミッションの結果をまとめるサイトです。<br>
       データの一時保存は出来ません。メモ帳等に記載しておき、このサイトにて画像を生成して下さい。
     </p>
+    <p lang="zh-TW">
+      本網站是總結動物朋友3中特別每日任務獎勵的結果。<br>
+      不能臨時存儲數據。 將其記錄在記事本等中，並在本網站上生成圖像。
+    </p>
   </header>
   <main>
-    <br>
+    <div class='language-change'>
+      <label><input type='radio' name='lang' value='ja'>日本語</label>
+      <label><input type='radio' name='lang' value='zh-TW'>繁體中文</label>
+    </div>
+
     <div id="usage">
-      <h3 id="HowToUse">使い方</h3>
+      <h3 id="HowToUse">使用方法</h3>
       <section>
         <div class="ac-cap">
           <input type="checkbox" id="ac-cap1-1" name="ac-cap">
-          <label for="ac-cap1-1" class="ac-title" id="Usage_PassportList">リスト：パスポート</label>
+          <label for="ac-cap1-1" class="ac-title" lang="ja" id="Usage_PassportList">リスト：パスポート</label>
           <div class="content">
-            選択したコースに応じて「アイテム一覧」枠内の項目が切り替わります。
+            <p lang="ja">選択したコースに応じて「アイテム一覧」枠内の項目が切り替わります。</p>
+            <p lang="zh-TW">「品目列表」框中的項目將根據所月通行證選課程而變化。</p>
           </div>
         </div>
       </section>
@@ -48,10 +58,18 @@
           <input type="checkbox" id="ac-cap1-2" name="ac-cap">
           <label for="ac-cap1-2" class="ac-title" id="Usage_ModeList">リスト：モード</label>
           <div class="content">
-            <b>「追加」</b>：「アイテム一覧」のアイコンを選択すると「画像生成結果」にアイコンを追加します。<br>
-            <b>「置き換え」</b>：「アイテム一覧」のアイコンを選択すると「選択中アイテム」を表示します。<br>
-            「選択中アイテム」表示中に、「画像生成結果」枠内のアイコンを選択すると「選択中アイテム」に置き換えます。<br>
-            置き換え後の選択解除は、ボタン<b>「選択解除」</b>を押すか、チェックボックス<b>「置き換え後選択解除」</b>にチェックを入れていると自動的に解除します。
+            <p lang="ja">
+              <b>「追加」</b>：「アイテム一覧」のアイコンを選択すると「画像生成結果」にアイコンを追加します。<br>
+              <b>「置き換え」</b>：「アイテム一覧」のアイコンを選択すると「選択中アイテム」を表示します。<br>
+              「選択中アイテム」表示中に、「画像生成結果」枠内のアイコンを選択すると「選択中アイテム」に置き換えます。<br>
+              置き換え後の選択解除は、ボタン<b>「選択解除」</b>を押すか、チェックボックス<b>「置き換え後選択解除」</b>にチェックを入れていると自動的に解除します。
+            </p>
+            <p lang="zh-TW">
+              <b>「追加」</b>：在「品目列表」中選擇一個圖標，就圖標添加到「圖像生成結果」中。
+              <b>「調換」</b>：選擇「品目列表」圖標以顯示「所選品目」。
+              如果在顯示「所選品目」時選擇「圖像生成結果」框中的圖標，這張圖像將被替換為「所選品目」。
+              按下<b>「取消選擇」</b>按鈕或選中<b>「調換後取消選擇」</b>複選框，調換後的選擇將自動取消。
+            </p>
           </div>
         </div>
       </section>
@@ -60,8 +78,14 @@
           <input type="checkbox" id="ac-cap1-3" name="ac-cap">
           <label for="ac-cap1-3" class="ac-title" id="Usage_Create_Download">生成・ダウンロード</label>
           <div class="content">
-            各アイテムアイコンをタップすると、画像生成結果」下に画像ファイルを出力します。<br>
+            <p lang="ja">
+              各アイテムアイコンをタップすると、画像生成結果」下に画像ファイルを出力します。<br>
             そこから画像ファイルをダウンロードできます。
+            </p>
+            <p lang="zh-TW">
+              點擊每個項目圖標時，圖像文件將在「圖像生成結果」下輸出。<br>
+              可以從那裡下載圖像文件。
+            </p>
           </div>
         </div>
       </section>
@@ -70,8 +94,14 @@
           <input type="checkbox" id="ac-cap1-4" name="ac-cap">
           <label for="ac-cap1-4" class="ac-title" id="Usage_Remove">削除</label>
           <div class="content">
-            ボタン<b>「最後尾のアイコンを削除」</b>:最後尾にあるアイコンを削除します。<br>
-            ボタン<b>「全てのアイコンを削除」</b>:追加してあるアイコン全てを削除します。
+            <p lang="ja">
+              ボタン<b>「最後尾のアイコンを削除」</b>:最後尾にあるアイコンを削除します。<br>
+              ボタン<b>「全てのアイコンを削除」</b>:追加してあるアイコン全てを削除します。
+            </p>
+            <p lang="zh-TW">
+              按鈕<b>「刪除最後一個圖標」</b>：刪除最後添加的圖標。<br>
+              按鈕<b>「刪除一切圖標」</b>：刪除所有添加的圖標。
+            </p>
           </div>
         </div>
       </section>
@@ -80,10 +110,18 @@
           <input type="checkbox" id="ac-cap1-5" name="ac-cap">
           <label for="ac-cap1-5" class="ac-title" id="Usage_Share">共有</label>
           <div class="content">
-            作成後は共有ボタンで、結果を共有しましょう！<br>
-            <b>「共有」</b>をタップすることで画像を添付して共有できます。<br>
-            <b>使用ブラウザが非対応の場合、画像共有ができません。ご了承ください。</b><br>
-            推奨ブラウザは、Google Chrome又はMozilla FireFox最新版です。
+            <p lang="ja">
+              作成後は共有ボタンで、結果を共有しましょう！<br>
+              <b>「共有」</b>をタップすることで画像を添付して共有できます。<br>
+              <b>使用ブラウザが非対応の場合、画像共有ができません。ご了承ください。</b><br>
+              推奨ブラウザは、Google Chrome又はMozilla FireFox最新版です。
+            </p>
+            <p lang="zh-TW">
+              作成後，使用分享按鈕分享結果吧！<br>
+              點擊<b>「共享」</b>以共享圖像。<br>
+              如果您的瀏覽器非對應，則無法共享圖像。 請注意。<br>
+              以最新版本的微軟 Google Chrome 或 Mozilla Firefox 瀏覽器閱讀本網站效果最佳。<br>
+            </p>
           </div>
         </div>
       </section>
@@ -92,10 +130,18 @@
           <input type="checkbox" id="ac-cap1-6" name="ac-cap">
           <label for="ac-cap1-6" class="ac-title" id="Usage_EmissionRate">排出率算出</label>
           <div class="content">
-            入力結果から各アイテムの排出率を計算します。<br>
-            計算方式は、各アイテムごとで「（アイテムの個数/全アイテムの合計数）×100」の小数点第4位での切り捨てです。<br>
-            また排出率の合計が100%にならないことがありますが、仕様です。<br>
-            <a href="https://kemono-friends.sega.jp/webview/game/other/detail/000518Lie3UZ9b.html?wvt=1913" target="_blank">参考（公式サイトに移動します）</a>
+            <p lang="ja">
+              入力結果から各アイテムの排出率を計算します。<br>
+              計算方式は、各アイテムごとで「（アイテムの個数/全アイテムの合計数）×100」の小数点第4位での切り捨てです。<br>
+              また排出率の合計が100%にならないことがありますが、仕様です。<br>
+              <a href="https://kemono-friends.sega.jp/webview/game/other/detail/000518Lie3UZ9b.html?wvt=1913" target="_blank">参考（公式サイトに移動します）</a>
+            </p>
+            <p lang="zh-TW">
+              根據輸入結果計算每個品目的機率。<br>
+              計算方法為每件品目「（品目數量/所有品目總數）×100」，舍去小數點後第四位。<br>
+              另外，由於系統原因，總概機率可能不是100%。<br>
+              參考（移至官方網站）<br>
+            </p>
           </div>
         </div>
       </section>
@@ -104,8 +150,14 @@
           <input type="checkbox" id="ac-cap1-7" name="ac-cap">
           <label for="ac-cap1-7" class="ac-title" id="Usage_Other">その他</label>
           <div class="content">
-              【お問い合わせはこちらまで】<br>
-              Twitter：<a href="https://twitter.com/KM_Puffin_love" target="_blank">@KM_Puffin_love</a><br>
+              <p lang="ja">
+                【お問い合わせはこちらまで】<br>
+                X(Twitter)：<a href="https://twitter.com/KM_Puffin_love" target="_blank">@KM_Puffin_love</a>
+              </p>
+              <p lang="zh-TW">
+                【從這里聯系我】<br>
+                X(Twitter)：<a href="https://twitter.com/Makuhari_Yusuke" target="_blank">@Makuhari_Yusuke</a>
+              </p>
           </div>
         </div>
       </section>
@@ -114,66 +166,76 @@
     <div id="selecter">
       <label for="passport" id="Label_Passport">パスポート：</label>
       <select name="mode" id="mode-select">
-        <option value="all">すべて</option>
-        <option value="first_little">はじめて・ちょこっと</option>
-        <option value="standard">すたんだーど</option>
-        <option value="gorgeous">ごーじゃす</option>
+        <option value="all" id="option_all">すべて</option>
+        <option value="first_little" id="option_first_little">はじめて・ちょこっと</option>
+        <option value="standard" id="option_standard">すたんだーど</option>
+        <option value="gorgeous" id="option_gorgeous">ごーじゃす</option>
       </select>
       <br>
-      <label for="mode">モード：</label>
+      <label for="mode" id="Label_Mode">モード：</label>
       <select name="choice_mode" id="choice_mode">
-        <option value="add">追加</option>
-        <option value="change">置き換え</option>
+        <option value="add" id="option_add">追加</option>
+        <option value="change" id="opiton_change">置き換え</option>
       </select><br>
-      置き換え後選択解除：<input type="checkbox" name="change_hidden" id="change_hidden"><br>
-      空白マスを透過する：<input type="checkbox" name="blank_cell" id="blank_cell">
+
+      <span lang="ja">置き換え後選択解除：</span>
+      <span lang="zh-TW">調換後取消選擇：</span>
+      <input type="checkbox" name="change_hidden" id="change_hidden"><br>
+
+      <span lang="ja">空白マスを透過する：</span>
+      <span lang="zh-TW">使空白方格透明：</span>
+      <input type="checkbox" name="blank_cell" id="blank_cell">
     </div>
-    <h5>アイテム一覧</h5>
+    <h5 lang="ja">アイテム一覧</h5>
+    <h5 lang="zh-TW">品目列表</h5>
     <div id="images">
-      <img src="./meta/ラッキーメダル5.png" alt="ラッキーメダル5" class="standard first_little">
-      <img src="./meta/ラッキーメダル250.png" alt="ラッキーメダル250" class="gorgeous">
-      <img src="./meta/おしゃれメダル.png" alt="オシャレメダル" class="gorgeous">
-      <img src="./meta/輝きの欠片5.png" alt="輝きの欠片5" class="first_little">
-      <img src="./meta/輝きの欠片10.png" alt="輝きの欠片10" class="standard">
-      <img src="./meta/輝きの欠片30.png" alt="輝きのかけら30" class="gorgeous">
-      <img src="./meta/おもいでの石SR.png" alt="おもいでの石SR" class="all">
-      <img src="./meta/おもいでの石SSR.png" alt="おもいでの石SSR" class="gorgeous standard">
-      <img src="./meta/ゴールド1000.png" alt="ゴールド1000" class="first_little">
-      <img src="./meta/ゴールド5000.png" alt="ゴールド5000" class="standard">
-      <img src="./meta/スタミナ20回復ドリンク.png" alt="スタミナ20回復ドリンク" class="first_little">
-      <img src="./meta/スタミナ50回復ドリンク.png" alt="スタミナ50回復ドリンク" class="standard first_little">
-      <img src="./meta/ジャパまん（オール）中10.png" alt="ジャパまん（オール）中10" class="first_little">
-      <img src="./meta/ジャパまん（オール）大10.png" alt="ジャパまん（オール）大10" class="first_little">
-      <img src="./meta/ジャパまん（オール）大30.png" alt="ジャパまん（オール）大30" class="standard">
-      <img src="./meta/ジャパまん（オール）大120.png" alt="ジャパまん（オール）大120" class="gorgeous">
-      <img src="./meta/ジャパリパン.png" alt="ジャパリパン" class="first_little">
-      <img src="./meta/虹色のアニマルラムネSR.png" alt="虹色のアニマルラムネSR" class="all">
-      <img src="./meta/虹色のアニマルラムネSSR.png" alt="虹色のアニマルラムネSSR" class="standard gorgeous">
-      <img src="./meta/キラキラ4.png" alt="キラキラ4" class="standard first_little">
-      <img src="./meta/キラキラ12.png" alt="キラキラ12" class="gorgeous">
-      <img src="./meta/キラキラ25.png" alt="キラキラ25" class="first_little standard">
-      <img src="./meta/キラキラ50.png" alt="キラキラ50" class="gorgeous">
-      <img src="./meta/キラキラ75.png" alt="キラキラ75" class="first_little standard">
-      <img src="./meta/キラキラ100.png" alt="キラキラ100" class="gorgeous">
-      <img src="./meta/キラキラ150.png" alt="キラキラ150" class="standard">
-      <img src="./meta/キラキラ250.png" alt="キラキラ250" class="gorgeous">
-      <img src="./meta/キラキラ300.png" alt="キラキラ300" class="standard">
-      <img src="./meta/キラキラ500.png" alt="キラキラ500" class="gorgeous">
-      <img src="./meta/キラキラ1000.png" alt="キラキラ1000" class="gorgeous">
-      <img src="./meta/しょうたい券1.png" alt="しょうたい券1" class="all">
-      <img src="./meta/しょうたい券10.png" alt="しょうたい券10" class="gorgeous">
-      <img src="./meta/☆2以上フレンズしょうたい券.png" alt="☆2以上フレンズしょうたい券" class="all">
-      <img src="./meta/☆3以上しょうたい券.png" alt="☆3以上しょうたい券" class="all">
-      <img src="./meta/☆3以上フレンズしょうたい券.png" alt="☆3以上フレンズしょうたい券" class="all">
-      <img src="./meta/☆4しょうたい券.png" alt="☆4しょうたい券" class="gorgeous standard">
-      <img src="./meta/☆4フレンズしょうたいチケット.png" alt="☆4フレンズしょうたいチケット" class="gorgeous">
-      <img src="./meta/☆4フレンズしょうたい券.png" alt="☆4フレンズしょうたい券" class="gorgeous">
-      <img src="./meta/白.png" alt="空白" class="all">
+      <img src="./meta/ラッキーメダル5.png" alt="ラッキーメダル5" class="standard first_little" id="l5">
+      <img src="./meta/ラッキーメダル250.png" alt="ラッキーメダル250" class="gorgeous" id="l250">
+      <img src="./meta/おしゃれメダル.png" alt="オシャレメダル" class="gorgeous" id="o1">
+      <img src="./meta/輝きの欠片5.png" alt="輝きの欠片5" class="first_little" id="g5">
+      <img src="./meta/輝きの欠片10.png" alt="輝きの欠片10" class="standard" id="g10">
+      <img src="./meta/輝きの欠片30.png" alt="輝きのかけら30" class="gorgeous" id="g30">
+      <img src="./meta/おもいでの石SR.png" alt="おもいでの石SR" class="all" id="msr1">
+      <img src="./meta/おもいでの石SSR.png" alt="おもいでの石SSR" class="gorgeous standard" id="mssr1">
+      <img src="./meta/ゴールド1000.png" alt="ゴールド1000" class="first_little" id="g1000">
+      <img src="./meta/ゴールド5000.png" alt="ゴールド5000" class="standard" id="g5000">
+      <img src="./meta/スタミナ20回復ドリンク.png" alt="スタミナ20回復ドリンク" class="first_little" id="d201">
+      <img src="./meta/スタミナ50回復ドリンク.png" alt="スタミナ50回復ドリンク" class="standard first_little" id="d501">
+      <img src="./meta/ジャパまん（オール）中10.png" alt="ジャパまん（オール）中10" class="first_little" id="jm10">
+      <img src="./meta/ジャパまん（オール）大10.png" alt="ジャパまん（オール）大10" class="first_little" id="jb10">
+      <img src="./meta/ジャパまん（オール）大30.png" alt="ジャパまん（オール）大30" class="standard" id="jb30">
+      <img src="./meta/ジャパまん（オール）大120.png" alt="ジャパまん（オール）大120" class="gorgeous" id="jb120">
+      <img src="./meta/ジャパリパン.png" alt="ジャパリパン" class="first_little" id="b1">
+      <img src="./meta/虹色のアニマルラムネSR.png" alt="虹色のアニマルラムネSR" class="all" id="dsr1">
+      <img src="./meta/虹色のアニマルラムネSSR.png" alt="虹色のアニマルラムネSSR" class="standard gorgeous" id="dssr1">
+      <img src="./meta/キラキラ4.png" alt="キラキラ4" class="standard first_little" id="k4">
+      <img src="./meta/キラキラ12.png" alt="キラキラ12" class="gorgeous" id="k12">
+      <img src="./meta/キラキラ25.png" alt="キラキラ25" class="first_little standard" id="k25">
+      <img src="./meta/キラキラ50.png" alt="キラキラ50" class="gorgeous" id="k50">
+      <img src="./meta/キラキラ75.png" alt="キラキラ75" class="first_little standard" id="k75">
+      <img src="./meta/キラキラ100.png" alt="キラキラ100" class="gorgeous" id="k100">
+      <img src="./meta/キラキラ150.png" alt="キラキラ150" class="standard" id="k150">
+      <img src="./meta/キラキラ250.png" alt="キラキラ250" class="gorgeous" id="k250">
+      <img src="./meta/キラキラ300.png" alt="キラキラ300" class="standard" id="k300">
+      <img src="./meta/キラキラ500.png" alt="キラキラ500" class="gorgeous" id="k500">
+      <img src="./meta/キラキラ1000.png" alt="キラキラ1000" class="gorgeous" id="k1000">
+      <img src="./meta/しょうたい券1.png" alt="しょうたい券1" class="all" id="i1">
+      <img src="./meta/しょうたい券10.png" alt="しょうたい券10" class="gorgeous" id="i10">
+      <img src="./meta/☆2以上フレンズしょうたい券.png" alt="☆2以上フレンズしょうたい券" class="all" id="s21">
+      <img src="./meta/☆3以上しょうたい券.png" alt="☆3以上しょうたい券" class="all" id="s31">
+      <img src="./meta/☆3以上フレンズしょうたい券.png" alt="☆3以上フレンズしょうたい券" class="all" id="sf31">
+      <img src="./meta/☆4しょうたい券.png" alt="☆4しょうたい券" class="gorgeous standard" id="s41">
+      <img src="./meta/☆4フレンズしょうたいチケット.png" alt="☆4フレンズしょうたいチケット" class="gorgeous" id="sft41">
+      <img src="./meta/☆4フレンズしょうたい券.png" alt="☆4フレンズしょうたい券" class="gorgeous" id="sf41">
+      <img src="./meta/白.png" alt="空白" class="all" id="s0">
     </div>
     <div id="item_selecting" hidden>
-      <p>選択中アイテム<br>以下の枠内で置き換える対象アイコンを選択してください。</p><br>
+      <p lang="ja">選択中のアイテム<br>以下の枠内で置き換える対象アイコンを選択してください。</p>
+      <p lang="zh-TW">在下框中選擇要更換的目標圖像。</p>
         <img src="" alt="" id="item_select"><br>
-        選択中のアイテム:<input type="text" id="file_name" readonly><input type="button" value="選択解除" id="item_reselect"> 
+        <span lang="ja">選択中のアイテム:</span>
+        <span lang="zh-TW">選擇的品目：</span>
+        <input type="text" id="file_name" readonly><input type="button" value="選択解除" id="item_reselect"> 
     </div>
     <div class="class_submit">
       <input type="button" value="最後尾のアイコンを削除" id="last_delete">
@@ -183,21 +245,23 @@
     </div>
     <hr class="hr">
     <div id="calendar" hidden>
-      <h5>アイテム置き換え</h5>
+      <h5 lang="ja">アイテム置き換え</h5>
+      <h5 lang="zh-TW">品目調換</h5>
       <ul id="lists"></ul>
     </div>
     <div id="download_image">
-      <h5>画像生成結果</h5>
+      <h5 lang="ja zh-TW">画像生成結果</h5>
       <canvas id="canvas_2d" width="1050" height="900" hidden></canvas>
       <img src="./" alt="file" id="canvas_img">
     </div>
     <hr class="hr">
     <div id="result_list">
-      <h5>排出個数・排出率リスト</h5>
+      <h5 lang="ja">排出個数・排出率リスト</h5>
+      <h5 lang="zh-TW">出現件數、機率列表</h5>
       <table id="result_table">
         <thead>
           <tr>
-            <th>画像</th><th>アイテム名</th><th>個数</th><th>排出率</th>
+            <th id="th_image">画像</th><th id="th_itemName">アイテム名</th><th id="th_count">個数</th><th id="th_EmissionRate">排出率</th>
           </tr>
         </thead>
       </table>

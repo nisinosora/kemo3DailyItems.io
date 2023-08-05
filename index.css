@@ -96,14 +96,13 @@ header{
   display: none;
 }
 .ac-cap .content{
-  height: 0;
+  max-height: 0;
   width: 100%;
   overflow-y: auto;
-  transition: 1s;
+  transition: max-height 0.75s ease-in;
 }
 .ac-cap input:checked + .ac-title + .content{
-  height: 100px;
-  transition: 1s;
+  max-height: 16vh;
 }
 .ac-cap input + .ac-title::before{
   content: "[+]";
@@ -140,4 +139,21 @@ header{
   margin: 0;
   width: 50px;
   height: 50px;
+}
+
+
+/*
+ローカライズ
+*/
+.language-change{
+  display:flex;
+  gap:10px;
+  margin:10px;
+  align-items:center;
+  cursor:pointer;
+}
+
+html[lang='ja'] *:is([lang]):not([lang='ja']),
+html[lang='zh-TW'] *:is([lang]):not([lang='zh-TW']){
+  display:none!important;
 }

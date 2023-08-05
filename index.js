@@ -1,4 +1,136 @@
 document.addEventListener('DOMContentLoaded',function(){
+  //翻訳（独自）
+  var $lang = "ja"
+  var $alerts = {
+    "nullIcons":{
+      "ja": "削除するアイコンがありません", 
+      "zh-TW": "沒有刪除圖像"
+    },
+    "shareError":{
+      "ja": "エラーが発生しました。\n画像が存在しないか、ブラウザが非対応の可能性があります", 
+      "zh-TW": "發生錯誤。\n圖像可能不存在或瀏覽器不支持"
+    },
+    "cantAddIcons":{
+      "ja": "これ以上はアイコンを追加できません",
+      "zh-TW": "無法追加更多圖象"
+    },
+    "cantChoiceIcons":{
+      "ja": "「アイテム置き換え」欄にアイテムがないため選択できません",
+      "zh-TW":"不能選擇，因為「替換品目」中沒有項目"
+    },
+    "AllIconsRemove":{
+      "ja":"全てのアイコンを削除します。よろしいですか？",
+      "zh-TW":"刪除所有圖像。確定嗎？"
+    }
+  }
+
+  var $labels = {
+    "title":{"ja": "【けものフレンズ3】ログボマトメールP", "zh-TW":"【動物朋友3】全部都記下來M"},
+    "#Usage_PassportList":{"ja": "リスト：パスポート", "zh-TW":"選單：月通行證"},
+    "#Usage_ModeList":{"ja":"リスト：モード", "zh-TW":"選單：方式"},
+    "#Usage_Create_Download":{"ja": "生成・ダウンロード", "zh-TW":"生成、下載"},
+    "#Usage_Remove":{"ja": "削除", "zh-TW":"刪除"},
+    "#Usage_Share":{"ja":"共有","zh-TW":"分享"},
+    "#Usage_EmissionRate":{"ja":"排出率算出","zh-TW":"計算機率"},
+    "#Usage_Other":{"ja":"その他","zh-TW":"其他"},
+    "#Label_Passport":{"ja":"パスポート","zh-TW":"月通行證"},
+    "#Label_Mode":{"ja":"モード","zh-TW":"方式"},
+  }
+
+  var $options = {
+    "option_all":{"ja":"すべて","zh-TW":"全部"},
+    "option_first_little":{"ja":"はじめて・ちょこっと","zh-TW":"初次、少許"},
+    "option_standard":{"ja":"すたんだーど","zh-TW":"標準"},
+    "option_gorgeous":{"ja":"ごーじゃす","zh-TW":"豪華"},
+    "option_add":{"ja":"追加","zh-TW":"追加"},
+    "opiton_change":{"ja":"置き換え","zh-TW":"調換"}
+  }
+
+  var $buttons = {
+    "#last_delete":{"ja":"最後尾のアイコンを削除","zh-TW":"刪除最後一個圖標"},
+    "#all_delete":{"ja":"全てのアイコンを削除","zh-TW":"刪除一切圖標"},
+    "#result_output":{"ja":"排出率算出","zh-TW":"計算機率"},
+    "#share":{"ja":"画像・排出率結果を共有する","zh-TW":"分享圖像、機率"},
+    "#item_reselect":{"ja":"選択解除","zh-TW":"取消選擇"}
+  }
+
+  var $iconsImages = {
+    "#l5":{"ja":"ラッキーメダル5","zh-TW":"幸運獎牌5"},
+    "#l250":{"ja":"ラッキーメダル250","zh-TW":"幸運獎牌250"},
+    "#o1":{"ja":"オシャレメダル","zh-TW":"時尚獎牌"},
+    "#g5":{"ja":"輝きの欠片5","zh-TW":"閃耀碎片5"},
+    "#g10":{"ja":"輝きの欠片10","zh-TW":"閃耀碎片10"},
+    "#g30":{"ja":"輝きのかけら30","zh-TW":"閃耀碎片30"},
+    "#msr1":{"ja":"おもいでの石SR","zh-TW":"回憶之石SR"},
+    "#mssr1":{"ja":"おもいでの石SSR","zh-TW":"回憶之石SSR"},
+    "#g1000":{"ja":"ゴールド1000","zh-TW":"金幣1000"},
+    "#g5000":{"ja":"ゴールド5000","zh-TW":"金幣5000"},
+    "#d201":{"ja":"スタミナ20回復ドリンク","zh-TW":"體力20回復飲"},
+    "#d501":{"ja":"スタミナ50回復ドリンク","zh-TW":"體力50回復飲"},
+    "#jm10":{"ja":"ジャパまん（オール）中10","zh-TW":"加帕里饅頭（全）中10"},
+    "#jb10":{"ja":"ジャパまん（オール）大10","zh-TW":"加帕里饅頭（全）大10"},
+    "#jb30":{"ja":"ジャパまん（オール）大30","zh-TW":"加帕里饅頭（全）大30"},
+    "#jb120":{"ja":"ジャパまん（オール）大120","zh-TW":"加帕里饅頭（全）大120"},
+    "#b1":{"ja":"ジャパリパン","zh-TW":"加帕里麵包"},
+    "#dsr1":{"ja":"虹色のアニマルラムネSR","zh-TW":"虹彩色的動物彈珠汽水SR"},
+    "#dssr1":{"ja":"虹色のアニマルラムネSSR","zh-TW":"虹彩色的動物彈珠汽水SSR"},
+    "#k4":{"ja":"キラキラ4","zh-TW":"閃亮亮4"},
+    "#k12":{"ja":"キラキラ12","zh-TW":"閃亮亮12"},
+    "#k25":{"ja":"キラキラ25","zh-TW":"閃亮亮25"},
+    "#k50":{"ja":"キラキラ50","zh-TW":"閃亮亮50"},
+    "#k75":{"ja":"キラキラ75","zh-TW":"閃亮亮75"},
+    "#k100":{"ja":"キラキラ100","zh-TW":"閃亮亮100"},
+    "#k150":{"ja":"キラキラ150","zh-TW":"閃亮亮150"},
+    "#k250":{"ja":"キラキラ250","zh-TW":"閃亮亮250"},
+    "#k300":{"ja":"キラキラ300","zh-TW":"閃亮亮300"},
+    "#k500":{"ja":"キラキラ500","zh-TW":"閃亮亮500"},
+    "#k1000":{"ja":"キラキラ1000","zh-TW":"閃亮亮1000"},
+    "#i1":{"ja":"しょうたい券1","zh-TW":"招待券1"},
+    "#i10":{"ja":"しょうたい券10","zh-TW":"招待券10"},
+    "#s21":{"ja":"☆2以上フレンズしょうたい券","zh-TW":"☆2以上朋友招待券"},
+    "#s31":{"ja":"☆3以上しょうたい券","zh-TW":"☆3以上招待券"},
+    "#sf31":{"ja":"☆3以上フレンズしょうたい券","zh-TW":"☆3以上朋友招待券"},
+    "#s41":{"ja":"☆4しょうたい券","zh-TW":"☆4招待券"},
+    "#sft41":{"ja":"☆4フレンズしょうたいチケット","zh-TW":"☆4朋友招待券碎片"},
+    "#sf41":{"ja":"☆4フレンズしょうたい券","zh-TW":"☆4朋友招待券"},
+    "#s0":{"ja":"空白","zh-TW":"空白"}
+  }
+
+  var $tablesTh = {
+    "#th_image":{"ja":"画像","zh-TW":"圖像"},
+    "#th_itemName":{"ja":"アイテム名","zh-TW":"品目名"},
+    "#th_count":{"ja":"個数","zh-TW":"件數"},
+    "#th_EmissionRate":{"ja":"排出率","zh-TW":"機率"}
+  }
+
+  $('input[name="lang"]:radio').change(function(){
+    $lang = $(this).val();
+
+    //独自変換部
+    for(let [key, value] of Object.entries($labels)){
+      $(`${key}`).text(value[$lang]);
+    }
+
+    for(let [key, value] of Object.entries($options)){
+      var optionElement = document.getElementById(key);
+      if (optionElement){
+        optionElement.textContent = value[$lang];
+      }
+    }
+
+    for(let [key, value] of Object.entries($buttons)){
+      $(`${key}`).val(value[$lang]);
+    }
+
+    for(let [key, value] of Object.entries($iconsImages)){
+      $(`${key}`).attr('alt', value[$lang]);
+    }
+
+    for(let [key, value] of Object.entries($tablesTh)){
+      $(`${key}`).text(value[$lang]);
+    }
+  })
+
   //画像クリック時の処理
   $("#images > img").on('click', function(){
     var item = $(this);
@@ -72,14 +204,14 @@ document.addEventListener('DOMContentLoaded',function(){
       }
       create();
     }else{
-      alert("削除するアイコンがありません。");
+      alert($alerts["nullIcons"][$lang]);
     }
   });
 
   //全てのアイコンを削除
   $("#all_delete").on('click', function(){
     if($("#lists li").length > 0){
-      var check = confirm("全てを削除します。よろしいですか？")
+      var check = confirm($alerts["AllIconsRemove"][$lang])
       if (check == true){
         $("#lists li").remove();
         var selecting = document.getElementById("item_select");
@@ -95,7 +227,7 @@ document.addEventListener('DOMContentLoaded',function(){
         link_img.src = ""
       }
     }else{
-      alert("削除するアイコンがありません。");
+      alert($alerts["nullIcons"][$lang]);
     }
   });
 
@@ -154,7 +286,7 @@ document.addEventListener('DOMContentLoaded',function(){
         files: images,
       })
     }catch(e){
-      alert("エラーが発生しました。\n画像が存在しないか、ブラウザが非対応の可能性があります。");
+      alert($alerts["shareError"][$lang]);
       console.log(e);
     }
   });
@@ -235,7 +367,7 @@ document.addEventListener('DOMContentLoaded',function(){
       $("ul#lists").append(`<li class=\"li_lists\"><img src=\"${img_src}\" alt=\"${img_alt}\" class=\"img_list\"></li>`);
       create();
     }else{
-      alert("これ以上は追加できません");
+      alert($alerts["cantAddIcons"][$lang]);
     }
   }
 
@@ -250,7 +382,7 @@ document.addEventListener('DOMContentLoaded',function(){
       $("#item_selecting").css("display", "inline");
       create();
     }else{
-      alert("アイテム枠にアイテムがないため選択できません");
+      alert($alerts["cantChoiceIcons"][$lang]);
     }
   }
 
