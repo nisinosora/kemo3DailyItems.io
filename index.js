@@ -270,10 +270,13 @@ document.addEventListener('DOMContentLoaded',function(){
       "hashtags": $labels["title"][$lang],
       "image": [document.getElementById("canvas_img").src]
     }
-
-    if($("#result_table tbody tr").length > 0){
-      var resule_image = document.getElementById("result_table_image");
-      infos["image"].push(resule_image.src);
+    
+    var $share_EmissionRate = document.getElementById("share_EmissionRate")
+    if($share_EmissionRate.checked){
+      if($("#result_table tbody tr").length > 0){
+        var resule_image = document.getElementById("result_table_image");
+        infos["image"].push(resule_image.src);
+      }
     }
 
     try{
