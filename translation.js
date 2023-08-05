@@ -21,9 +21,6 @@ multi_language.prototype.set_current_lang = function(){
 multi_language.prototype.checked_lang_list = function(current_lang){
   const elms = this.get_lang_lists()
   for(const elm of elms){
-    if(elm.value === current_lang){
-      elm.checked = true
-    }
     elm.addEventListener('click' , this.click_lang.bind(this))
   }
 }
