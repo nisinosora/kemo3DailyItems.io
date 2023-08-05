@@ -26,14 +26,14 @@ document.addEventListener('DOMContentLoaded',function(){
 
   var $labels = {
     "title":{"ja": "【けものフレンズ3】ログボマトメールP", "zh-TW":"【動物朋友3】全部都記下來M"},
-    "#Usage_PassportList":{"ja": "リスト：パスポート", "zh-TW":"選單：月通行證"},
+    "#Usage_PassportList":{"ja": "リスト：パスポート", "zh-TW":"選單：月間通行證"},
     "#Usage_ModeList":{"ja":"リスト：モード", "zh-TW":"選單：方式"},
     "#Usage_Create_Download":{"ja": "生成・ダウンロード", "zh-TW":"生成、下載"},
     "#Usage_Remove":{"ja": "削除", "zh-TW":"刪除"},
     "#Usage_Share":{"ja":"共有","zh-TW":"分享"},
     "#Usage_EmissionRate":{"ja":"排出率算出","zh-TW":"計算機率"},
     "#Usage_Other":{"ja":"その他","zh-TW":"其他"},
-    "#Label_Passport":{"ja":"パスポート：","zh-TW":"月通行證："},
+    "#Label_Passport":{"ja":"パスポート：","zh-TW":"月間通行證："},
     "#Label_Mode":{"ja":"モード：","zh-TW":"方式："},
   }
 
