@@ -408,14 +408,16 @@ document.addEventListener('DOMContentLoaded',function(){
   //切り替え関数
   function change(item){
     if($("#lists li").length > 0){
-      var items = document.getElementById("item_select")
-      var file_name = document.getElementById("file_name")
-      items.src = item.attr('src');
-      items.alt = item.attr('alt');
-      items.id = item.attr('id');
-      file_name.value = item.attr('alt');
-      $("#item_selecting").css("display", "inline");
-      create();
+      if(item){
+        var items = document.getElementById("item_select")
+        var file_name = document.getElementById("file_name")
+        items.src = item.attr('src');
+        items.alt = item.attr('alt');
+        items.id = item.attr('id');
+        file_name.value = item.attr('alt');
+        $("#item_selecting").css("display", "inline");
+        create();
+      }
     }else{
       alert($alerts["cantChoiceIcons"][$lang]);
     }
