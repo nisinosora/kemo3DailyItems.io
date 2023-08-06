@@ -153,6 +153,7 @@ document.addEventListener('DOMContentLoaded',function(){
         break;
       case 'change':
         change(item);
+        $itemList[item.index()] = item.attr('id');
         break;
     }
   });
