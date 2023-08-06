@@ -155,7 +155,6 @@ document.addEventListener('DOMContentLoaded',function(){
         change(item);
         break;
     }
-    ReItemList()
   });
 
   $("#choice_mode").on('change', function(){
@@ -315,6 +314,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
   //状態保存
   $("#save_now").on('click', function(){
+    ReItemList()
     const url = new URL(window.location.href);
     var urlParam = url.searchParams.get('lang')
     if($itemList.length > 0){
