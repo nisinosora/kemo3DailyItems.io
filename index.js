@@ -153,7 +153,6 @@ document.addEventListener('DOMContentLoaded',function(){
         break;
       case 'change':
         change(item);
-        $itemList[item.index()] = item.attr('id');
         break;
     }
   });
@@ -201,6 +200,7 @@ document.addEventListener('DOMContentLoaded',function(){
               selecting.alt = ""
               $("#item_selecting").css("display", "none");
             }
+            $itemList[$(this).index()] = selecting.attr('id')
           }
         }
       });
