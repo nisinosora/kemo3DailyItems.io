@@ -82,6 +82,7 @@ header{
   text-align: center;
   color: white;
   display: flex;
+  text-align: center;
   overflow: hidden;
   justify-content: center;
   width: 100%;
