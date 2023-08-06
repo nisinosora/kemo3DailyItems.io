@@ -5,109 +5,222 @@ document.addEventListener('DOMContentLoaded',function(){
   const $alerts = {
     "nullIcons":{
       "ja": "削除するアイコンがありません", 
-      "zh-TW": "沒有可刪除的圖標"
+      "zh-TW": "沒有可刪除的圖標",
+      "zh-CN":"没有可删除的图标"
     },
     "shareError":{
       "ja": "エラーが発生しました。\n画像が存在しないか、ブラウザが非対応の可能性があります", 
-      "zh-TW": "發生錯誤。\n圖片可能不存在或瀏覽器不支援"
+      "zh-TW": "發生錯誤。\n圖片可能不存在或瀏覽器不支持",
+      "zh-CN":"发生错误。 \n图片可能不存在或浏览器不支持"
     },
     "cantAddIcons":{
       "ja": "これ以上はアイコンを追加できません",
-      "zh-TW": "無法添加更多圖標"
+      "zh-TW": "無法添加更多圖標",
+      "zh-CN": "无法添加更多图标"
     },
     "cantChoiceIcons":{
       "ja": "「アイテム置き換え」欄にアイテムがないため選択できません",
-      "zh-TW":"無法選中，因為「替換項目」中沒有可選物品"
+      "zh-TW":"無法選中，因為「替換項目」中沒有可選物品",
+      "zh-CN":"无法选中，因为「替换项目」中没有可选物品"
     },
     "AllIconsRemove":{
       "ja":"全てのアイコンを削除します。よろしいですか？",
-      "zh-TW":"刪除所有圖標。確定嗎？"
+      "zh-TW":"刪除所有圖標。確定嗎？",
+      "zh-CN":"删除所有图标。确定吗？"
     }
   }
 
   const $labels = {
-    "title":{"ja": "【けものフレンズ3】ログボマトメールP", "zh-TW":"【動物朋友3】全部都記下來M"},
-    "#Usage_PassportList":{"ja": "リスト：パスポート", "zh-TW":"列表：月卡"},
-    "#Usage_ModeList":{"ja":"リスト：モード", "zh-TW":"列表：模式"},
-    "#Usage_Create_Download":{"ja": "生成・ダウンロード", "zh-TW":"生成、下載"},
-    "#Usage_Remove":{"ja": "削除", "zh-TW":"刪除"},
-    "#Usage_Share":{"ja":"共有","zh-TW":"分享"},
-    "#Usage_EmissionRate":{"ja":"排出率算出","zh-TW":"計算概率"},
-    "#Usage_Other":{"ja":"その他","zh-TW":"其他"},
-    "#Label_Passport":{"ja":"パスポート：","zh-TW":"月卡："},
-    "#Label_Mode":{"ja":"モード：","zh-TW":"模式："},
-    "#Usage_Save_now":{"ja":"状態を保存する","zh-TW":"保存狀態"}
+    "title":{
+      "ja": "【けものフレンズ3】ログボマトメールP", 
+      "zh-TW":"【動物朋友3】全部都記下來M", 
+      "zh-CN":"全部都记下来M"
+    },
+    "#Usage_PassportList":{
+      "ja": "リスト：パスポート", 
+      "zh-TW":"列表：月卡",
+      "zh-CN":"列表：月卡"
+    },
+    "#Usage_ModeList":{
+      "ja":"リスト：モード", 
+      "zh-TW":"列表：模式",
+      "zh-CN":"列表：模式"
+    },
+    "#Usage_Create_Download":{
+      "ja": "生成・ダウンロード", 
+      "zh-TW":"生成、下載",
+      "zh-CN":"生成、下载"
+    },
+    "#Usage_Remove":{
+      "ja": "削除",
+      "zh-TW":"刪除",
+      "zh-CN":"删除"
+    },
+    "#Usage_Share":{
+      "ja":"共有",
+      "zh-TW":"分享",
+      "zh-CN":"分享"
+    },
+    "#Usage_EmissionRate":{
+      "ja":"排出率算出",
+      "zh-TW":"計算概率",
+      "zh-CN":"计算概率"
+    },
+    "#Usage_Other":{
+      "ja":"その他",
+      "zh-TW":"其他",
+      "zh-CN":"其他"
+    },
+    "#Label_Passport":{
+      "ja":"パスポート：",
+      "zh-TW":"月卡：",
+      "zh-CN":"月卡："
+    },
+    "#Label_Mode":{
+      "ja":"モード：",
+      "zh-TW":"模式：",
+      "zh-CN":"模式："
+    },
+    "#Usage_Save_now":{
+      "ja":"状態を保存する",
+      "zh-TW":"保存狀態",
+      "zh-CN":"保存状态"
+    }
   }
 
   const $options = {
-    "option_all":{"ja":"すべて","zh-TW":"全部"},
-    "option_first_little":{"ja":"はじめて・ちょこっと","zh-TW":"初次、少許"},
-    "option_standard":{"ja":"すたんだーど","zh-TW":"標準"},
-    "option_gorgeous":{"ja":"ごーじゃす","zh-TW":"豪華"},
-    "option_add":{"ja":"追加","zh-TW":"添加"},
-    "opiton_change":{"ja":"置き換え","zh-TW":"替換"}
+    "option_all":{
+      "ja":"すべて",
+      "zh-TW":"全部",
+      "zh-CN":"全部"
+    },
+    "option_first_little":{
+      "ja":"はじめて・ちょこっと",
+      "zh-TW":"初次、少許",
+      "zh-CN":"初次、少许"
+    },
+    "option_standard":{
+      "ja":"すたんだーど",
+      "zh-TW":"標準",
+      "zh-CN":"标准"
+    },
+    "option_gorgeous":{
+      "ja":"ごーじゃす",
+      "zh-TW":"豪華",
+      "zh-CN":"豪华"
+    },
+    "option_add":{
+      "ja":"追加",
+      "zh-TW":"添加",
+      "zh-CN":"添加"
+    },
+    "opiton_change":{
+      "ja":"置き換え",
+      "zh-TW":"替換",
+      "zh-CN":"替换"
+    }
   }
 
   const $buttons = {
-    "#last_delete":{"ja":"最後尾のアイコンを削除","zh-TW":"刪除最後添加的圖標"},
-    "#all_delete":{"ja":"全てのアイコンを削除","zh-TW":"刪除所有圖標"},
-    "#result_output":{"ja":"排出率算出","zh-TW":"計算概率"},
-    "#share":{"ja":"画像・排出率結果を共有する","zh-TW":"分享圖片、概率"},
-    "#item_reselect":{"ja":"選択解除","zh-TW":"取消選擇"},
-    "#save_now":{"ja":"状態を保存する","zh-TW":"保存狀態"}
+    "#last_delete":{
+      "ja":"最後尾のアイコンを削除",
+      "zh-TW":"刪除最後添加的圖標",
+      "zh-CN":"删除最后添加的图标"
+    },
+    "#all_delete":{
+      "ja":"全てのアイコンを削除",
+      "zh-TW":"刪除所有圖標",
+      "zh-CN":"删除所有图标"
+    },
+    "#result_output":{
+      "ja":"排出率算出",
+      "zh-TW":"計算概率",
+      "zh-CN":"计算概率"
+    },
+    "#share":{
+      "ja":"画像・排出率結果を共有する",
+      "zh-TW":"分享圖片、概率",
+      "zh-CN":"分享图片、概率"
+    },
+    "#item_reselect":{
+      "ja":"選択解除",
+      "zh-TW":"取消選擇",
+      "zh-CN":"取消选择"
+    },
+    "#save_now":{
+      "ja":"状態を保存する",
+      "zh-TW":"保存狀態",
+      "zh-CN":"保存状态"
+    }
   }
 
   const $iconsImages = {
-    "#l5":{"ja":"ラッキーメダル5","zh-TW":"幸運獎牌5"},
-    "#l250":{"ja":"ラッキーメダル250","zh-TW":"幸運獎牌250"},
-    "#o1":{"ja":"オシャレメダル","zh-TW":"時尚獎牌"},
-    "#g5":{"ja":"輝きの欠片5","zh-TW":"閃耀碎片5"},
-    "#g10":{"ja":"輝きの欠片10","zh-TW":"閃耀碎片10"},
-    "#g30":{"ja":"輝きのかけら30","zh-TW":"閃耀碎片30"},
-    "#msr1":{"ja":"おもいでの石SR","zh-TW":"回憶之石SR"},
-    "#mssr1":{"ja":"おもいでの石SSR","zh-TW":"回憶之石SSR"},
-    "#g1000":{"ja":"ゴールド1000","zh-TW":"金幣1000"},
-    "#g5000":{"ja":"ゴールド5000","zh-TW":"金幣5000"},
-    "#d201":{"ja":"スタミナ20回復ドリンク","zh-TW":"體力20回復飲"},
-    "#d501":{"ja":"スタミナ50回復ドリンク","zh-TW":"體力50回復飲"},
-    "#jm10":{"ja":"ジャパまん（オール）中10","zh-TW":"加帕里饅頭（全）中10"},
-    "#jb10":{"ja":"ジャパまん（オール）大10","zh-TW":"加帕里饅頭（全）大10"},
-    "#jb30":{"ja":"ジャパまん（オール）大30","zh-TW":"加帕里饅頭（全）大30"},
-    "#jb120":{"ja":"ジャパまん（オール）大120","zh-TW":"加帕里饅頭（全）大120"},
-    "#b1":{"ja":"ジャパリパン","zh-TW":"加帕里麵包"},
-    "#dsr1":{"ja":"虹色のアニマルラムネSR","zh-TW":"虹彩色的動物彈珠汽水SR"},
-    "#dssr1":{"ja":"虹色のアニマルラムネSSR","zh-TW":"虹彩色的動物彈珠汽水SSR"},
-    "#k4":{"ja":"キラキラ4","zh-TW":"閃亮亮4"},
-    "#k12":{"ja":"キラキラ12","zh-TW":"閃亮亮12"},
-    "#k25":{"ja":"キラキラ25","zh-TW":"閃亮亮25"},
-    "#k50":{"ja":"キラキラ50","zh-TW":"閃亮亮50"},
-    "#k75":{"ja":"キラキラ75","zh-TW":"閃亮亮75"},
-    "#k100":{"ja":"キラキラ100","zh-TW":"閃亮亮100"},
-    "#k150":{"ja":"キラキラ150","zh-TW":"閃亮亮150"},
-    "#k250":{"ja":"キラキラ250","zh-TW":"閃亮亮250"},
-    "#k300":{"ja":"キラキラ300","zh-TW":"閃亮亮300"},
-    "#k500":{"ja":"キラキラ500","zh-TW":"閃亮亮500"},
-    "#k1000":{"ja":"キラキラ1000","zh-TW":"閃亮亮1000"},
-    "#i1":{"ja":"しょうたい券1","zh-TW":"招待券1"},
-    "#i10":{"ja":"しょうたい券10","zh-TW":"招待券10"},
-    "#s21":{"ja":"☆2以上フレンズしょうたい券","zh-TW":"☆2以上朋友招待券"},
-    "#s31":{"ja":"☆3以上しょうたい券","zh-TW":"☆3以上招待券"},
-    "#sf31":{"ja":"☆3以上フレンズしょうたい券","zh-TW":"☆3以上朋友招待券"},
-    "#s41":{"ja":"☆4しょうたい券","zh-TW":"☆4招待券"},
-    "#sft41":{"ja":"☆4フレンズしょうたいチケット","zh-TW":"☆4朋友招待券碎片"},
-    "#sf41":{"ja":"☆4フレンズしょうたい券","zh-TW":"☆4朋友招待券"},
-    "#s0":{"ja":"空白","zh-TW":"空白"}
+    "#l5":{"ja":"ラッキーメダル5","zh-TW":"幸運獎牌5","zh-CN":"幸运奖牌5"},
+    "#l250":{"ja":"ラッキーメダル250","zh-TW":"幸運獎牌250","zh-CN":"幸运奖牌250"},
+    "#o1":{"ja":"オシャレメダル","zh-TW":"時尚獎牌","zh-CN":"时尚奖牌"},
+    "#g5":{"ja":"輝きの欠片5","zh-TW":"閃耀碎片5","zh-CN":"闪耀碎片5"},
+    "#g10":{"ja":"輝きの欠片10","zh-TW":"閃耀碎片10","zh-CN":"闪耀碎片10"},
+    "#g30":{"ja":"輝きのかけら30","zh-TW":"閃耀碎片30","zh-CN":"闪耀碎片30"},
+    "#msr1":{"ja":"おもいでの石SR","zh-TW":"回憶之石SR","zh-CN":"回忆之石SR"},
+    "#mssr1":{"ja":"おもいでの石SSR","zh-TW":"回憶之石SSR","zh-CN":"回忆之石SSR"},
+    "#g1000":{"ja":"ゴールド1000","zh-TW":"金幣1000","zh-CN":"金币1000"},
+    "#g5000":{"ja":"ゴールド5000","zh-TW":"金幣5000","zh-CN":"金币5000"},
+    "#d201":{"ja":"スタミナ20回復ドリンク","zh-TW":"體力20回復飲","zh-CN":"体力20回复饮"},
+    "#d501":{"ja":"スタミナ50回復ドリンク","zh-TW":"體力50回復飲","zh-CN":"体力50回复饮"},
+    "#jm10":{"ja":"ジャパまん（オール）中10","zh-TW":"加帕里饅頭（全）中10","zh-CN":"加帕里馒头（全）中10"},
+    "#jb10":{"ja":"ジャパまん（オール）大10","zh-TW":"加帕里饅頭（全）大10","zh-CN":"加帕里馒头（全）大10"},
+    "#jb30":{"ja":"ジャパまん（オール）大30","zh-TW":"加帕里饅頭（全）大30","zh-CN":"加帕里馒头（全）大30"},
+    "#jb120":{"ja":"ジャパまん（オール）大120","zh-TW":"加帕里饅頭（全）大120","zh-CN":"加帕里馒头（全）大120"},
+    "#b1":{"ja":"ジャパリパン","zh-TW":"加帕里麵包","zh-CN":"加帕里面包"},
+    "#dsr1":{"ja":"虹色のアニマルラムネSR","zh-TW":"虹彩色的動物彈珠汽水SR","zh-CN":"虹彩色的动物弹珠汽水SR"},
+    "#dssr1":{"ja":"虹色のアニマルラムネSSR","zh-TW":"虹彩色的動物彈珠汽水SSR","zh-CN":"虹彩色的动物弹珠汽水SSR"},
+    "#k4":{"ja":"キラキラ4","zh-TW":"閃亮亮4","zh-CN":"闪亮亮4"},
+    "#k12":{"ja":"キラキラ12","zh-TW":"閃亮亮12","zh-CN":"闪亮亮12"},
+    "#k25":{"ja":"キラキラ25","zh-TW":"閃亮亮25","zh-CN":"闪亮亮25"},
+    "#k50":{"ja":"キラキラ50","zh-TW":"閃亮亮50","zh-CN":"闪亮亮50"},
+    "#k75":{"ja":"キラキラ75","zh-TW":"閃亮亮75","zh-CN":"闪亮亮75"},
+    "#k100":{"ja":"キラキラ100","zh-TW":"閃亮亮100","zh-CN":"闪亮亮100"},
+    "#k150":{"ja":"キラキラ150","zh-TW":"閃亮亮150","zh-CN":"闪亮亮150"},
+    "#k250":{"ja":"キラキラ250","zh-TW":"閃亮亮250","zh-CN":"闪亮亮250"},
+    "#k300":{"ja":"キラキラ300","zh-TW":"閃亮亮300","zh-CN":"闪亮亮300"},
+    "#k500":{"ja":"キラキラ500","zh-TW":"閃亮亮500","zh-CN":"闪亮亮500"},
+    "#k1000":{"ja":"キラキラ1000","zh-TW":"閃亮亮1000","zh-CN":"闪亮亮1000"},
+    "#i1":{"ja":"しょうたい券1","zh-TW":"招待券1","zh-CN":"招待券1"},
+    "#i10":{"ja":"しょうたい券10","zh-TW":"招待券10","zh-CN":"招待券10"},
+    "#s21":{"ja":"☆2以上フレンズしょうたい券","zh-TW":"☆2以上朋友招待券","zh-CN":"☆2以上朋友招待券"},
+    "#s31":{"ja":"☆3以上しょうたい券","zh-TW":"☆3以上招待券","zh-CN":"☆3以上招待券"},
+    "#sf31":{"ja":"☆3以上フレンズしょうたい券","zh-TW":"☆3以上朋友招待券","zh-CN":"☆3以上朋友招待券"},
+    "#s41":{"ja":"☆4しょうたい券","zh-TW":"☆4招待券","zh-CN":"☆4招待券"},
+    "#sft41":{"ja":"☆4フレンズしょうたいチケット","zh-TW":"☆4朋友招待券碎片","zh-CN":"☆4朋友招待券碎片"},
+    "#sf41":{"ja":"☆4フレンズしょうたい券","zh-TW":"☆4朋友招待券","zh-CN":"☆4朋友招待券"},
+    "#s0":{"ja":"空白","zh-TW":"空白","zh-CN":"空白"}
   }
 
   const $tablesTh = {
-    "#th_image":{"ja":"画像","zh-TW":"圖片"},
-    "#th_itemName":{"ja":"アイテム名","zh-TW":"物品名"},
-    "#th_count":{"ja":"個数","zh-TW":"數量"},
-    "#th_EmissionRate":{"ja":"排出率","zh-TW":"概率"}
+    "#th_image":{
+      "ja":"画像",
+      "zh-TW":"圖片",
+      "zh-CN":"图片"
+    },
+    "#th_itemName":{
+      "ja":"アイテム名",
+      "zh-TW":"物品名",
+      "zh-CN":"物品名"
+    },
+    "#th_count":{
+      "ja":"個数",
+      "zh-TW":"數量",
+      "zh-CN":"数量"
+    },
+    "#th_EmissionRate":{
+      "ja":"排出率",
+      "zh-TW":"概率",
+      "zh-CN":"概率"
+    }
   }
 
-  const $shareContent = {"ja": "スペシャルデイリーボーナスの結果です！", "zh-TW": "特別每日任務獎勵的結果！"}
-  const $total = {"ja": "合計", "zh-TW":"總計"}
+  const $shareContent = {"ja": "スペシャルデイリーボーナスの結果です！", "zh-TW": "特別每日任務獎勵的結果！","zh-CN":"特别每日任务奖励的结果！"}
+  const $total = {"ja": "合計", "zh-TW":"總計","zh-CN":"总计"}
 
   //初期起動時の処理
   $(window).on('load',function(){
@@ -319,12 +432,7 @@ document.addEventListener('DOMContentLoaded',function(){
   $("#save_now").on('click', function(){
     ReItemList()
     const url = new URL(window.location.href);
-    let urlParam = url.searchParams.get('lang')
-    if($itemList.length > 0){
-      url.searchParams.set('items', $itemList.join("|"))
-    }else{
-      if(urlParam){url.searchParams.delete('items')}
-    }
+    URLqueryItemSet(url);
     url.searchParams.set('lang', $lang)
     window.location.href = url
   })
@@ -494,11 +602,11 @@ document.addEventListener('DOMContentLoaded',function(){
   }
 
   function space_count(){
-    let item_name;
+    let item_id;
     let count = 0;
     $("#lists").find('img').each(function(){
-      item_name = $(this).attr('alt');
-      if(item_name == "空白"){
+      item_id = $(this).attr('id');
+      if(item_name == "s0"){
         count++;
       }
     });
@@ -544,16 +652,21 @@ document.addEventListener('DOMContentLoaded',function(){
     
     let ParamCheck = false
     let urlParam = url.searchParams.get('lang')
-    if($itemList.length > 0){
-      url.searchParams.set('items', $itemList.join("|"))
-    }else{
-      if(urlParam){url.searchParams.delete('items')}
-    }
+    URLqueryItemSet(url);
     if(urlParam != _lang){ParamCheck = true}
 
     if(ParamCheck){
       url.searchParams.set('lang', $lang)
       window.location.href = url
+    }
+  }
+
+  function URLqueryItemSet(url){
+    let urlParam = url.searchParams.get('lang')
+    if($itemList.length > 0){
+      url.searchParams.set('items', $itemList.join("|"))
+    }else{
+      if(urlParam){url.searchParams.delete('items')}
     }
   }
 

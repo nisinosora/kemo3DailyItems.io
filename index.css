@@ -190,6 +190,7 @@ input[type=button]:hover{
 }
 
 html[lang='ja'] *:is([lang]):not([lang='ja']),
-html[lang='zh-TW'] *:is([lang]):not([lang='zh-TW']){
+html[lang='zh-TW'] *:is([lang]):not([lang='zh-TW']),
+html[lang='zh-CN'] *:is([lang]):not([lang='zh-CN']){
   display:none!important;
 }
