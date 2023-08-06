@@ -440,7 +440,7 @@ document.addEventListener('DOMContentLoaded',function(){
     let sum_par = 0;
     $("#lists").find('img').each(function(){
       item_id = $(this).attr('id');
-      item_name = $(this).attr('name')
+      item_name = $(this).attr('alt')
       src = $(this).attr('src');
       if(item_id != "s0"){
         if (item_name in result_lists){
