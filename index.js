@@ -606,7 +606,7 @@ document.addEventListener('DOMContentLoaded',function(){
     let count = 0;
     $("#lists").find('img').each(function(){
       item_id = $(this).attr('id');
-      if(item_name == "s0"){
+      if(item_id == "s0"){
         count++;
       }
     });
