@@ -155,6 +155,7 @@ document.addEventListener('DOMContentLoaded',function(){
         change(item);
         break;
     }
+    ReItemList()
   });
 
   $("#choice_mode").on('change', function(){
@@ -497,9 +498,9 @@ document.addEventListener('DOMContentLoaded',function(){
   }
 
   function ReItemList(){
-    for(let element of document.querySelectorAll("#lists li>img")){
-      console.log(element)
-    }
+    $("#lists").find('img').each(function(){
+      console.log($(this));
+    })
   }
 
   function translate(_lang){
