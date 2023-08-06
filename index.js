@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded',function(){
           if(selecting.src.match(pat)){
             item.src = selecting.src;
             item.alt = selecting.alt;
-            item.id = selecting.class;
+            item.id = selecting.id;
             create();
             if(reset_check.checked){
               selecting.src = ""
