@@ -105,7 +105,7 @@ header{
   line-height: 30px;
 }
 .ac-cap input:checked + .ac-title + .content{
-  max-height: 16vh;
+  max-height: 23vh;
 }
 .ac-cap input + .ac-title::before{
   content: "[+]";
