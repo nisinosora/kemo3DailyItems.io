@@ -498,8 +498,10 @@ document.addEventListener('DOMContentLoaded',function(){
   }
 
   function ReItemList(){
+    $itemList = []
     $("#lists").find('img').each(function(){
-      console.log($(this));
+      var elements = $(this)
+      $itemList.push(elements.attr('id'))
     })
   }
 
