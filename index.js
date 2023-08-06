@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded',function(){
               selecting.alt = ""
               $("#item_selecting").css("display", "none");
             }
-            $itemList[$(this).index()] = selecting.attr('id')
+            $itemList[$(this).index()] = selecting.id
           }
         }
       });
