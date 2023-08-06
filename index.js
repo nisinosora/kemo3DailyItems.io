@@ -187,17 +187,19 @@ document.addEventListener('DOMContentLoaded',function(){
     mouse_img_list.forEach(function(value){
       value.addEventListener('click', function(){
         var item = value;
-        var selecting = document.getElementById("item_select");
-        var reset_check = document.getElementById("change_hidden");
-        var pat = /.png|.PNG|.jpg|.jpeg|.JPG|.JPEG\Z/
-        if(selecting.src.match(pat)){
-          item.src = selecting.src;
-          item.alt = selecting.alt;
-          create();
-          if(reset_check.checked){
-            selecting.src = ""
-            selecting.alt = ""
-            $("#item_selecting").css("display", "none");
+        if(item){
+          var selecting = document.getElementById("item_select");
+          var reset_check = document.getElementById("change_hidden");
+          var pat = /.png|.PNG|.jpg|.jpeg|.JPG|.JPEG\Z/
+          if(selecting.src.match(pat)){
+            item.src = selecting.src;
+            item.alt = selecting.alt;
+            create();
+            if(reset_check.checked){
+              selecting.src = ""
+              selecting.alt = ""
+              $("#item_selecting").css("display", "none");
+            }
           }
         }
       });
