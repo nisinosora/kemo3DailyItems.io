@@ -5,37 +5,38 @@ document.addEventListener('DOMContentLoaded',function(){
   var $alerts = {
     "nullIcons":{
       "ja": "削除するアイコンがありません", 
-      "zh-TW": "沒有刪除圖像"
+      "zh-TW": "沒有可刪除的圖標"
     },
     "shareError":{
       "ja": "エラーが発生しました。\n画像が存在しないか、ブラウザが非対応の可能性があります", 
-      "zh-TW": "發生錯誤。\n圖像可能不存在或瀏覽器不支持"
+      "zh-TW": "發生錯誤。\n圖片可能不存在或瀏覽器不支援"
     },
     "cantAddIcons":{
       "ja": "これ以上はアイコンを追加できません",
-      "zh-TW": "無法追加更多圖象"
+      "zh-TW": "無法添加更多圖標"
     },
     "cantChoiceIcons":{
       "ja": "「アイテム置き換え」欄にアイテムがないため選択できません",
-      "zh-TW":"不能選擇，因為「替換品目」中沒有項目"
+      "zh-TW":"無法選中，因為「替換項目」中沒有可選物品"
     },
     "AllIconsRemove":{
       "ja":"全てのアイコンを削除します。よろしいですか？",
-      "zh-TW":"刪除所有圖像。確定嗎？"
+      "zh-TW":"刪除所有圖標。確定嗎？"
     }
   }
 
   var $labels = {
     "title":{"ja": "【けものフレンズ3】ログボマトメールP", "zh-TW":"【動物朋友3】全部都記下來M"},
-    "#Usage_PassportList":{"ja": "リスト：パスポート", "zh-TW":"選單：月間通行證"},
-    "#Usage_ModeList":{"ja":"リスト：モード", "zh-TW":"選單：方式"},
+    "#Usage_PassportList":{"ja": "リスト：パスポート", "zh-TW":"列表：月卡"},
+    "#Usage_ModeList":{"ja":"リスト：モード", "zh-TW":"列表：模式"},
     "#Usage_Create_Download":{"ja": "生成・ダウンロード", "zh-TW":"生成、下載"},
     "#Usage_Remove":{"ja": "削除", "zh-TW":"刪除"},
     "#Usage_Share":{"ja":"共有","zh-TW":"分享"},
-    "#Usage_EmissionRate":{"ja":"排出率算出","zh-TW":"計算機率"},
+    "#Usage_EmissionRate":{"ja":"排出率算出","zh-TW":"計算概率"},
     "#Usage_Other":{"ja":"その他","zh-TW":"其他"},
-    "#Label_Passport":{"ja":"パスポート：","zh-TW":"月間通行證："},
-    "#Label_Mode":{"ja":"モード：","zh-TW":"方式："},
+    "#Label_Passport":{"ja":"パスポート：","zh-TW":"月卡："},
+    "#Label_Mode":{"ja":"モード：","zh-TW":"方模式："},
+    "#Usage_Save_now":{"ja":"状態を保存する","zh-TW":"保存狀態"}
   }
 
   var $options = {
@@ -43,16 +44,17 @@ document.addEventListener('DOMContentLoaded',function(){
     "option_first_little":{"ja":"はじめて・ちょこっと","zh-TW":"初次、少許"},
     "option_standard":{"ja":"すたんだーど","zh-TW":"標準"},
     "option_gorgeous":{"ja":"ごーじゃす","zh-TW":"豪華"},
-    "option_add":{"ja":"追加","zh-TW":"追加"},
-    "opiton_change":{"ja":"置き換え","zh-TW":"調換"}
+    "option_add":{"ja":"追加","zh-TW":"添加"},
+    "opiton_change":{"ja":"置き換え","zh-TW":"替換"}
   }
 
   var $buttons = {
-    "#last_delete":{"ja":"最後尾のアイコンを削除","zh-TW":"刪除最後一個圖標"},
-    "#all_delete":{"ja":"全てのアイコンを削除","zh-TW":"刪除一切圖標"},
-    "#result_output":{"ja":"排出率算出","zh-TW":"計算機率"},
-    "#share":{"ja":"画像・排出率結果を共有する","zh-TW":"分享圖像、機率"},
-    "#item_reselect":{"ja":"選択解除","zh-TW":"取消選擇"}
+    "#last_delete":{"ja":"最後尾のアイコンを削除","zh-TW":"刪除最後添加的圖標"},
+    "#all_delete":{"ja":"全てのアイコンを削除","zh-TW":"刪除所有圖標"},
+    "#result_output":{"ja":"排出率算出","zh-TW":"計算概率"},
+    "#share":{"ja":"画像・排出率結果を共有する","zh-TW":"分享圖片、概率"},
+    "#item_reselect":{"ja":"選択解除","zh-TW":"取消選擇"},
+    "#save_now":{"ja":"状態を保存する","zh-TW":"保存狀態"}
   }
 
   var $iconsImages = {
@@ -98,10 +100,10 @@ document.addEventListener('DOMContentLoaded',function(){
   }
 
   var $tablesTh = {
-    "#th_image":{"ja":"画像","zh-TW":"圖像"},
-    "#th_itemName":{"ja":"アイテム名","zh-TW":"品目名"},
-    "#th_count":{"ja":"個数","zh-TW":"件數"},
-    "#th_EmissionRate":{"ja":"排出率","zh-TW":"機率"}
+    "#th_image":{"ja":"画像","zh-TW":"圖片"},
+    "#th_itemName":{"ja":"アイテム名","zh-TW":"物品名"},
+    "#th_count":{"ja":"個数","zh-TW":"數量"},
+    "#th_EmissionRate":{"ja":"排出率","zh-TW":"概率"}
   }
 
   var $shareContent = {"ja": "スペシャルデイリーボーナスの結果です！", "zh-TW": "特別每日任務獎勵的結果！"}

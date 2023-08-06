@@ -81,8 +81,9 @@ header{
   background-color: rgb(83, 221, 48);
   text-align: center;
   color: white;
-  display: inline-block;
+  display: flex;
   overflow: hidden;
+  justify-content: center;
   width: 100%;
   height: 30px;
   transition: 1s;
@@ -100,6 +101,7 @@ header{
   width: 100%;
   overflow-y: auto;
   transition: max-height 0.75s ease-in;
+  line-height: 30px;
 }
 .ac-cap input:checked + .ac-title + .content{
   max-height: 16vh;
@@ -141,10 +143,43 @@ header{
   height: 50px;
 }
 
+/*ボタンデザイン*/
+#class_submit{
+  text-align: center;
+  padding: 20px;
+}
+input[type=button] {
+  background-image: linear-gradient(120deg, #ffc0cb 50%, #ffa07a 50%); /* 2色のグラデーション */
+  background-repeat: no-repeat;
+  background-size: 100% 200%; /* 垂直方向に2倍に広げる */
+  color: black;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background-position 0.3s ease;
+  text-shadow: 1px 1px 0 white;
+  font-weight: bold;
+  margin: 5px;
+}
+input[type=button]:hover{
+  background-position: 0% 100%;
+}
+/* スマートフォン用のスタイル */
+@media (max-width: 767px) {
+  #class_submit {
+    padding: 10px;
+  }
 
-/*
-ローカライズ
-*/
+  input[type=button] {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+
+/*ローカライズ*/
 .language-change{
   display:flex;
   gap:10px;
