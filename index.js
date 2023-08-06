@@ -195,11 +195,12 @@ document.addEventListener('DOMContentLoaded',function(){
           if(selecting.src.match(pat)){
             item.src = selecting.src;
             item.alt = selecting.alt;
-            item.id = selecting.id;
+            item.id = selecting.class;
             create();
             if(reset_check.checked){
               selecting.src = ""
               selecting.alt = ""
+              selecting.id = ""
               $("#item_selecting").css("display", "none");
             }
           }
