@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded',function(){
   //生成アイテム処理
   $("#lists").on('mouseenter', function(){
     var mouse_img_list = document.querySelectorAll(".img_list")
-    var $listInd = 0
+    var clicker = $(this)
     mouse_img_list.forEach(function(value){
       value.addEventListener('click', function(){
         var item = value;
@@ -201,10 +201,9 @@ document.addEventListener('DOMContentLoaded',function(){
               selecting.alt = ""
               $("#item_selecting").css("display", "none");
             }
-            $itemList[$listInd - 1] = selecting.id
+            $itemList[clicker.index()] = selecting.id
           }
         }
-        $listInd++;
       });
     });
   });
