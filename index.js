@@ -413,7 +413,7 @@ document.addEventListener('DOMContentLoaded',function(){
         var file_name = document.getElementById("file_name")
         items.src = item.attr('src');
         items.alt = item.attr('alt');
-        items.id = item.attr('id');
+        items.id = `${item.attr('id')} item_select`;
         file_name.value = item.attr('alt');
         $("#item_selecting").css("display", "inline");
         create();
