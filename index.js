@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded',function(){
   //翻訳（独自）
-  var $itemList = []
-  var $lang = "ja"
-  var $alerts = {
+  let $itemList = []
+  let $lang = "ja"
+  const $alerts = {
     "nullIcons":{
       "ja": "削除するアイコンがありません", 
       "zh-TW": "沒有可刪除的圖標"
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded',function(){
     }
   }
 
-  var $labels = {
+  const $labels = {
     "title":{"ja": "【けものフレンズ3】ログボマトメールP", "zh-TW":"【動物朋友3】全部都記下來M"},
     "#Usage_PassportList":{"ja": "リスト：パスポート", "zh-TW":"列表：月卡"},
     "#Usage_ModeList":{"ja":"リスト：モード", "zh-TW":"列表：模式"},
@@ -35,11 +35,11 @@ document.addEventListener('DOMContentLoaded',function(){
     "#Usage_EmissionRate":{"ja":"排出率算出","zh-TW":"計算概率"},
     "#Usage_Other":{"ja":"その他","zh-TW":"其他"},
     "#Label_Passport":{"ja":"パスポート：","zh-TW":"月卡："},
-    "#Label_Mode":{"ja":"モード：","zh-TW":"方模式："},
+    "#Label_Mode":{"ja":"モード：","zh-TW":"模式："},
     "#Usage_Save_now":{"ja":"状態を保存する","zh-TW":"保存狀態"}
   }
 
-  var $options = {
+  const $options = {
     "option_all":{"ja":"すべて","zh-TW":"全部"},
     "option_first_little":{"ja":"はじめて・ちょこっと","zh-TW":"初次、少許"},
     "option_standard":{"ja":"すたんだーど","zh-TW":"標準"},
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded',function(){
     "opiton_change":{"ja":"置き換え","zh-TW":"替換"}
   }
 
-  var $buttons = {
+  const $buttons = {
     "#last_delete":{"ja":"最後尾のアイコンを削除","zh-TW":"刪除最後添加的圖標"},
     "#all_delete":{"ja":"全てのアイコンを削除","zh-TW":"刪除所有圖標"},
     "#result_output":{"ja":"排出率算出","zh-TW":"計算概率"},
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded',function(){
     "#save_now":{"ja":"状態を保存する","zh-TW":"保存狀態"}
   }
 
-  var $iconsImages = {
+  const $iconsImages = {
     "#l5":{"ja":"ラッキーメダル5","zh-TW":"幸運獎牌5"},
     "#l250":{"ja":"ラッキーメダル250","zh-TW":"幸運獎牌250"},
     "#o1":{"ja":"オシャレメダル","zh-TW":"時尚獎牌"},
@@ -99,25 +99,26 @@ document.addEventListener('DOMContentLoaded',function(){
     "#s0":{"ja":"空白","zh-TW":"空白"}
   }
 
-  var $tablesTh = {
+  const $tablesTh = {
     "#th_image":{"ja":"画像","zh-TW":"圖片"},
     "#th_itemName":{"ja":"アイテム名","zh-TW":"物品名"},
     "#th_count":{"ja":"個数","zh-TW":"數量"},
     "#th_EmissionRate":{"ja":"排出率","zh-TW":"概率"}
   }
 
-  var $shareContent = {"ja": "スペシャルデイリーボーナスの結果です！", "zh-TW": "特別每日任務獎勵的結果！"}
+  const $shareContent = {"ja": "スペシャルデイリーボーナスの結果です！", "zh-TW": "特別每日任務獎勵的結果！"}
+  const $total = {"ja": "合計", "zh-TW":"總計"}
 
   //初期起動時の処理
-  $(document).ready(function(){
+  $(window).on('load',function(){
     const url = new URL(window.location.href);
     const urlParam = url.searchParams.get('lang');
     if(!urlParam){
       url.searchParams.set('lang', "ja")
       window.location.href = url
     }
-    var langs = document.querySelectorAll("input[type='radio'][name='lang']");
-    var passCheck = false
+    let langs = document.querySelectorAll("input[type='radio'][name='lang']");
+    let passCheck = false
     for(let element of langs){
       if(element.value == urlParam){
         element.checked = true
@@ -131,14 +132,14 @@ document.addEventListener('DOMContentLoaded',function(){
     }
     const ItemIds = url.searchParams.get('items');
     if(ItemIds){
-      for(let element of ItemIds.split(".")){
+      for(let element of ItemIds.split("|")){
         if(document.getElementById(element) != null){
           add($(`#${element}`))
         }
       }
       create();
     }
-  });
+  })
 
   //翻訳モードの切り替え時の処理
   $('input[name="lang"]:radio').change(function(){
@@ -147,8 +148,8 @@ document.addEventListener('DOMContentLoaded',function(){
 
   //画像クリック時の処理
   $("#images > img").on('click', function(){
-    var item = $(this);
-    var select = document.getElementById("choice_mode");
+    let item = $(this);
+    let select = document.getElementById("choice_mode");
     switch(select.value){
       case 'add':
         add(item);
@@ -160,9 +161,9 @@ document.addEventListener('DOMContentLoaded',function(){
   });
 
   $("#choice_mode").on('change', function(){
-    var select = document.getElementById("choice_mode");
-    var download_img = document.getElementById("download_image");
-    var calendar = document.getElementById("calendar");
+    let select = document.getElementById("choice_mode");
+    let download_img = document.getElementById("download_image");
+    let calendar = document.getElementById("calendar");
     switch(select.value){
       case 'add':
         download_img.hidden = false;
@@ -177,7 +178,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
   //アイテム選択解除ボタン処理
   $("#item_reselect").on('click', function(){
-    var items = document.getElementsByClassName("item_select")[0];
+    let items = document.getElementsByClassName("item_select")[0];
     items.src = ""
     items.alt = ""
     $("#item_selecting").css("display", "none");
@@ -185,14 +186,14 @@ document.addEventListener('DOMContentLoaded',function(){
 
   //生成アイテム処理
   $("#lists").on('mouseenter', function(){
-    var mouse_img_list = document.querySelectorAll(".img_list")
+    let mouse_img_list = document.querySelectorAll(".img_list")
     mouse_img_list.forEach(function(value){
       value.addEventListener('click', function(){
-        var item = value;
+        let item = value;
         if(item){
-          var selecting = document.getElementsByClassName("item_select")[0];
-          var reset_check = document.getElementById("change_hidden");
-          var pat = /.png|.PNG|.jpg|.jpeg|.JPG|.JPEG\Z/
+          let selecting = document.getElementsByClassName("item_select")[0];
+          let reset_check = document.getElementById("change_hidden");
+          let pat = /.png|.PNG|.jpg|.jpeg|.JPG|.JPEG\Z/
           if(selecting.src.match(pat)){
             item.src = selecting.src;
             item.alt = selecting.alt;
@@ -216,7 +217,7 @@ document.addEventListener('DOMContentLoaded',function(){
       $("#lists li:last").remove();
       $itemList.pop()
       if($("#lists li").length < 1){
-        var selecting = document.getElementsByClassName("item_select")[0];
+        let selecting = document.getElementsByClassName("item_select")[0];
         selecting.src = ""
         selecting.alt = ""
         $("#item_selecting").css("display", "none");
@@ -230,19 +231,19 @@ document.addEventListener('DOMContentLoaded',function(){
   //全てのアイコンを削除
   $("#all_delete").on('click', function(){
     if($("#lists li").length > 0){
-      var check = confirm($alerts["AllIconsRemove"][$lang])
+      let check = confirm($alerts["AllIconsRemove"][$lang])
       if (check == true){
         $("#lists li").remove();
         $itemList = [];
-        var selecting = document.getElementsByClassName("item_select")[0];
+        let selecting = document.getElementsByClassName("item_select")[0];
         selecting.src = ""
         selecting.alt = ""
         $("#item_selecting").css("display", "none");
         document.getElementById("choice_mode").value = "add";
         document.getElementById("change_hidden").checked = false;
-        var lists = document.getElementById("canvas_2d").getContext('2d');
+        let lists = document.getElementById("canvas_2d").getContext('2d');
         lists.clearRect(0, 0, 1050, 900);
-        var link_img = document.getElementById("canvas_img");
+        let link_img = document.getElementById("canvas_img");
         link_img.style.display = "none";
         link_img.src = ""
       }
@@ -253,7 +254,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
   //モード切替
   $("#mode-select").on('change', function(){
-    var select = document.getElementById("mode-select");
+    let select = document.getElementById("mode-select");
     switch(select.value){
       case 'all':
         $(".first_little").css("display", "inline");
@@ -280,8 +281,8 @@ document.addEventListener('DOMContentLoaded',function(){
 
   //共有
   $("#share").on('click', function(){
-    var infos
-    var images = []
+    let infos
+    let images = []
     infos = {
       "text": $shareContent[$lang],
       "url": "https://nisinosora.github.io/kemo3DailyItems.io/",
@@ -289,10 +290,10 @@ document.addEventListener('DOMContentLoaded',function(){
       "image": [document.getElementById("canvas_img").src]
     }
     
-    var $share_EmissionRate = document.getElementById("share_EmissionRate")
+    let $share_EmissionRate = document.getElementById("share_EmissionRate")
     if($share_EmissionRate.checked){
       if($("#result_table tbody tr").length > 0){
-        var resule_image = document.getElementById("result_table_image");
+        let resule_image = document.getElementById("result_table_image");
         infos["image"].push(resule_image.src);
       }
     }
@@ -318,9 +319,9 @@ document.addEventListener('DOMContentLoaded',function(){
   $("#save_now").on('click', function(){
     ReItemList()
     const url = new URL(window.location.href);
-    var urlParam = url.searchParams.get('lang')
+    let urlParam = url.searchParams.get('lang')
     if($itemList.length > 0){
-      url.searchParams.set('items', $itemList.join("."))
+      url.searchParams.set('items', $itemList.join("|"))
     }else{
       if(urlParam){url.searchParams.delete('items')}
     }
@@ -335,14 +336,14 @@ document.addEventListener('DOMContentLoaded',function(){
 
   //生成関数
   function create() {
-    var lists = document.getElementById("canvas_2d").getContext('2d');
-    var blank_cell = document.getElementById("blank_cell");
-    var canvas_2d = document.getElementById("canvas_2d");
-    var arys = [], output_check;
-    var x_ind = 0, y_ind = 0;
+    let lists = document.getElementById("canvas_2d").getContext('2d');
+    let blank_cell = document.getElementById("blank_cell");
+    let canvas_2d = document.getElementById("canvas_2d");
+    let arys = [], output_check;
+    let x_ind = 0, y_ind = 0;
     lists.clearRect(0, 0, 1050, 900);
 
-    var canvas_img_width, canvas_img_height;
+    let canvas_img_width, canvas_img_height;
     canvas_img_width = 0;
     canvas_img_height = 1;
 
@@ -350,8 +351,9 @@ document.addEventListener('DOMContentLoaded',function(){
       arys[i] = new Image()
       arys[i].src = $(this).attr('src')
       arys[i].alt = $(this).attr('alt')
+      arys[i].id = $(this).attr('id')
       output_check = true;
-      if(arys[i].alt == "空白" && blank_cell.checked){
+      if(arys[i].id == "s0" && blank_cell.checked){
         output_check = false
       }
       if(output_check){
@@ -367,7 +369,7 @@ document.addEventListener('DOMContentLoaded',function(){
     });
 
     canvas_img_height = Math.ceil(parseFloat($("#lists li").length / 7))
-    var link_img = document.getElementById("canvas_img")
+    let link_img = document.getElementById("canvas_img")
     link_img.style.width = canvas_img_width * 50 + "px";
     link_img.style.height = canvas_img_height * 50 + "px";
     canvas_2d.width = canvas_img_width * 150;
@@ -378,7 +380,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
     $.each(arys, function(i){
       output_check = true;
-      if(arys[i].alt == "空白" && blank_cell.checked){
+      if(arys[i].id == "s0" && blank_cell.checked){
         output_check = false
       }
       if(output_check){
@@ -391,7 +393,7 @@ document.addEventListener('DOMContentLoaded',function(){
       }
     })
 
-    var links = document.getElementById("canvas_2d").toDataURL('image/png')
+    let links = document.getElementById("canvas_2d").toDataURL('image/png')
     link_img.src = links;
     link_img.style.display = "inline"
   }
@@ -399,9 +401,9 @@ document.addEventListener('DOMContentLoaded',function(){
   //追加関数
   function add(item){
     if($("#lists li").length <= 41){
-      var img_src = item.attr('src');
-      var img_alt = item.attr('alt');
-      var img_id = item.attr('id')
+      let img_src = item.attr('src');
+      let img_alt = item.attr('alt');
+      let img_id = item.attr('id')
       $itemList.push(item.attr('id'));
       $("ul#lists").append(`<li class=\"li_lists\"><img src=\"${img_src}\" alt=\"${img_alt}\" class=\"img_list\" id=\"${img_id}\"></li>`);
       create();
@@ -414,8 +416,8 @@ document.addEventListener('DOMContentLoaded',function(){
   function change(item){
     if($("#lists li").length > 0){
       if(item){
-        var items = document.getElementsByClassName("item_select")[0]
-        var file_name = document.getElementById("file_name")
+        let items = document.getElementsByClassName("item_select")[0]
+        let file_name = document.getElementById("file_name")
         items.src = item.attr('src');
         items.alt = item.attr('alt');
         items.id = item.attr('id');
@@ -430,18 +432,20 @@ document.addEventListener('DOMContentLoaded',function(){
   }
 
   function result_table(){
-    var result_lists = {};
-    var item_name;
-    var src;
-    var sum = $("#lists li").length - space_count();
-    var sum_par = 0;
+    let result_lists = {};
+    let item_name;
+    let item_id;
+    let src;
+    let sum = $("#lists li").length - space_count();
+    let sum_par = 0;
     $("#lists").find('img').each(function(){
-      item_name = $(this).attr('alt');
+      item_id = $(this).attr('id');
+      item_name = $(this).attr('name')
       src = $(this).attr('src');
-      if(item_name != "空白"){
+      if(item_id != "s0"){
         if (item_name in result_lists){
           result_lists[item_name].count++;
-          var count = result_lists[item_name].count
+          let count = result_lists[item_name].count
           result_lists[item_name].parsent = round(count/sum*100,4)
         }else{
           result_lists[item_name] = {count: 1 ,src: src, parsent: round(1/sum*100,4)};
@@ -449,7 +453,7 @@ document.addEventListener('DOMContentLoaded',function(){
       }
     });
 
-    var table = $("#result_table tbody")
+    let table = $("#result_table tbody")
     table.remove();
     $("#result_table").append("<tbody></tbody>");
     for(let [key, value] of Object.entries(result_lists)){
@@ -457,13 +461,13 @@ document.addEventListener('DOMContentLoaded',function(){
       $("#result_table tbody").append(`<tr><td><img src=\"${value.src}\" alt=\"${key}\"></td><td>${key}</td><td>${value.count}</td><td>${value.parsent}%</td></tr>`);
     }
     sum_par = round(sum_par, 4)
-    $("#result_table tbody").append(`<tr><td colspan="2">合計</td><td>${sum}</td><td>${sum_par}%</td></tr>`)
+    $("#result_table tbody").append(`<tr><td colspan="2">${$total[$lang]}</td><td>${sum}</td><td>${sum_par}%</td></tr>`)
   }
 
   function result_table_image(){
     html2canvas(document.querySelector("#result_list")).then(canvas => { 
-      var src = canvas.toDataURL("image/png");
-      var file = document.getElementById("result_table_image")
+      let src = canvas.toDataURL("image/png");
+      let file = document.getElementById("result_table_image")
       file.src = src;
     });
   }
@@ -485,13 +489,13 @@ document.addEventListener('DOMContentLoaded',function(){
   };
 
   function round(num, digit) {
-    var digitVal = Math.pow( 10, digit );
+    let digitVal = Math.pow( 10, digit );
     return Math.trunc( num * digitVal ) / digitVal;
   }
 
   function space_count(){
-    var item_name;
-    var count = 0;
+    let item_name;
+    let count = 0;
     $("#lists").find('img').each(function(){
       item_name = $(this).attr('alt');
       if(item_name == "空白"){
@@ -504,7 +508,7 @@ document.addEventListener('DOMContentLoaded',function(){
   function ReItemList(){
     $itemList = []
     $("#lists").find('img').each(function(){
-      var elements = $(this)
+      let elements = $(this)
       $itemList.push(elements.attr('id'))
     })
   }
@@ -518,7 +522,7 @@ document.addEventListener('DOMContentLoaded',function(){
     }
 
     for(let [key, value] of Object.entries($options)){
-      var optionElement = document.getElementById(key);
+      let optionElement = document.getElementById(key);
       if (optionElement){
         optionElement.textContent = value[$lang];
       }
@@ -538,10 +542,10 @@ document.addEventListener('DOMContentLoaded',function(){
 
     const url = new URL(window.location.href);
     
-    var ParamCheck = false
-    var urlParam = url.searchParams.get('lang')
+    let ParamCheck = false
+    let urlParam = url.searchParams.get('lang')
     if($itemList.length > 0){
-      url.searchParams.set('items', $itemList.join("."))
+      url.searchParams.set('items', $itemList.join("|"))
     }else{
       if(urlParam){url.searchParams.delete('items')}
     }
