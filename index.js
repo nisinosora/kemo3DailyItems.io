@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
   //アイテム選択解除ボタン処理
   $("#item_reselect").on('click', function(){
-    var items = document.getElementById("item_select");
+    var items = $(".item_select");
     items.src = ""
     items.alt = ""
     $("#item_selecting").css("display", "none");
@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded',function(){
       value.addEventListener('click', function(){
         var item = value;
         if(item){
-          var selecting = document.getElementById("item_select");
+          var selecting = $(".item_select");
           var reset_check = document.getElementById("change_hidden");
           var pat = /.png|.PNG|.jpg|.jpeg|.JPG|.JPEG\Z/
           if(selecting.src.match(pat)){
@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded',function(){
       $("#lists li:last").remove();
       $itemList.pop()
       if($("#lists li").length < 1){
-        var selecting = document.getElementById("item_select");
+        var selecting = $(".item_select");
         selecting.src = ""
         selecting.alt = ""
         $("#item_selecting").css("display", "none");
@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded',function(){
       if (check == true){
         $("#lists li").remove();
         $itemList = [];
-        var selecting = document.getElementById("item_select");
+        var selecting = $(".item_select");
         selecting.src = ""
         selecting.alt = ""
         $("#item_selecting").css("display", "none");
@@ -409,11 +409,12 @@ document.addEventListener('DOMContentLoaded',function(){
   function change(item){
     if($("#lists li").length > 0){
       if(item){
-        var items = document.getElementById("item_select")
+        var items = $(".item_select")
         var file_name = document.getElementById("file_name")
         items.src = item.attr('src');
         items.alt = item.attr('alt');
-        items.id = `${item.attr('id')} item_select`;
+        items.id = item.attr('id');
+        items.class = "item_select"
         file_name.value = item.attr('alt');
         $("#item_selecting").css("display", "inline");
         create();
