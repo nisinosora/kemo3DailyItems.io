@@ -137,7 +137,6 @@ document.addEventListener('DOMContentLoaded',function(){
         }
       }
       create();
-      window.location.reload();
     }
   });
 
