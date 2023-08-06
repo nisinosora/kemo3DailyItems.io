@@ -201,11 +201,11 @@ document.addEventListener('DOMContentLoaded',function(){
               selecting.alt = ""
               $("#item_selecting").css("display", "none");
             }
-            $itemList[$listInd] = selecting.id
+            $itemList[$listInd - 1] = selecting.id
           }
         }
+        $listInd++;
       });
-      $listInd++;
     });
   });
 
