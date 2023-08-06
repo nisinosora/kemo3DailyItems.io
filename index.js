@@ -245,7 +245,7 @@ document.addEventListener('DOMContentLoaded',function(){
     }
     const ItemIds = url.searchParams.get('items');
     if(ItemIds){
-      for(let element of ItemIds.split("|")){
+      for(let element of splitStringByPattern(ItemIds)){
         if(document.getElementById(element) != null){
           add($(`#${element}`))
         }
@@ -664,10 +664,22 @@ document.addEventListener('DOMContentLoaded',function(){
   function URLqueryItemSet(url){
     let urlParam = url.searchParams.get('lang')
     if($itemList.length > 0){
-      url.searchParams.set('items', $itemList.join("|"))
+      url.searchParams.set('items', $itemList.join(""))
     }else{
       if(urlParam){url.searchParams.delete('items')}
     }
+  }
+
+  function splitStringByPattern(inputString) {
+    const regex = /(\D+)(\d+)/g;
+    const resultArray = [];
+    let match;
+  
+    while ((match = regex.exec(inputString))) {
+      resultArray.push(match[1] + match[2]);
+    }
+  
+    return resultArray;
   }
 
 });
