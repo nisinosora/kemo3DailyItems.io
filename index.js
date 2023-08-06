@@ -131,14 +131,9 @@ document.addEventListener('DOMContentLoaded',function(){
     if(ItemIds){
       for(let element of ItemIds.split(".")){
         if(document.getElementById(element) != null){
-          var item = $(`#${element}`)
-          var img_src = item.attr('src');
-          var img_alt = item.attr('alt');
-          $itemList.push(item.attr('id'));
-          $("ul#lists").append(`<li class=\"li_lists\"><img src=\"${img_src}\" alt=\"${img_alt}\" class=\"img_list\"></li>`);
+          add(element)
         }
       }
-      create();
       create();
     }
   });
@@ -313,6 +308,19 @@ document.addEventListener('DOMContentLoaded',function(){
     }
   });
 
+  //状態保存
+  $("#save_now").on('click', function(){
+    const url = new URL(window.location.href);
+    var urlParam = url.searchParams.get('lang')
+    if($itemList.length > 0){
+      url.searchParams.set('items', $itemList.join("."))
+    }else{
+      if(urlParam){url.searchParams.delete('items')}
+    }
+    url.searchParams.set('lang', $lang)
+    window.location.href = url
+  })
+
   $("#result_output").on('click', function(){
     result_table();
     result_table_image();
@@ -386,8 +394,9 @@ document.addEventListener('DOMContentLoaded',function(){
     if($("#lists li").length <= 41){
       var img_src = item.attr('src');
       var img_alt = item.attr('alt');
+      var img_id = item.attr('id')
       $itemList.push(item.attr('id'));
-      $("ul#lists").append(`<li class=\"li_lists\"><img src=\"${img_src}\" alt=\"${img_alt}\" class=\"img_list\"></li>`);
+      $("ul#lists").append(`<li class=\"li_lists\"><img src=\"${img_src}\" alt=\"${img_alt}\" class=\"img_list\" id=\"${img_id}\"></li>`);
       create();
     }else{
       alert($alerts["cantAddIcons"][$lang]);
@@ -401,6 +410,7 @@ document.addEventListener('DOMContentLoaded',function(){
       var file_name = document.getElementById("file_name")
       items.src = item.attr('src');
       items.alt = item.attr('alt');
+      items.id = item.attr('id');
       file_name.value = item.attr('alt');
       $("#item_selecting").css("display", "inline");
       create();
