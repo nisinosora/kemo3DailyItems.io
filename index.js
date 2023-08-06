@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded',function(){
     if(ItemIds){
       for(let element of ItemIds.split(".")){
         if(document.getElementById(element) != null){
-          add(element)
+          add($(`#${element}`))
         }
       }
       create();
