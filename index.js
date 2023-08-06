@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
   //アイテム選択解除ボタン処理
   $("#item_reselect").on('click', function(){
-    var items = $(".item_select");
+    var items = document.getElementsByClassName("item_select")[0];
     items.src = ""
     items.alt = ""
     $("#item_selecting").css("display", "none");
@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded',function(){
       value.addEventListener('click', function(){
         var item = value;
         if(item){
-          var selecting = $(".item_select");
+          var selecting = document.getElementsByClassName("item_select")[0];
           var reset_check = document.getElementById("change_hidden");
           var pat = /.png|.PNG|.jpg|.jpeg|.JPG|.JPEG\Z/
           if(selecting.src.match(pat)){
@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded',function(){
       $("#lists li:last").remove();
       $itemList.pop()
       if($("#lists li").length < 1){
-        var selecting = $(".item_select");
+        var selecting = document.getElementsByClassName("item_select")[0];
         selecting.src = ""
         selecting.alt = ""
         $("#item_selecting").css("display", "none");
@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded',function(){
       if (check == true){
         $("#lists li").remove();
         $itemList = [];
-        var selecting = $(".item_select");
+        var selecting = document.getElementsByClassName("item_select")[0];
         selecting.src = ""
         selecting.alt = ""
         $("#item_selecting").css("display", "none");
@@ -409,7 +409,7 @@ document.addEventListener('DOMContentLoaded',function(){
   function change(item){
     if($("#lists li").length > 0){
       if(item){
-        var items = $(".item_select")
+        var items = document.getElementsByClassName("item_select")[0]
         var file_name = document.getElementById("file_name")
         items.src = item.attr('src');
         items.alt = item.attr('alt');
