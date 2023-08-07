@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded',function(){
     "title":{
       "ja": "【けものフレンズ3】ログボマトメールP", 
       "zh-TW":"【動物朋友3】全部都記下來M", 
-      "zh-CN":"全部都记下来M"
+      "zh-CN":"【动物朋友3】全部都记下来M"
     },
     "#Usage_PassportList":{
       "ja": "リスト：パスポート", 
