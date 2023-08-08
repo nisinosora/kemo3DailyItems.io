@@ -432,9 +432,8 @@ document.addEventListener('DOMContentLoaded',function(){
   $("#save_now").on('click', function(){
     ReItemList()
     const url = new URL(window.location.href);
-    URLqueryItemSet(url);
     url.searchParams.set('lang', $lang)
-    window.location.href = url
+    UrlReplace();
   })
 
   $("#result_output").on('click', function(){
@@ -652,21 +651,20 @@ document.addEventListener('DOMContentLoaded',function(){
     
     let ParamCheck = false
     let urlParam = url.searchParams.get('lang')
-    URLqueryItemSet(url);
+
     if(urlParam != _lang){ParamCheck = true}
 
     if(ParamCheck){
       url.searchParams.set('lang', $lang)
-      window.location.href = url
+      UrlReplace();
     }
   }
 
-  function URLqueryItemSet(url){
-    let urlParam = url.searchParams.get('lang')
+  function UrlReplace(){
     if($itemList.length > 0){
-      url.searchParams.set('items', $itemList.join(""))
+      history.replaceState({}, "", '?' + 'lang=' + $lang + "&items=" + $itemList.join(""));
     }else{
-      if(urlParam){url.searchParams.delete('items')}
+      history.replaceState({}, "", '?' + 'lang=' + $lang);
     }
   }
 
