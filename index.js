@@ -108,16 +108,6 @@ document.addEventListener('DOMContentLoaded',function(){
       "ja":"ごーじゃす",
       "zh-TW":"豪華",
       "zh-CN":"豪华"
-    },
-    "option_add":{
-      "ja":"追加",
-      "zh-TW":"添加",
-      "zh-CN":"添加"
-    },
-    "opiton_change":{
-      "ja":"置き換え",
-      "zh-TW":"替換",
-      "zh-CN":"替换"
     }
   }
 
@@ -263,32 +253,28 @@ document.addEventListener('DOMContentLoaded',function(){
   $("#images > img").on('click', function(){
     let item = $(this);
     let select = document.getElementById("choice_mode");
-    switch(select.value){
-      case 'add':
-        add(item);
-        break;
-      case 'change':
-        change(item);
-        break;
+    if(!select.checked){
+      add(item);
+    }else{
+      change(item);
     }
   });
 
-  $("#choice_mode").on('change', function(){
-    let select = document.getElementById("choice_mode");
+  $(".toggle").on("click", function() {
     let download_img = document.getElementById("download_image");
     let calendar = document.getElementById("calendar");
-    switch(select.value){
-      case 'add':
-        download_img.hidden = false;
-        calendar.hidden = true;
-        break;
-      case 'change':
-        download_img.hidden = true;
-        calendar.hidden = false;
-        break;
+    $(".toggle").toggleClass("checked");
+    if(!$('input[name="check"]').prop("checked")) {
+      $(".toggle input").prop("checked", true);
+      download_img.hidden = true;
+      calendar.hidden = false;
+    } else {
+      $(".toggle input").prop("checked", false);
+      download_img.hidden = false;
+      calendar.hidden = true;
     }
   });
-
+    
   //アイテム選択解除ボタン処理
   $("#item_reselect").on('click', function(){
     let items = document.getElementsByClassName("item_select")[0];
@@ -396,6 +382,7 @@ document.addEventListener('DOMContentLoaded',function(){
   $("#share").on('click', function(){
     let infos
     let images = []
+    console.log(document.getElementById("canvas_img").src)
     infos = {
       "text": $shareContent[$lang],
       "url": "https://nisinosora.github.io/kemo3DailyItems.io/",
@@ -646,6 +633,8 @@ document.addEventListener('DOMContentLoaded',function(){
     for(let [key, value] of Object.entries($tablesTh)){
       $(`${key}`).text(value[$lang]);
     }
+
+    $(".toggle").attr('lang', $lang)
 
     const url = new URL(window.location.href);
     
