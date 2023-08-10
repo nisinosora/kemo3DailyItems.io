@@ -27,6 +27,11 @@ document.addEventListener('DOMContentLoaded',function(){
       "ja":"全てのアイコンを削除します。よろしいですか？",
       "zh-TW":"刪除所有圖標。確定嗎？",
       "zh-CN":"删除所有图标。确定吗？"
+    },
+    "Saved":{
+      "ja":"保存しました",
+      "zh-TW":"已保存",
+      "zh-CN":"已保存"
     }
   }
 
@@ -421,6 +426,7 @@ document.addEventListener('DOMContentLoaded',function(){
     const url = new URL(window.location.href);
     url.searchParams.set('lang', $lang)
     UrlReplace();
+    alert($alerts["Saved"][$lang])
   })
 
   $("#result_output").on('click', function(){
