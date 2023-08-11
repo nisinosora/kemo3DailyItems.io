@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded',function(){
       "zh-CN": "无法添加更多图标"
     },
     "cantChoiceIcons":{
-      "ja": "「アイテム置き換え」欄にアイテムがないため選択できません",
+      "ja": "「アイテム置換」欄にアイテムがないため選択できません",
       "zh-TW":"無法選中，因為「替換項目」中沒有可選物品",
       "zh-CN":"无法选中，因为「替换项目」中没有可选物品"
     },
@@ -29,9 +29,9 @@ document.addEventListener('DOMContentLoaded',function(){
       "zh-CN":"删除所有图标。确定吗？"
     },
     "Saved":{
-      "ja":"保存しました",
-      "zh-TW":"已保存",
-      "zh-CN":"已保存"
+      "ja":"保存しました\nURLをコピーして下さい",
+      "zh-TW":"已保存\n請複製網址",
+      "zh-CN":"已保存\n请复制网址"
     }
   }
 
@@ -117,35 +117,30 @@ document.addEventListener('DOMContentLoaded',function(){
   }
 
   const $buttons = {
-    "#last_delete":{
-      "ja":"最後尾のアイコンを削除",
-      "zh-TW":"刪除最後添加的圖標",
-      "zh-CN":"删除最后添加的图标"
+    "#last_delete_text":{
+      "ja":"最後尾削除",
+      "zh-TW":"刪除末尾",
+      "zh-CN":"删除末尾"
     },
-    "#all_delete":{
-      "ja":"全てのアイコンを削除",
-      "zh-TW":"刪除所有圖標",
-      "zh-CN":"删除所有图标"
+    "#all_delete_text":{
+      "ja":"全削除",
+      "zh-TW":"刪除全部",
+      "zh-CN":"删除全部"
     },
-    "#result_output":{
+    "#EmissionRate_text":{
       "ja":"排出率算出",
       "zh-TW":"計算概率",
       "zh-CN":"计算概率"
     },
-    "#share":{
-      "ja":"画像・排出率結果を共有する",
-      "zh-TW":"分享圖片、概率",
-      "zh-CN":"分享图片、概率"
+    "#share_text":{
+      "ja":"共有",
+      "zh-TW":"分享",
+      "zh-CN":"分享"
     },
-    "#item_reselect":{
+    "#itrem_reselect_text":{
       "ja":"選択解除",
       "zh-TW":"取消選擇",
       "zh-CN":"取消选择"
-    },
-    "#save_now":{
-      "ja":"状態を保存する",
-      "zh-TW":"保存狀態",
-      "zh-CN":"保存状态"
     }
   }
 
@@ -317,20 +312,20 @@ document.addEventListener('DOMContentLoaded',function(){
 
   //最後のアイコンを削除
   $("#last_delete").on('click', function(){
-    if($("#lists li").length > 0){
-      $("#lists li:last").remove();
-      $itemList.pop()
-      if($("#lists li").length < 1){
-        let selecting = document.getElementsByClassName("item_select")[0];
-        selecting.src = ""
-        selecting.alt = ""
-        $("#item_selecting").css("display", "none");
-      }
-      create();
-    }else{
-      alert($alerts["nullIcons"][$lang]);
-    }
+    lastRemove();
   });
+  
+  document.addEventListener('keydown', keyEvent);
+  function keyEvent(e){
+    switch (e.code){
+      case 'Backspace':
+        $("#last_delete").click();
+        break;
+      case 'Delete':
+        $("#all_delete").click();
+        break;
+    }
+  }
 
   //全てのアイコンを削除
   $("#all_delete").on('click', function(){
@@ -350,6 +345,11 @@ document.addEventListener('DOMContentLoaded',function(){
         let link_img = document.getElementById("canvas_img");
         link_img.style.display = "none";
         link_img.src = ""
+
+        ReItemList()
+        const url = new URL(window.location.href);
+        url.searchParams.set('lang', $lang)
+        UrlReplace();
       }
     }else{
       alert($alerts["nullIcons"][$lang]);
@@ -387,10 +387,11 @@ document.addEventListener('DOMContentLoaded',function(){
   $("#share").on('click', function(){
     let infos
     let images = []
+    const url = new URL(window.location.href);
     console.log(document.getElementById("canvas_img").src)
     infos = {
       "text": $shareContent[$lang],
-      "url": "https://nisinosora.github.io/kemo3DailyItems.io/",
+      "url": url,
       "hashtags": $labels["title"][$lang],
       "image": [document.getElementById("canvas_img").src]
     }
@@ -420,15 +421,6 @@ document.addEventListener('DOMContentLoaded',function(){
     }
   });
 
-  //状態保存
-  $("#save_now").on('click', function(){
-    ReItemList()
-    const url = new URL(window.location.href);
-    url.searchParams.set('lang', $lang)
-    UrlReplace();
-    alert($alerts["Saved"][$lang])
-  })
-
   $("#result_output").on('click', function(){
     result_table();
     result_table_image();
@@ -441,11 +433,13 @@ document.addEventListener('DOMContentLoaded',function(){
     let canvas_2d = document.getElementById("canvas_2d");
     let arys = [], output_check;
     let x_ind = 0, y_ind = 0;
+    let img_hidden = "none";
     lists.clearRect(0, 0, 1050, 900);
 
     let canvas_img_width, canvas_img_height;
     canvas_img_width = 0;
     canvas_img_height = 1;
+
 
     $("#lists").find('img').each(function(i){
       arys[i] = new Image()
@@ -485,6 +479,7 @@ document.addEventListener('DOMContentLoaded',function(){
       }
       if(output_check){
         lists.drawImage(arys[i], x_ind * 150, y_ind * 150, 150, 150);
+        img_hidden = "inline"
       }
       x_ind++;
       if(x_ind == 7){
@@ -495,7 +490,12 @@ document.addEventListener('DOMContentLoaded',function(){
 
     let links = document.getElementById("canvas_2d").toDataURL('image/png')
     link_img.src = links;
-    link_img.style.display = "inline"
+    link_img.style.display = img_hidden
+
+    ReItemList()
+    const url = new URL(window.location.href);
+    url.searchParams.set('lang', $lang)
+    UrlReplace();
   }
 
   //追加関数
@@ -528,6 +528,22 @@ document.addEventListener('DOMContentLoaded',function(){
       }
     }else{
       alert($alerts["cantChoiceIcons"][$lang]);
+    }
+  }
+
+  function lastRemove(){
+    if($("#lists li").length > 0){
+      $("#lists li:last").remove();
+      $itemList.pop()
+      if($("#lists li").length < 1){
+        let selecting = document.getElementsByClassName("item_select")[0];
+        selecting.src = ""
+        selecting.alt = ""
+        $("#item_selecting").css("display", "none");
+      }
+      create();
+    }else{
+      alert($alerts["nullIcons"][$lang]);
     }
   }
 
@@ -629,7 +645,7 @@ document.addEventListener('DOMContentLoaded',function(){
     }
 
     for(let [key, value] of Object.entries($buttons)){
-      $(`${key}`).val(value[$lang]);
+      $(`${key}`).text(value[$lang]);
     }
 
     for(let [key, value] of Object.entries($iconsImages)){

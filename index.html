@@ -20,8 +20,8 @@
   <link rel="stylesheet" href="index.css">
   <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="index.js"></script>
-  <script src="./translation.js"></script>
+  <script src="./script/index.js"></script>
+  <script src="./script/translation.js"></script>
   <title lang="ja">【けものフレンズ3】ログボマトメールP</title>
 </head>
 <body>
@@ -64,9 +64,9 @@
           <div class="content">
             <p lang="ja">
               <b>「追加」</b>：「アイテム一覧」のアイコンを選択すると「画像生成結果」にアイコンを追加します。<br>
-              <b>「置き換え」</b>：「アイテム一覧」のアイコンを選択すると「選択中アイテム」を表示します。<br>
+              <b>「置換」</b>：「アイテム一覧」のアイコンを選択すると「選択中アイテム」を表示します。<br>
               「選択中アイテム」表示中に、「画像生成結果」枠内のアイコンを選択すると「選択中アイテム」に置き換えます。<br>
-              置き換え後の選択解除は、ボタン<b>「選択解除」</b>を押すか、チェックボックス<b>「置き換え後選択解除」</b>にチェックを入れていると自動的に解除します。
+              置換後の選択解除は、ボタン<b>「選択解除」</b>を押すか、チェックボックス<b>「置換後選択解除」</b>にチェックを入れていると自動的に解除します。
             </p>
             <p lang="zh-TW">
               <b>「添加」</b>：在「物品列表」中選擇一個圖標，即可將該圖標添加到「圖片生成結果」中。<br>
@@ -89,7 +89,7 @@
           <label for="ac-cap1-3" class="ac-title" id="Usage_Create_Download">生成・ダウンロード</label>
           <div class="content">
             <p lang="ja">
-              各アイテムアイコンをタップすると、画像生成結果」下に画像ファイルを出力します。<br>
+              各アイテムアイコンをタップすると、「画像生成結果」下に画像ファイルを出力します。<br>
             そこから画像ファイルをダウンロードできます。
             </p>
             <p lang="zh-TW">
@@ -177,17 +177,6 @@
       </section>
       <section>
         <div class="ac-cap">
-          <input type="checkbox" id="ac-cap1-7" name="ac-cap">
-          <label for="ac-cap1-7" class="ac-title" id="Usage_Save_now">状態を保存する</label>
-          <div class="content">
-            <p lang="ja">「状態を保存する」ボタンを押した後に、サイトのリンクをコピーすることで、画像の状態を保存出来ます。</p>
-            <p lang="zh-TW">按下「保存狀態」按鈕後，複製網站鏈接即可保存圖像狀態。</p>
-            <p lang="zh-CN">按下「保存状态」按钮后，复制网站链接即可保存图像状态。</p>
-          </div>
-        </div>
-      </section>
-      <section>
-        <div class="ac-cap">
           <input type="checkbox" id="ac-cap1-8" name="ac-cap">
           <label for="ac-cap1-8" class="ac-title" id="Usage_Other">その他</label>
           <div class="content">
@@ -225,7 +214,7 @@
         <input type="checkbox" name="check" id="choice_mode"/>
       </div>
 
-      <span lang="ja">置き換え後選択解除：</span>
+      <span lang="ja">置換後選択解除：</span>
       <span lang="zh-TW">替換後取消選擇：</span>
       <span lang="zh-CN">替换后取消选择：</span>
       <input type="checkbox" name="change_hidden" id="change_hidden"><br>
@@ -292,29 +281,61 @@
         <span lang="ja">選択中のアイテム：</span>
         <span lang="zh-TW">選擇的品目：</span>
         <span lang="zh-CN">选择的物品：</span>
-        <input type="text" id="file_name" readonly><input type="button" value="選択解除" id="item_reselect"> 
+        <input type="text" id="file_name" readonly>
+        <button id="item_reselect">
+          <img src="./button/Cancellation.png" class="button_img">
+          <span id="itrem_reselect_text" class="button_text">選択解除</span>
+        </button>
     </div>
     <div class="class_submit">
-      <input type="button" value="最後尾のアイコンを削除" id="last_delete">
-      <input type="button" value="全てのアイコンを削除" id="all_delete"><br>
-      <input type="button" value="排出率算出" id="result_output">
-      <input type="button" value="状態を保存する" id="save_now">
-      <input type="button" value="画像・排出率結果を共有する" id="share">
+      <button id="last_delete">
+        <img src="./button/backspace.png" class="button_img" id="last_delete_img">
+        <span id="last_delete_text" class="button_text">最後尾削除</span>
+      </button>
+      <button id="all_delete">
+        <img src="./button/all_delete.png" class="button_img">  
+        <span id="all_delete_text" class="button_text">全削除</span>
+      </button>
+      <button id="result_output">
+        <img src="./button/EmissionRate.png" class="button_img">
+        <span id="EmissionRate_text" class="button_text">排出率算出</span>
+      </button>
+      <button id="share">
+        <img src="./button/share.png" class="button_img">
+        <span id="share_text" class="button_text">共有</span>
+      </button>
+    </div>
+    <div>
+      <span lang="ja">
+        追加や削除を行うとURLに反映されます。<br>
+        共有時はURLをコピーして下さい。
+      </span>
+      <span lang="zh-TW">
+        添加或刪除時，狀態會反映在網址中。<br>
+        分享時請複製網址。
+      </span>
+      <span lang="zh-CN">
+        添加或删除时，状态会反映在网址中。
+        分享时请复制网址。
+      </span>
     </div>
     <hr class="hr">
     <div id="calendar" hidden>
-      <h5 lang="ja">アイテム置き換え</h5>
+      <h5 lang="ja">アイテム置換</h5>
       <h5 lang="zh-TW">物品替換</h5>
       <h5 lang="zh-CN">物品替换</h5>
       <ul id="lists"></ul>
     </div>
+
     <div id="download_image">
       <h5 lang="ja">画像生成結果</h5>
       <h5 lang="zh-TW">圖片生成結果</h5>
       <h5 lang="zh-CN">图片生成结果</h5>
+
       <canvas id="canvas_2d" width="1050" height="900" hidden></canvas>
       <img src="./" alt="file" id="canvas_img">
     </div>
+
     <hr class="hr">
     <div id="result_list">
       <h5 lang="ja">排出個数・排出率リスト</h5>

@@ -126,6 +126,7 @@ header{
   background-color: gray;
   width: auto;
   height: auto;
+  border: 5px solid gray;
 }
 #calendar{
   max-width: 350px;
@@ -144,12 +145,19 @@ header{
   height: 50px;
 }
 
+.button_img{
+  width: 25px;
+}
+.button_text{
+  display: flex;
+}
+
 /*ボタンデザイン*/
 #class_submit{
   text-align: center;
   padding: 20px;
 }
-input[type=button] {
+button,input[type=button] {
   background-image: linear-gradient(120deg, #ffc0cb 50%, #ffa07a 50%); /* 2色のグラデーション */
   background-repeat: no-repeat;
   background-size: 100% 200%; /* 垂直方向に2倍に広げる */
@@ -163,8 +171,15 @@ input[type=button] {
   text-shadow: 1px 1px 0 white;
   font-weight: bold;
   margin: 5px;
+  max-width: 20%;
 }
-input[type=button]:hover{
+
+button img,
+input[type="button"] img {
+  margin-right: 5px; /* 画像とテキストの間隔を設定 */
+}
+
+input[type=button]:hover, button:hover{
   background-position: 0% 100%;
 }
 /* スマートフォン用のスタイル */
