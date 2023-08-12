@@ -160,7 +160,7 @@ button,input[type=button] {
   background-repeat: no-repeat;
   background-size: 100% 200%; /* 垂直方向に2倍に広げる */
   color: black;
-  font-size: 0.83em;
+  font-size: 0.85em;
   padding: 10px 20px;
   border-radius: 10px;
   border: none;
@@ -169,7 +169,7 @@ button,input[type=button] {
   text-shadow: 1px 1px 0 white;
   font-weight: bold;
   margin: 5px;
-  max-width: 20%;
+  max-width: 50%;
 }
 
 button img,
