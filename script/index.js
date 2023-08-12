@@ -682,11 +682,14 @@ document.addEventListener('DOMContentLoaded',function(){
     let $items, $spaceCheck
     let blank_cell
     blank_cell = document.getElementById("blank_cell")
-    $itmes = ""
+    $items = ""
     $spaceCheck = ""
     if($itemList.length > 0){
       $items = "&items=" + $itemList.join("")
+    }else{
+      $items = ""
     }
+
     if(blank_cell.checked){
       $spaceCheck = "&space=true"
     }else{
