@@ -216,10 +216,18 @@ document.addEventListener('DOMContentLoaded',function(){
   $(window).on('load',function(){
     const url = new URL(window.location.href);
     const urlParam = url.searchParams.get('lang');
+    const urlParamSpace = url.searchParams.get('space')
     if(!urlParam){
       url.searchParams.set('lang', "ja")
       window.location.href = url
     }
+
+    if(urlParamSpace){
+      if(urlParamSpace == "true"){
+       document.getElementById("blank_cell").checked = true;
+      }
+    }
+
     let langs = document.querySelectorAll("input[type='radio'][name='lang']");
     let passCheck = false
     for(let element of langs){
@@ -383,6 +391,11 @@ document.addEventListener('DOMContentLoaded',function(){
     }
   });
 
+  //
+  $("#blank_cell").on('click',function(){
+    create();
+  });
+
   //共有
   $("#share").on('click', function(){
     let infos
@@ -446,14 +459,8 @@ document.addEventListener('DOMContentLoaded',function(){
       arys[i].src = $(this).attr('src')
       arys[i].alt = $(this).attr('alt')
       arys[i].id = $(this).attr('id')
-      output_check = true;
-      if(arys[i].id == "s0" && blank_cell.checked){
-        output_check = false
-      }
-      if(output_check){
-        if(y_ind == 0){
-          canvas_img_width += 1;
-        }
+      if(y_ind == 0){
+        canvas_img_width += 1;
       }
       x_ind++;
       if(x_ind == 7){
@@ -473,13 +480,13 @@ document.addEventListener('DOMContentLoaded',function(){
     y_ind = 0;
 
     $.each(arys, function(i){
+      img_hidden = "inline"
       output_check = true;
       if(arys[i].id == "s0" && blank_cell.checked){
         output_check = false
       }
       if(output_check){
         lists.drawImage(arys[i], x_ind * 150, y_ind * 150, 150, 150);
-        img_hidden = "inline"
       }
       x_ind++;
       if(x_ind == 7){
@@ -672,11 +679,20 @@ document.addEventListener('DOMContentLoaded',function(){
   }
 
   function UrlReplace(){
+    let $items, $spaceCheck
+    let blank_cell
+    blank_cell = document.getElementById("blank_cell")
+    $itmes = ""
+    $spaceCheck = ""
     if($itemList.length > 0){
-      history.replaceState({}, "", '?' + 'lang=' + $lang + "&items=" + $itemList.join(""));
-    }else{
-      history.replaceState({}, "", '?' + 'lang=' + $lang);
+      $items = "&items=" + $itemList.join("")
     }
+    if(blank_cell.checked){
+      $spaceCheck = "&space=true"
+    }else{
+      $spaceCheck = ""
+    }
+    history.replaceState({}, "", '?' + 'lang=' + $lang + $spaceCheck + $items);
   }
 
   function splitStringByPattern(inputString) {
