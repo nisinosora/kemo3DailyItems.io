@@ -98,7 +98,7 @@ header{
 }
 .ac-cap .content{
   max-height: 0;
-  width: 100%;
+  text-align: center;
   overflow-y: auto;
   transition: max-height 0.75s ease-in;
   line-height: 30px;
@@ -190,6 +190,11 @@ input[type=button]:hover, button:hover{
   input[type=button] {
     font-size: 14px;
     padding: 8px 16px;
+  }
+
+  .ac-cap .content{
+    max-width: 100%;
+    text-align: left;
   }
 }
 
