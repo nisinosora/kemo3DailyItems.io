@@ -12,6 +12,7 @@ header{
   overflow: auto;
   max-height: 230px;
   max-width: 570px;
+  margin-right: 20px;
 }
 #hr{
   margin: 10px;
@@ -127,9 +128,10 @@ header{
   height: auto;
   border: 5px solid rgb(243, 151, 105);
 }
-#calendar{
+#download_image, #calendar{
   max-width: 350px;
   max-height: 350px;
+  margin: 0;
 }
 
 #result_table{
@@ -155,6 +157,7 @@ header{
 #class_submit{
   text-align: center;
   padding: 20px;
+  display: inline;
 }
 button,input[type=button] {
   background-image: linear-gradient(120deg, #ffc0cb 50%, #ffa07a 50%); /* 2色のグラデーション */
@@ -181,6 +184,11 @@ input[type="button"] img {
 input[type=button]:hover, button:hover{
   background-position: 0% 100%;
 }
+
+#LF{
+  display: flex;
+  flex-direction: row;
+}
 /* スマートフォン用のスタイル */
 @media (max-width: 767px) {
   #class_submit {
@@ -197,8 +205,21 @@ input[type=button]:hover, button:hover{
     text-align: left;
   }
 
-  #images{
+  #images, #items{
     max-height: 160px;
+    position: relative;
+  }
+  #download_image, #calendar{
+    margin-top: 70px;
+  }
+
+  #LF{
+    display:inline;
+    margin: 10px;
+  }
+
+  .sp{
+    display: inline;
   }
 }
 
@@ -259,11 +280,6 @@ input[type=button]:hover, button:hover{
 
 .sp{
   display: none;
-}
-@media screen and (max-width: 639px){
-  .sp{
-    display: inline;
-  }
 }
 
 /*ローカライズ*/
