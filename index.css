@@ -10,7 +10,7 @@ header{
   border: black solid 1px;
   background-color: gray;
   overflow: auto;
-  max-height: 100px;
+  max-height: 230px;
   max-width: 570px;
 }
 #hr{
@@ -195,6 +195,10 @@ input[type=button]:hover, button:hover{
   .ac-cap .content{
     max-width: 100%;
     text-align: left;
+  }
+
+  #images{
+    max-height: 160px;
   }
 }
 
