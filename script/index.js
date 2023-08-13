@@ -709,5 +709,5 @@ document.addEventListener('DOMContentLoaded',function(){
   
     return resultArray;
   }
-
+  
 });
