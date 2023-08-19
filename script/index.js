@@ -348,7 +348,7 @@ document.addEventListener('DOMContentLoaded',function(){
         $("#item_selecting").css("display", "none");
         document.getElementById("choice_mode").value = "add";
         document.getElementById("change_hidden").checked = false;
-        let lists = document.getElementById("canvas_2d").getContext('2d');
+        let lists = document.getElementById("canvas_2d").getContext('2d',{willReadFrequently:true});
         lists.clearRect(0, 0, 1050, 900);
         let link_img = document.getElementById("canvas_img");
         link_img.style.display = "none";
@@ -441,7 +441,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
   //生成関数
   function create() {
-    let lists = document.getElementById("canvas_2d").getContext('2d');
+    let lists = document.getElementById("canvas_2d").getContext('2d',{willReadFrequently:true});
     let blank_cell = document.getElementById("blank_cell");
     let canvas_2d = document.getElementById("canvas_2d");
     let arys = [], output_check;
@@ -563,7 +563,7 @@ document.addEventListener('DOMContentLoaded',function(){
     let sum_par = 0;
     $("#lists").find('img').each(function(){
       item_id = $(this).attr('id');
-      item_name = $(this).attr('alt')
+      item_name = $iconsImages[`#${item_id}`][$lang]
       src = $(this).attr('src');
       if(item_id != "s0"){
         if (item_name in result_lists){
