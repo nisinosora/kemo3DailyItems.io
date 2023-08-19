@@ -1,9 +1,18 @@
 html{
   touch-action: manipulation;
 }
-header{
+
+/*
+.language-change{
+  position: fixed;
+  z-index: 10;
+  background-color: #16d088;
+}
+*/
+#headerDiscription{
   background-color: rgb(15, 221, 204);
 }
+
 #images{
   margin-bottom: 5px;
   padding: 10px;
@@ -146,6 +155,10 @@ header{
   height: 50px;
 }
 
+#result_clicked{
+  display: none;
+}
+
 .button_img{
   width: 25px;
 }
@@ -217,7 +230,9 @@ input[type=button]:hover, button:hover{
     display:inline;
     margin: 10px;
   }
+}
 
+@media (max-width:639px){
   .sp{
     display: inline;
   }

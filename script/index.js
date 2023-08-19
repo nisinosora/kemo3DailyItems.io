@@ -255,6 +255,10 @@ document.addEventListener('DOMContentLoaded',function(){
   //翻訳モードの切り替え時の処理
   $('input[name="lang"]:radio').change(function(){
     translate($(this).val());
+    let resultclicked = document.getElementById("result_clicked")
+    if (resultclicked.checked){
+      $("#result_output").click();
+    }
   })
 
   //画像クリック時の処理
@@ -579,9 +583,11 @@ document.addEventListener('DOMContentLoaded',function(){
     let table = $("#result_table tbody")
     table.remove();
     $("#result_table").append("<tbody></tbody>");
+    let resultclicked = document.getElementById("result_clicked")
     for(let [key, value] of Object.entries(result_lists)){
       sum_par = sum_par + value.parsent;
       $("#result_table tbody").append(`<tr><td><img src=\"${value.src}\" alt=\"${key}\"></td><td>${key}</td><td>${value.count}</td><td>${value.parsent}%</td></tr>`);
+      resultclicked.checked = true
     }
     sum_par = round(sum_par, 4)
     $("#result_table tbody").append(`<tr><td colspan="2">${$total[$lang]}</td><td>${sum}</td><td>${sum_par}%</td></tr>`)
