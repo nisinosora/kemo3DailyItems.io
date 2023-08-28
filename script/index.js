@@ -405,7 +405,6 @@ document.addEventListener('DOMContentLoaded',function(){
     let infos
     let images = []
     const url = new URL(window.location.href);
-    console.log(document.getElementById("canvas_img").src)
     infos = {
       "text": $shareContent[$lang],
       "url": url,
@@ -448,10 +447,12 @@ document.addEventListener('DOMContentLoaded',function(){
     let lists = document.getElementById("canvas_2d").getContext('2d',{willReadFrequently:true});
     let blank_cell = document.getElementById("blank_cell");
     let canvas_2d = document.getElementById("canvas_2d");
+    let canvas_img_back_2d = document.getElementById("canvas_img_back_2d").getContext('2d',{willReadFrequently: true});
     let arys = [], output_check;
     let x_ind = 0, y_ind = 0;
     let img_hidden = "none";
     lists.clearRect(0, 0, 1050, 900);
+    canvas_img_back_2d.clearRect(0, 0, 350, 350);
 
     let canvas_img_width, canvas_img_height;
     canvas_img_width = 0;
@@ -475,15 +476,19 @@ document.addEventListener('DOMContentLoaded',function(){
 
     canvas_img_height = Math.ceil(parseFloat($("#lists li").length / 7))
     let link_img = document.getElementById("canvas_img")
+    let link_back_img = document.getElementById("canvas_img_back")
     link_img.style.width = canvas_img_width * 50 + "px";
     link_img.style.height = canvas_img_height * 50 + "px";
+    link_back_img.style.width = canvas_img_width * 50 + "px";
+    link_back_img.style.height = canvas_img_height * 50 + "px";
     canvas_2d.width = canvas_img_width * 150;
     canvas_2d.height = canvas_img_height * 150;
+    document.getElementById("canvas_img_back_2d").width = canvas_img_width * 150;
+    document.getElementById("canvas_img_back_2d").height = canvas_img_height * 150;
 
     x_ind = 0;
     y_ind = 0;
-
-    $.each(arys, function(i){
+    $.each(arys, function(i){  
       img_hidden = "inline"
       output_check = true;
       if(arys[i].id == "s0" && blank_cell.checked){
@@ -491,6 +496,9 @@ document.addEventListener('DOMContentLoaded',function(){
       }
       if(output_check){
         lists.drawImage(arys[i], x_ind * 150, y_ind * 150, 150, 150);
+      }else{
+        canvas_img_back_2d.fillStyle = "#87cefa";
+        canvas_img_back_2d.fillRect(x_ind * 50, y_ind * 50, 50, 50);
       }
       x_ind++;
       if(x_ind == 7){
@@ -502,6 +510,8 @@ document.addEventListener('DOMContentLoaded',function(){
     let links = document.getElementById("canvas_2d").toDataURL('image/png')
     link_img.src = links;
     link_img.style.display = img_hidden
+    let backImage = document.getElementById("canvas_img_back_2d").toDataURL('image/png')
+    link_img.style.backgroundImage = `url(${backImage})`;
 
     ReItemList()
     const url = new URL(window.location.href);

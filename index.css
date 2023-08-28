@@ -142,6 +142,12 @@ html{
   max-height: 350px;
   margin: 0;
 }
+#canvas_img_back{
+  max-width: 350px;
+  max-height: 350px;
+  width: auto;
+  height: auto;
+}
 
 #result_table{
   border-collapse: collapse;

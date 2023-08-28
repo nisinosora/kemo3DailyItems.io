@@ -19,7 +19,7 @@
   <link rel="icon" type="image/x-icon" href="./favicon.ico">
   <link rel="stylesheet" href="index.css">
   <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" ></script>
   <script src="./script/index.js"></script>
   <script src="./script/translation.js"></script>
   <title lang="ja">【けものフレンズ3】ログボマトメールP</title>
@@ -202,7 +202,7 @@
     </div>
 
     <div id="selecter">
-      <label for="passport" id="Label_Passport">パスポート：</label>
+      <label for="mode-select" id="Label_Passport">パスポート：</label>
       <select name="mode" id="mode-select">
         <option value="all" id="option_all">すべて</option>
         <option value="first_little" id="option_first_little">はじめて・ちょこっと</option>
@@ -210,7 +210,7 @@
         <option value="gorgeous" id="option_gorgeous">ごーじゃす</option>
       </select>
       <br>
-      <label for="mode" id="Label_Mode">モード：</label>
+      <label for="choice_mode" id="Label_Mode">モード：</label>
       <div class="toggle" lang="ja">
         <input type="checkbox" name="check" id="choice_mode"/>
       </div>
@@ -283,7 +283,10 @@
         <h5 lang="zh-CN">图片生成结果</h5>
   
         <canvas id="canvas_2d" width="1050" height="900" hidden></canvas>
-        <img src="./" alt="file" id="canvas_img">
+        <canvas id="canvas_img_back_2d" width="350" height="350" hidden></canvas>
+        <div id="canvas_img_back">
+          <img src="./" alt="file" id="canvas_img">
+        </div>
       </div>
       <div id="calendar" hidden>
         <h5 lang="ja">アイテム置換</h5>
@@ -306,6 +309,7 @@
         <img src="./button/EmissionRate.png" class="button_img">
         <span id="EmissionRate_text" class="button_text">排出率算出</span>
       </button>
+      <br>
       <button id="share">
         <img src="./button/share.png" class="button_img">
         <span id="share_text" class="button_text">共有</span>
