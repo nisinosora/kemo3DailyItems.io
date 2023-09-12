@@ -250,6 +250,31 @@ document.addEventListener('DOMContentLoaded',function(){
       }
       create();
     }
+
+    // 画像キャプション
+    // スマートフォンの場合はキャプションを非表示にする
+    if ($(window).width() <= 768) { // 768px以下の幅の場合（スマートフォン用）
+      $(".image-with-caption .caption").css("display", "none");
+    }
+
+    // マウスオーバー時の挙動
+    $(".image-with-caption").mouseenter(function() {
+      if ($(window).width() > 768) { // スマートフォン以外の場合
+        $(this).find(".caption").css("display", "block");
+      }
+    });
+
+    // マウス離れ時の挙動
+    $(".image-with-caption").mouseleave(function() {
+      if ($(window).width() > 768) { // スマートフォン以外の場合
+        $(this).find(".caption").css("display", "none");
+      }
+    });
+
+    $(".image-with-caption img").each(function() {
+      var altText = $(this).attr("alt");
+      $(this).next(".caption").text(altText);
+    });
   })
 
   //翻訳モードの切り替え時の処理
@@ -259,10 +284,14 @@ document.addEventListener('DOMContentLoaded',function(){
     if (resultclicked.checked){
       $("#result_output").click();
     }
+    $(".image-with-caption img").each(function() {
+      var altText = $(this).attr("alt");
+      $(this).next(".caption").text(altText);
+    });
   })
 
   //画像クリック時の処理
-  $("#images > img").on('click', function(){
+  $("#images > .image-with-caption > img").on('click', function(){
     let item = $(this);
     let select = document.getElementById("choice_mode");
     if(!select.checked){

@@ -208,6 +208,19 @@ input[type=button]:hover, button:hover{
   display: flex;
   flex-direction: row;
 }
+
+.image-with-caption .caption {
+  display: none;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px;
+}
+
+.image-with-caption:hover .caption {
+  display: block;
+}
+
 /* スマートフォン用のスタイル */
 @media (max-width: 767px) {
   #class_submit {
