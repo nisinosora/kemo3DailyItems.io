@@ -432,6 +432,9 @@ document.addEventListener('DOMContentLoaded',function(){
         const url = new URL(window.location.href);
         url.searchParams.set('lang', $lang)
         UrlReplace();
+        
+        $("#result_table tbody").children().remove();
+        $("#result_output").click();
       }
     }else{
       alert($alerts["nullIcons"][$lang]);
@@ -773,6 +776,10 @@ document.addEventListener('DOMContentLoaded',function(){
             flags.shoutaikens = false;
           }else{
             if(!filter){
+              let regex = new RegExp(/\D+\d+\D|\D+\d/)
+              if(regex.test(item_name)){
+                item_name = item_name.match(/(\D+\d{1,2}\D+)|(\D+)\d+|(\D+)/).filter((value) => value != undefined)[1];
+              }
               $("#result_list_filter").append(`<option value="${item_id}">${item_name}</option>`)
             }
           }
@@ -790,21 +797,20 @@ document.addEventListener('DOMContentLoaded',function(){
       resultclicked.checked = true
     }
     sum_par = round(sum_par, 4)
-    
-    if(filter){
-      $("#result_table tbody").append(`<tr><td colspan="2">${filter_item[1]} ${$acquisitionsCount[$lang]}</td><td>${filter_sum}</td><td>${sum_par}%</td></tr>`)
-      $("#result_table tbody").append(`<tr><td colspan="2">${$daysTotal[$lang]}</td><td>${all_sum}</td><td>${$("#result_all_par").text()}%</td></tr>`)
-      $("#result_filter_count").text(`${filter_item[1]}${$tablesTh["#th_count"][$lang]}：${filter_sum}`);
-    }else{
-      $("#result_filter_count").text("");
-      $("#result_all_par").text(`${sum_par}`)
-      $("#result_table tbody").append(`<tr><td colspan="2">${$total[$lang]}</td><td>${all_sum}</td><td>${sum_par}%</td></tr>`)
-    }
 
     if(all_sum == 0){
       $("#filters").css("display", "none");
     }else{
       $("#filters").css("display", "inline");
+      if(filter){
+        $("#result_table tbody").append(`<tr><td colspan="2">${filter_item[1]} ${$acquisitionsCount[$lang]}</td><td>${filter_sum}</td><td>${sum_par}%</td></tr>`)
+        $("#result_table tbody").append(`<tr><td colspan="2">${$daysTotal[$lang]}</td><td>${all_sum}</td><td>${$("#result_all_par").text()}%</td></tr>`)
+        $("#result_filter_count").text(`${filter_item[1]} ${$acquisitionsCount[$lang]}：${filter_sum}`);
+      }else{
+        $("#result_filter_count").text("");
+        $("#result_all_par").text(`${sum_par}`)
+        $("#result_table tbody").append(`<tr><td colspan="2">${$total[$lang]}</td><td>${all_sum}</td><td>${sum_par}%</td></tr>`)
+      }
     }
   }
 
