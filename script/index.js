@@ -433,6 +433,8 @@ document.addEventListener('DOMContentLoaded',function(){
         url.searchParams.set('lang', $lang)
         UrlReplace();
         
+        $("#CountOfIcons").text(`${$daysTotal[$lang]}：0`);
+
         $("#result_table tbody").children().remove();
         $("#result_output").click();
       }
@@ -628,6 +630,8 @@ document.addEventListener('DOMContentLoaded',function(){
     const url = new URL(window.location.href);
     url.searchParams.set('lang', $lang)
     UrlReplace();
+
+    count_kirakira();
   }
 
   //追加関数
@@ -822,6 +826,23 @@ document.addEventListener('DOMContentLoaded',function(){
     });
   }
 
+  //キラキラの個数と、アイコン数を数える
+  function count_kirakira(){
+    let CountOfKiakira = $("#CountOfKiakira")
+    let CountOfIcons = $("#CountOfIcons")
+    let regex = new RegExp(/k\d+/)
+    let count = {"kirakira":0, "icons": 0};
+    $("#lists").find('img').each(function(){
+      let item = $(this);
+      count.icons ++;
+      if(regex.test(item.attr('id'))){
+        count.kirakira = count.kirakira + parseInt(item.attr('id').match(/^k(\d+)$/)[1])
+      }
+    });
+    CountOfKiakira.text(`${$multiItems["k4"][$lang]}${$acquisitionsCount[$lang]}：${count.kirakira}`);
+    CountOfIcons.text(`${$daysTotal[$lang]}：${count.icons}`);
+  }
+
   //その他
   const toBlob = (base64) => {
     const decodedData = atob(base64.replace(/^.*,/, ""));
@@ -909,6 +930,8 @@ document.addEventListener('DOMContentLoaded',function(){
       url.searchParams.set('lang', $lang)
       UrlReplace();
     }
+
+    count_kirakira();
   }
 
   function UrlReplace(){
