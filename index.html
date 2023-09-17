@@ -230,6 +230,22 @@
       <span lang="zh-CN">分享概率列表：</span>
       <input type="checkbox" name="share_EmissionRate" id="share_EmissionRate">
     </div>
+
+    <div id="item_selecting" hidden>
+      <p lang="ja">選択中のアイテム<br>以下の枠内で置き換える対象アイコンを選択してください。</p>
+      <p lang="zh-TW">選擇的物品<br>在下框中選擇要更換的目標圖標。</p>
+      <p lang="zh-CN">选择的物品<br>在下框中选择要更换的目标图标。</p>
+        <img src="" alt="" class="item_select"><br>
+        <span lang="ja">選択中のアイテム：</span>
+        <span lang="zh-TW">選擇的品目：</span>
+        <span lang="zh-CN">选择的物品：</span>
+        <input type="text" id="file_name" readonly>
+        <button id="item_reselect">
+          <img src="./button/Cancellation.png" class="button_img">
+          <span id="item_reselect_text" class="button_text">選択解除</span>
+        </button>
+    </div>
+
     <div id="LF">
       <div id="items">
         <h5 lang="ja">アイテム一覧</h5>
@@ -249,15 +265,15 @@
             <span class="caption"></span>
           </span>
           <span class="image-with-caption">
-            <img src="./meta/輝きの欠片5.png" alt="輝きの欠片5" class="first_little" id="g5">
+            <img src="./meta/輝きの欠片5.png" alt="輝きの欠片5" class="first_little" id="kg5">
             <span class="caption"></span>
           </span>
           <span class="image-with-caption">
-            <img src="./meta/輝きの欠片10.png" alt="輝きの欠片10" class="standard" id="g10">
+            <img src="./meta/輝きの欠片10.png" alt="輝きの欠片10" class="standard" id="kg10">
             <span class="caption"></span>
           </span>
           <span class="image-with-caption">
-            <img src="./meta/輝きの欠片30.png" alt="輝きのかけら30" class="gorgeous" id="g30">
+            <img src="./meta/輝きの欠片30.png" alt="輝きのかけら30" class="gorgeous" id="kg30">
             <span class="caption"></span>
           </span>
           <span class="image-with-caption">
@@ -394,17 +410,19 @@
           </span>
         </div>
       </div>
+
       <div id="download_image">
         <h5 lang="ja">画像生成結果</h5>
         <h5 lang="zh-TW">圖片生成結果</h5>
         <h5 lang="zh-CN">图片生成结果</h5>
-  
+
         <canvas id="canvas_2d" width="1050" height="900" hidden></canvas>
         <canvas id="canvas_img_back_2d" width="350" height="350" hidden></canvas>
         <div id="canvas_img_back">
           <img src="./" alt="file" id="canvas_img">
         </div>
       </div>
+      
       <div id="calendar" hidden>
         <h5 lang="ja">アイテム置換</h5>
         <h5 lang="zh-TW">物品替換</h5>
@@ -426,32 +444,16 @@
         <img src="./button/EmissionRate.png" class="button_img">
         <span id="EmissionRate_text" class="button_text">排出率算出</span>
       </button>
-      <br>
       <button id="share">
         <img src="./button/share.png" class="button_img">
         <span id="share_text" class="button_text">共有</span>
       </button>
     </div>
     
-    <div id="item_selecting" hidden>
-      <p lang="ja">選択中のアイテム<br>以下の枠内で置き換える対象アイコンを選択してください。</p>
-      <p lang="zh-TW">選擇的物品<br>在下框中選擇要更換的目標圖標。</p>
-      <p lang="zh-CN">选择的物品<br>在下框中选择要更换的目标图标。</p>
-        <img src="" alt="" class="item_select"><br>
-        <span lang="ja">選択中のアイテム：</span>
-        <span lang="zh-TW">選擇的品目：</span>
-        <span lang="zh-CN">选择的物品：</span>
-        <input type="text" id="file_name" readonly>
-        <button id="item_reselect">
-          <img src="./button/Cancellation.png" class="button_img">
-          <span id="itrem_reselect_text" class="button_text">選択解除</span>
-        </button>
-    </div>
-    
     <div>
       <span lang="ja">
         追加や削除を行うとURLに反映されます。<br>
-        共有時はURLをコピーして下さい。
+        共有時はURLをコピーしてください。
       </span>
       <span lang="zh-TW">
         添加或刪除時，狀態會反映在網址中。<br>
@@ -463,9 +465,16 @@
       </span>
     </div>
     <hr class="hr sp">
-    
 
     <hr class="hr">
+    <span id="filters">
+      <label for="result_list_filter" id="Label_result_list_filter">フィルター：</label>
+      <select id="result_list_filter">
+        <option value="none">選択してください</option>
+      </select>
+      <br>
+      <span id="result_filter_count"></span>
+    </span>
     <div id="result_list">
       <h5 lang="ja">排出個数・排出率リスト</h5>
       <h5 lang="zh-TW">出現數量、概率列表</h5>
@@ -479,6 +488,7 @@
       </table>
       <img src="./" alt="排出率リスト：画像" hidden id="result_table_image">
       <input type="checkbox" id="result_clicked" hideen>
+      <span id="result_all_par" hidden></span>
     </div>
 
     <div id="tests" hidden>

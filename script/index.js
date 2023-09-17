@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded',function(){
       "zh-CN":"删除所有图标。确定吗？"
     },
     "Saved":{
-      "ja":"保存しました\nURLをコピーして下さい",
+      "ja":"保存しました\nURLをコピーしてください",
       "zh-TW":"已保存\n請複製網址",
       "zh-CN":"已保存\n请复制网址"
     }
@@ -90,6 +90,11 @@ document.addEventListener('DOMContentLoaded',function(){
       "ja":"状態を保存する",
       "zh-TW":"保存狀態",
       "zh-CN":"保存状态"
+    },
+    "#Label_result_list_filter":{
+      "ja":"フィルター：",
+      "zh-TW":"篩選：",
+      "zh-CN":"筛选："
     }
   }
 
@@ -148,9 +153,9 @@ document.addEventListener('DOMContentLoaded',function(){
     "#l5":{"ja":"ラッキーメダル5","zh-TW":"幸運獎牌5","zh-CN":"幸运奖牌5"},
     "#l250":{"ja":"ラッキーメダル250","zh-TW":"幸運獎牌250","zh-CN":"幸运奖牌250"},
     "#o1":{"ja":"オシャレメダル","zh-TW":"時尚獎牌","zh-CN":"时尚奖牌"},
-    "#g5":{"ja":"輝きの欠片5","zh-TW":"閃耀碎片5","zh-CN":"闪耀碎片5"},
-    "#g10":{"ja":"輝きの欠片10","zh-TW":"閃耀碎片10","zh-CN":"闪耀碎片10"},
-    "#g30":{"ja":"輝きのかけら30","zh-TW":"閃耀碎片30","zh-CN":"闪耀碎片30"},
+    "#kg5":{"ja":"輝きの欠片5","zh-TW":"閃耀碎片5","zh-CN":"闪耀碎片5"},
+    "#kg10":{"ja":"輝きの欠片10","zh-TW":"閃耀碎片10","zh-CN":"闪耀碎片10"},
+    "#kg30":{"ja":"輝きの欠片30","zh-TW":"閃耀碎片30","zh-CN":"闪耀碎片30"},
     "#msr1":{"ja":"おもいでの石SR","zh-TW":"回憶之石SR","zh-CN":"回忆之石SR"},
     "#mssr1":{"ja":"おもいでの石SSR","zh-TW":"回憶之石SSR","zh-CN":"回忆之石SSR"},
     "#g1000":{"ja":"ゴールド1000","zh-TW":"金幣1000","zh-CN":"金币1000"},
@@ -186,6 +191,32 @@ document.addEventListener('DOMContentLoaded',function(){
     "#s0":{"ja":"空白","zh-TW":"空白","zh-CN":"空白"}
   }
 
+  const $multiItems = {
+    "l5":{"ja":"ラッキーメダル","zh-TW":"幸運獎牌","zh-CN":"幸运奖牌"},
+    "l250":{"ja":"ラッキーメダル","zh-TW":"幸運獎牌","zh-CN":"幸运奖牌"},
+    "kg5":{"ja":"輝きの欠片","zh-TW":"閃耀碎片","zh-CN":"闪耀碎片"},
+    "kg10":{"ja":"輝きの欠片","zh-TW":"閃耀碎片","zh-CN":"闪耀碎片"},
+    "kg30":{"ja":"輝きの欠片","zh-TW":"閃耀碎片","zh-CN":"闪耀碎片"},
+    "g1000":{"ja":"ゴールド","zh-TW":"金幣","zh-CN":"金币"},
+    "g5000":{"ja":"ゴールド","zh-TW":"金幣","zh-CN":"金币"},
+    "jb10":{"ja":"ジャパまん（オール）大","zh-TW":"加帕里饅頭（全）大","zh-CN":"加帕里馒头（全）大"},
+    "jb30":{"ja":"ジャパまん（オール）大","zh-TW":"加帕里饅頭（全）大","zh-CN":"加帕里馒头（全）大"},
+    "jb120":{"ja":"ジャパまん（オール）大","zh-TW":"加帕里饅頭（全）大","zh-CN":"加帕里馒头（全）大"},
+    "k4":{"ja":"キラキラ","zh-TW":"閃亮亮","zh-CN":"闪亮亮"},
+    "k12":{"ja":"キラキラ","zh-TW":"閃亮亮","zh-CN":"闪亮亮"},
+    "k25":{"ja":"キラキラ","zh-TW":"閃亮亮","zh-CN":"闪亮亮"},
+    "k50":{"ja":"キラキラ","zh-TW":"閃亮亮","zh-CN":"闪亮亮"},
+    "k75":{"ja":"キラキラ","zh-TW":"閃亮亮","zh-CN":"闪亮亮"},
+    "k100":{"ja":"キラキラ","zh-TW":"閃亮亮","zh-CN":"闪亮亮"},
+    "k150":{"ja":"キラキラ","zh-TW":"閃亮亮","zh-CN":"闪亮亮"},
+    "k250":{"ja":"キラキラ","zh-TW":"閃亮亮","zh-CN":"闪亮亮"},
+    "k300":{"ja":"キラキラ","zh-TW":"閃亮亮","zh-CN":"闪亮亮"},
+    "k500":{"ja":"キラキラ","zh-TW":"閃亮亮","zh-CN":"闪亮亮"},
+    "k1000":{"ja":"キラキラ","zh-TW":"閃亮亮","zh-CN":"闪亮亮"},
+    "i1":{"ja":"しょうたい券","zh-TW":"招待券","zh-CN":"招待券"},
+    "i10":{"ja":"しょうたい券","zh-TW":"招待券","zh-CN":"招待券"},
+  }
+
   const $tablesTh = {
     "#th_image":{
       "ja":"画像",
@@ -209,11 +240,18 @@ document.addEventListener('DOMContentLoaded',function(){
     }
   }
 
+  const $selecters = {"ja": "選択してください", "zh-TW": "請選擇", "zh-CN":"请选择"}
+
   const $shareContent = {"ja": "スペシャルデイリーボーナスの結果です！", "zh-TW": "特別每日任務獎勵的結果！","zh-CN":"特别每日任务奖励的结果！"}
   const $total = {"ja": "合計", "zh-TW":"總計","zh-CN":"总计"}
+  const $daysTotal = {"ja": "アイコン数", "zh-TW":"物品數量", "zh-CN":"物品数量"}
+  const $acquisitionsCount = {"ja": "獲得数", "zh-TW":"獲得數量", "zh-CN":"获得数量"}
 
   //初期起動時の処理
   $(window).on('load',function(){
+    //算出率フィルタ
+    $("#filters").css("display", "none");
+
     const url = new URL(window.location.href);
     const urlParam = url.searchParams.get('lang');
     const urlParamSpace = url.searchParams.get('space')
@@ -365,6 +403,9 @@ document.addEventListener('DOMContentLoaded',function(){
       case 'Delete':
         $("#all_delete").click();
         break;
+      case 'Escape':
+      $("#item_reselect").click();
+      break;
     }
   }
 
@@ -424,7 +465,6 @@ document.addEventListener('DOMContentLoaded',function(){
     }
   });
 
-  //
   $("#blank_cell").on('click',function(){
     create();
   });
@@ -466,8 +506,47 @@ document.addEventListener('DOMContentLoaded',function(){
     }
   });
 
+  //排出率
   $("#result_output").on('click', function(){
     result_table();
+    result_table_image();
+  });
+
+  $("#result_list_filter").on('change',function(){
+    let item = $(this);
+    let serch = ""
+    switch (item.val()) {
+      case "l":
+        serch = "l[0-9]+";
+        break;
+      case "kagayaki":
+        serch = "kg[0-9]+";
+        break;
+      case "gold":
+        serch = "g[0-9]+";
+        break;
+      case "jb":
+        serch = "jb[0-9]+";
+        break;
+      case "k":
+        serch = "k[0-9]+";
+        break;
+      case "i":
+        serch = "i[0-9]+";
+        break;
+      case "none":
+        serch = "";
+        break;
+      default:
+        serch = item.val();
+        break;
+    }
+    if(serch != ""){
+      result_table(true, serch);
+    }else{
+      result_table();
+    }
+    
     result_table_image();
   })
 
@@ -597,24 +676,106 @@ document.addEventListener('DOMContentLoaded',function(){
     }
   }
 
-  function result_table(){
+  //排出率
+  function result_table(filter = false, serch = ""){
     let result_lists = {};
     let item_name;
     let item_id;
     let src;
-    let sum = $("#lists li").length - space_count();
+    let all_sum = $("#lists li").length - space_count();
+    let filter_sum = 0;
+    let filter_val = "";
+    let filter_item = "";
     let sum_par = 0;
+
+    let regex = new RegExp("^"+serch+"$")
+    let add_check = !filter;
+    let lukeys = ["l5", "l250"]
+    let kagayakis = ["kg5", "kg10", "kg30"]
+    let golds = ["g1000", "g5000"]
+    let japamans = ["jb10", "jb30", "jb120"]
+    let kirakiras = ["k4", "k12", "k25", "k50", "k75", "k100", "k150", "k250", "k300", "k500", "k1000"]
+    let shoutaikens = ["i1", "i10"]
+    let flags = {"lukeys": true, "kagayakis": true, "golds": true, "japamans": true, "kirakiras": true, "shoutaikens": true}
+
+    if(!filter){
+      $("#result_list_filter").children().remove();
+      $("#result_list_filter").append(`<option value="none">${$selecters[$lang]}</option>`);
+    }else{
+      $("#lists").find('img').each(function(){
+        item_id = $(this).attr('id');
+        if(regex.test(item_id)){
+          if(filter_item == ""){
+            filter_item = $(this).attr('alt')
+            filter_item = filter_item.match(/(\D+\d{1,2}\D+)|(\D+)\d+|(\D+)/).filter((value) => value != undefined);
+          }
+          filter_val = $(this).attr('alt').match(/\D+(\d+)$/)
+          if(filter_val == null){
+            filter_sum++;
+          }else{
+            filter_sum = filter_sum + parseInt(filter_val[1])
+          }
+        }
+      });
+    }
+    
     $("#lists").find('img').each(function(){
+      add_check = !filter;
       item_id = $(this).attr('id');
       item_name = $iconsImages[`#${item_id}`][$lang]
       src = $(this).attr('src');
       if(item_id != "s0"){
         if (item_name in result_lists){
-          result_lists[item_name].count++;
-          let count = result_lists[item_name].count
-          result_lists[item_name].parsent = round(count/sum*100,4)
+          if(filter && regex.test(item_id)){
+            add_check = true;
+          }
+          if(add_check){
+            result_lists[item_name].count++;
+            let count = result_lists[item_name].count
+            result_lists[item_name].parsent = round(count/all_sum*100,4)
+          }
         }else{
-          result_lists[item_name] = {count: 1 ,src: src, parsent: round(1/sum*100,4)};
+          if(filter && regex.test(item_id)){
+            add_check = true;
+          }
+          if(add_check){
+            result_lists[item_name] = {count: 1 ,src: src, parsent: round(1/all_sum*100,4)};
+          }
+          if(lukeys.includes(item_id) && !filter){
+            if(flags.lukeys){
+              $("#result_list_filter").append(`<option value="l">${$multiItems[item_id][$lang]}</option>`)
+            }
+            flags.lukeys = false;
+          }else if(kagayakis.includes(item_id) && !filter){
+            if(flags.kagayakis){
+              $("#result_list_filter").append(`<option value="kagayaki">${$multiItems[item_id][$lang]}</option>`)
+            }
+            flags.kagayakis = false;
+          }else if(golds.includes(item_id) && !filter){
+            if(flags.golds){
+              $("#result_list_filter").append(`<option value="gold">${$multiItems[item_id][$lang]}</option>`)
+            }
+            flags.golds = false;
+          }else if(japamans.includes(item_id) && !filter){
+            if(flags.japamans){
+              $("#result_list_filter").append(`<option value="jb">${$multiItems[item_id][$lang]}</option>`)
+            }
+            flags.japamans = false;
+          }else if(kirakiras.includes(item_id) && !filter){
+            if(flags.kirakiras){
+              $("#result_list_filter").append(`<option value="k">${$multiItems[item_id][$lang]}</option>`)
+            }
+            flags.kirakiras = false;
+          }else if(shoutaikens.includes(item_id) && !filter){
+            if(flags.shoutaikens){
+              $("#result_list_filter").append(`<option value="i">${$multiItems[item_id][$lang]}</option>`)
+            }
+            flags.shoutaikens = false;
+          }else{
+            if(!filter){
+              $("#result_list_filter").append(`<option value="${item_id}">${item_name}</option>`)
+            }
+          }
         }
       }
     });
@@ -629,7 +790,22 @@ document.addEventListener('DOMContentLoaded',function(){
       resultclicked.checked = true
     }
     sum_par = round(sum_par, 4)
-    $("#result_table tbody").append(`<tr><td colspan="2">${$total[$lang]}</td><td>${sum}</td><td>${sum_par}%</td></tr>`)
+    
+    if(filter){
+      $("#result_table tbody").append(`<tr><td colspan="2">${filter_item[1]} ${$acquisitionsCount[$lang]}</td><td>${filter_sum}</td><td>${sum_par}%</td></tr>`)
+      $("#result_table tbody").append(`<tr><td colspan="2">${$daysTotal[$lang]}</td><td>${all_sum}</td><td>${$("#result_all_par").text()}%</td></tr>`)
+      $("#result_filter_count").text(`${filter_item[1]}${$tablesTh["#th_count"][$lang]}：${filter_sum}`);
+    }else{
+      $("#result_filter_count").text("");
+      $("#result_all_par").text(`${sum_par}`)
+      $("#result_table tbody").append(`<tr><td colspan="2">${$total[$lang]}</td><td>${all_sum}</td><td>${sum_par}%</td></tr>`)
+    }
+
+    if(all_sum == 0){
+      $("#filters").css("display", "none");
+    }else{
+      $("#filters").css("display", "inline");
+    }
   }
 
   function result_table_image(){
@@ -640,6 +816,7 @@ document.addEventListener('DOMContentLoaded',function(){
     });
   }
 
+  //その他
   const toBlob = (base64) => {
     const decodedData = atob(base64.replace(/^.*,/, ""));
     const buffers = new Uint8Array(decodedData.length);
@@ -707,6 +884,11 @@ document.addEventListener('DOMContentLoaded',function(){
     for(let [key, value] of Object.entries($tablesTh)){
       $(`${key}`).text(value[$lang]);
     }
+
+    $("#lists").find('img').each(function(){
+      let item = $(this)
+      $(this).attr('alt', $iconsImages[`#${item.attr('id')}`][$lang])
+    });
 
     $(".toggle").attr('lang', $lang)
 

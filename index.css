@@ -249,6 +249,10 @@ input[type=button]:hover, button:hover{
     display:inline;
     margin: 10px;
   }
+
+  .button_img{
+    width: 15px;
+  }
 }
 
 @media (max-width:639px){
