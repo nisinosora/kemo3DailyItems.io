@@ -433,7 +433,8 @@ document.addEventListener('DOMContentLoaded',function(){
         url.searchParams.set('lang', $lang)
         UrlReplace();
         
-        $("#CountOfIcons").text(`${$daysTotal[$lang]}：0`);
+        $("#CountOfKiakira").text(`${$multiItems["k4"][$lang]}${$acquisitionsCount[$lang]}：0`);
+        $("#CountOfIcons").text(`${$daysTotal[$lang]}：0`)
 
         $("#result_table tbody").children().remove();
         $("#result_output").click();
