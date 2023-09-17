@@ -318,10 +318,8 @@ document.addEventListener('DOMContentLoaded',function(){
   //翻訳モードの切り替え時の処理
   $('input[name="lang"]:radio').change(function(){
     translate($(this).val());
-    let resultclicked = document.getElementById("result_clicked")
-    if (resultclicked.checked){
-      $("#result_output").click();
-    }
+    result_table();
+    result_table_image();
     $(".image-with-caption img").each(function() {
       var altText = $(this).attr("alt");
       $(this).next(".caption").text(altText);
@@ -428,16 +426,7 @@ document.addEventListener('DOMContentLoaded',function(){
         link_img.style.display = "none";
         link_img.src = ""
 
-        ReItemList()
-        const url = new URL(window.location.href);
-        url.searchParams.set('lang', $lang)
-        UrlReplace();
-        
-        $("#CountOfKiakira").text(`${$multiItems["k4"][$lang]}${$acquisitionsCount[$lang]}：0`);
-        $("#CountOfIcons").text(`${$daysTotal[$lang]}：0`)
-
-        $("#result_table tbody").children().remove();
-        $("#result_output").click();
+        reset_all();
       }
     }else{
       alert($alerts["nullIcons"][$lang]);
@@ -513,11 +502,6 @@ document.addEventListener('DOMContentLoaded',function(){
   });
 
   //排出率
-  $("#result_output").on('click', function(){
-    result_table();
-    result_table_image();
-  });
-
   $("#result_list_filter").on('change',function(){
     let item = $(this);
     let serch = ""
@@ -621,11 +605,12 @@ document.addEventListener('DOMContentLoaded',function(){
       }
     })
 
-    let links = document.getElementById("canvas_2d").toDataURL('image/png')
+    let links = document.getElementById("canvas_2d");
+    links = links.toDataURL('image/png')
     link_img.src = links;
-    link_img.style.display = img_hidden
     let backImage = document.getElementById("canvas_img_back_2d").toDataURL('image/png')
     link_img.style.backgroundImage = `url(${backImage})`;
+    link_img.style.display = img_hidden
 
     ReItemList()
     const url = new URL(window.location.href);
@@ -633,6 +618,9 @@ document.addEventListener('DOMContentLoaded',function(){
     UrlReplace();
 
     count_kirakira();
+    result_table();
+    result_table_image();
+    $("#canvas_img_back").css('display', img_hidden);
   }
 
   //追加関数
@@ -678,7 +666,11 @@ document.addEventListener('DOMContentLoaded',function(){
         selecting.alt = ""
         $("#item_selecting").css("display", "none");
       }
-      create();
+      if($("#lists li").length > 0){
+        create()
+      }else{
+        reset_all();
+      }
     }else{
       alert($alerts["nullIcons"][$lang]);
     }
@@ -795,11 +787,9 @@ document.addEventListener('DOMContentLoaded',function(){
     let table = $("#result_table tbody")
     table.remove();
     $("#result_table").append("<tbody></tbody>");
-    let resultclicked = document.getElementById("result_clicked")
     for(let [key, value] of Object.entries(result_lists)){
       sum_par = sum_par + value.parsent;
       $("#result_table tbody").append(`<tr><td><img src=\"${value.src}\" alt=\"${key}\"></td><td>${key}</td><td>${value.count}</td><td>${value.parsent}%</td></tr>`);
-      resultclicked.checked = true
     }
     sum_par = round(sum_par, 4)
 
@@ -820,7 +810,7 @@ document.addEventListener('DOMContentLoaded',function(){
   }
 
   function result_table_image(){
-    html2canvas(document.querySelector("#result_list")).then(canvas => { 
+    html2canvas(document.querySelector("#result_list"), {useCORS: true, allowTaint: true,}).then(canvas => { 
       let src = canvas.toDataURL("image/png");
       let file = document.getElementById("result_table_image")
       file.src = src;
@@ -842,6 +832,21 @@ document.addEventListener('DOMContentLoaded',function(){
     });
     CountOfKiakira.text(`${$multiItems["k4"][$lang]}${$acquisitionsCount[$lang]}：${count.kirakira}`);
     CountOfIcons.text(`${$daysTotal[$lang]}：${count.icons}`);
+  }
+
+  function reset_all(){
+    $("#CountOfKiakira").text(`${$multiItems["k4"][$lang]}${$acquisitionsCount[$lang]}：0`);
+    $("#CountOfIcons").text(`${$daysTotal[$lang]}：0`)
+    $("#lists li").remove();
+    $("#canvas_img").attr('src','');
+    ReItemList()
+    const url = new URL(window.location.href);
+    url.searchParams.set('lang', $lang)
+    UrlReplace();
+    $("#result_table tbody").children().remove();
+    $("#filters").css("display", "none");
+    $("#canvas_img").css('display', "none");
+    $("#canvas_img_back").css('display', "none");
   }
 
   //その他
