@@ -461,7 +461,9 @@ document.addEventListener('DOMContentLoaded',function(){
   });
 
   $("#blank_cell").on('click',function(){
-    create();
+    if($("#lists li").length > 0){
+      create();
+    }
   });
 
   //共有
