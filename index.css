@@ -330,8 +330,8 @@ input[type=button]:hover, button:hover{
 }
 
 html[lang='ja'] *:is([lang]):not([lang='ja']),
-html[lang='zh-TW'] *:is([lang]):not([lang='zh-TW']),
-html[lang='zh-CN'] *:is([lang]):not([lang='zh-CN']){
+html[lang='zh-Hant'] *:is([lang]):not([lang='zh-Hant']),
+html[lang='zh-Hans'] *:is([lang]):not([lang='zh-Hans']){
   display:none!important;
 }
 
@@ -341,16 +341,16 @@ html[lang='zh-CN'] *:is([lang]):not([lang='zh-CN']){
 .toggle.checked:lang(ja):after{
   content: "置換";
 }
-.toggle:lang(zh-TW):after{
+.toggle:lang(zh-Hant):after{
   content: "添加";
 }
-.toggle.checked:lang(zh-TW):after{
+.toggle.checked:lang(zh-Hant):after{
   content: "替換";
 }
-.toggle:lang(zh-CN):after{
+.toggle:lang(zh-Hans):after{
   content: "添加";
 }
-.toggle.checked:lang(zh-CN):after{
+.toggle.checked:lang(zh-Hans):after{
   content: "替换";
 }
 
