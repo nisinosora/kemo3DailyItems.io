@@ -263,7 +263,7 @@ input[type=button]:hover, button:hover{
 
 .toggle {
   position: relative;
-  width: 78px;
+  width: 120px;
   height: 48px;
   /* margin: 40px 60px; */
   border-radius: 50px;
@@ -288,8 +288,8 @@ input[type=button]:hover, button:hover{
 .toggle:after {
   position: absolute;
   top: 3px;
-  left: 3px;
-  width: 42px;
+  left: 5px;
+  width: 65px;
   height: 42px;
   display: block;
   border-radius: 50px;
@@ -310,7 +310,7 @@ input[type=button]:hover, button:hover{
   background: #24e89c;
 }
 .toggle.checked:after {
-  left: 33px;
+  left: 50px;
   box-shadow: 0 9px 28px -6px rgba(0, 0, 0, 0.5);
   color: #16d088;
   padding: 14px 0 0 1px;
@@ -331,7 +331,8 @@ input[type=button]:hover, button:hover{
 
 html[lang='ja'] *:is([lang]):not([lang='ja']),
 html[lang='zh-Hant'] *:is([lang]):not([lang='zh-Hant']),
-html[lang='zh-Hans'] *:is([lang]):not([lang='zh-Hans']){
+html[lang='zh-Hans'] *:is([lang]):not([lang='zh-Hans']),
+html[lang='en'] *:is([lang]):not([lang='en']){
   display:none!important;
 }
 
@@ -353,5 +354,10 @@ html[lang='zh-Hans'] *:is([lang]):not([lang='zh-Hans']){
 .toggle.checked:lang(zh-Hans):after{
   content: "替换";
 }
-
+.toggle:lang(en):after{
+  content: "Add";
+}
+.toggle.checked:lang(en):after{
+  content: "Replace";
+}
 
