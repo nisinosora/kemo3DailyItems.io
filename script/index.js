@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded',function(){
       "ja": "【けものフレンズ3】ログボマトメールP", 
       "zh-Hant":"【動物朋友3】全部都記下來M", 
       "zh-Hans":"【动物朋友3】全部都记下来M",
-      "en":"Kemono Friends 3 Log-In Bonus Collector"
+      "en":"《Kemono Friends 3》Mission Memo Master M"
     },
     "#Usage_PassportList":{
       "ja": "リスト：パスポート", 
