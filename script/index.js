@@ -101,6 +101,12 @@ document.addEventListener('DOMContentLoaded',function(){
       "zh-Hant":"篩選：",
       "zh-Hans":"筛选：",
       "en":"Filter:"
+    },
+    "#HowToUse":{
+      "ja":"使用方法：",
+      "zh-Hant":"使用方法：",
+      "zh-Hans":"使用方法：",
+      "en":"How To Use:"
     }
   }
 
