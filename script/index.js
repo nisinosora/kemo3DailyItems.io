@@ -203,12 +203,12 @@ document.addEventListener('DOMContentLoaded',function(){
     "#k1000":{"ja":"キラキラ1000","zh-Hant":"閃亮亮1000","zh-Hans":"闪亮亮1000","en":"Kirakira 1000"},
     "#i1":{"ja":"しょうたい券1","zh-Hant":"招待券1","zh-Hans":"招待券1","en":"Invitation Ticket 1"},
     "#i10":{"ja":"しょうたい券10","zh-Hant":"招待券10","zh-Hans":"招待券10","en":"Invitation Ticket 10"},
-    "#s21":{"ja":"☆2以上フレンズしょうたい券","zh-Hant":"☆2以上朋友招待券","zh-Hans":"☆2以上朋友招待券","en":"2 or More Friend Invitation Ticket"},
-    "#s31":{"ja":"☆3以上しょうたい券","zh-Hant":"☆3以上招待券","zh-Hans":"☆3以上招待券","en":"3 or More Invitation Ticket"},
-    "#sf31":{"ja":"☆3以上フレンズしょうたい券","zh-Hant":"☆3以上朋友招待券","zh-Hans":"☆3以上朋友招待券","en":"3 or More Friend Invitation Ticket"},
-    "#s41":{"ja":"☆4しょうたい券","zh-Hant":"☆4招待券","zh-Hans":"☆4招待券","en":"4 or More Invitation Ticket"},
-    "#sft41":{"ja":"☆4フレンズしょうたいチケット","zh-Hant":"☆4朋友招待券碎片","zh-Hans":"☆4朋友招待券碎片","en":"4 or More Friend Invitation Ticket Shard"},
-    "#sf41":{"ja":"☆4フレンズしょうたい券","zh-Hant":"☆4朋友招待券","zh-Hans":"☆4朋友招待券","en":"4 or More Friend Invitation Ticket"},
+    "#s21":{"ja":"☆2以上フレンズしょうたい券","zh-Hant":"☆2以上朋友招待券","zh-Hans":"☆2以上朋友招待券","en":"2&#42;&#43; Friend Invitation Ticket"},
+    "#s31":{"ja":"☆3以上しょうたい券","zh-Hant":"☆3以上招待券","zh-Hans":"☆3以上招待券","en":"3&#42;&#43; Invitation Ticket"},
+    "#sf31":{"ja":"☆3以上フレンズしょうたい券","zh-Hant":"☆3以上朋友招待券","zh-Hans":"☆3以上朋友招待券","en":"3&#42;&#43; Friend Invitation Ticket"},
+    "#s41":{"ja":"☆4しょうたい券","zh-Hant":"☆4招待券","zh-Hans":"☆4招待券","en":"4&#42; Invitation Ticket"},
+    "#sft41":{"ja":"☆4フレンズしょうたいチケット","zh-Hant":"☆4朋友招待券碎片","zh-Hans":"☆4朋友招待券碎片","en":"4&#42; Friend Invitation Ticket Shard"},
+    "#sf41":{"ja":"☆4フレンズしょうたい券","zh-Hant":"☆4朋友招待券","zh-Hans":"☆4朋友招待券","en":"4&#42; Friend Invitation Ticket"},
     "#s0":{"ja":"空白","zh-Hant":"空白","zh-Hans":"空白","en":"Space"}
   }
 
@@ -275,7 +275,7 @@ document.addEventListener('DOMContentLoaded',function(){
   }
   const $total = {"ja": "合計", "zh-Hant":"總計","zh-Hans":"总计", "en":"Total"}
   const $daysTotal = {"ja": "アイコン数", "zh-Hant":"物品數量", "zh-Hans":"物品数量", "en":"Number of Icons"}
-  const $acquisitionsCount = {"ja": "獲得数", "zh-Hant":"獲得數量", "zh-Hans":"获得数量", "en":"Number of Acquisitions"}
+  const $acquisitionsCount = {"ja": "獲得数", "zh-Hant":"獲得數量", "zh-Hans":"获得数量", "en":" Total"}
 
   //初期起動時の処理
   $(window).on('load',function(){
@@ -739,9 +739,10 @@ document.addEventListener('DOMContentLoaded',function(){
         if(regex.test(item_id)){
           if(filter_item == ""){
             filter_item = $(this).attr('alt')
-            filter_item = filter_item.match(/(\D+\d{1,2}\D+)|(\D+)\d+|(\D+)/).filter((value) => value != undefined);
+            filter_item = filter_item.match(/(\d?\*\+?\D+)|(\D+\d{1,2}\D+)|(\D+)\d+|(\D+)/).filter((value) => value != undefined);
           }
-          filter_val = $(this).attr('alt').match(/\D+(\d+)$/)
+          filter_val = $(this).attr('alt').replace("&#42;","*").replace("&#43;","+").match(/\D+(\d+)$/)
+          console.log(filter_val)
           if(filter_val == null){
             filter_sum++;
           }else{
@@ -754,7 +755,7 @@ document.addEventListener('DOMContentLoaded',function(){
     $("#lists").find('img').each(function(){
       add_check = !filter;
       item_id = $(this).attr('id');
-      item_name = $iconsImages[`#${item_id}`][$lang]
+      item_name = $iconsImages[`#${item_id}`][$lang].replace("&#42;","*").replace("&#43;","+")
       src = $(this).attr('src');
       if(item_id != "s0"){
         if (item_name in result_lists){
@@ -807,7 +808,7 @@ document.addEventListener('DOMContentLoaded',function(){
             if(!filter){
               let regex = new RegExp(/\D+\d+\D|\D+\d/)
               if(regex.test(item_name)){
-                item_name = item_name.match(/(\D+\d{1,2}\D+)|(\D+)\d+|(\D+)/).filter((value) => value != undefined)[1];
+                item_name = item_name.match(/(\d?\*\+?\D+)|(\D+\d{1,2}\D+)|(\D+)\d+|(\D+)/).filter((value) => value != undefined)[1];
               }
               $("#result_list_filter").append(`<option value="${item_id}">${item_name}</option>`)
             }
@@ -862,7 +863,11 @@ document.addEventListener('DOMContentLoaded',function(){
         count.kirakira = count.kirakira + parseInt(item.attr('id').match(/^k(\d+)$/)[1])
       }
     });
-    CountOfKiakira.text(`${$multiItems["k4"][$lang]}${$acquisitionsCount[$lang]}：${count.kirakira}`);
+    if($lang == "en"){
+      CountOfKiakira.text(`Number of Kirakira Obtained：${count.kirakira}`);
+    }else{
+      CountOfKiakira.text(`${$multiItems["k4"][$lang]} ${$acquisitionsCount[$lang]}：${count.kirakira}`);
+    }
     CountOfIcons.text(`${$daysTotal[$lang]}：${count.icons}`);
   }
 
@@ -943,7 +948,7 @@ document.addEventListener('DOMContentLoaded',function(){
     }
 
     for(let [key, value] of Object.entries($iconsImages)){
-      $(`${key}`).attr('alt', value[$lang]);
+      $(`${key}`).attr('alt', value[$lang].replace("&#42;","*").replace("&#43;","+"));
     }
 
     for(let [key, value] of Object.entries($tablesTh)){
@@ -952,7 +957,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
     $("#lists").find('img').each(function(){
       let item = $(this)
-      $(this).attr('alt', $iconsImages[`#${item.attr('id')}`][$lang])
+      $(this).attr('alt', $iconsImages[`#${item.attr('id')}`][$lang].replace("&#42;","*").replace("&#43;","+"))
     });
 
     $(".toggle").attr('lang', $lang)
