@@ -742,7 +742,6 @@ document.addEventListener('DOMContentLoaded',function(){
             filter_item = filter_item.match(/(\d?\*\+?\D+)|(\D+\d{1,2}\D+)|(\D+)\d+|(\D+)/).filter((value) => value != undefined);
           }
           filter_val = $(this).attr('alt').replace("&#42;","*").replace("&#43;","+").match(/\D+(\d+)$/)
-          console.log(filter_val)
           if(filter_val == null){
             filter_sum++;
           }else{
