@@ -572,6 +572,13 @@ document.addEventListener('DOMContentLoaded',function(){
     result_table_image();
   })
 
+  $("#HowToUse").on('click',function(){
+    $("#usage").find(".ac-cap >input:checkbox").each(function(){
+      let item = $(this)
+      item.click();
+    });
+  });
+
   //生成関数
   function create() {
     let lists = document.getElementById("canvas_2d").getContext('2d',{willReadFrequently:true});
