@@ -49,9 +49,6 @@ html{
 #lists img:hover{
   cursor: pointer;
 }
-#HowToUse:hover{
-  cursor: pointer;
-}
 #lists{
   margin: 0;
   padding: 0;
