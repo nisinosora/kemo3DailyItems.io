@@ -187,6 +187,7 @@ const $iconsImages = {
   "#dsr1":{"ja":"虹色のアニマルラムネSR","zh-Hant":"虹彩色的動物彈珠汽水SR","zh-Hans":"虹彩色的动物弹珠汽水SR","en":"Rainbow-Colored Animal Ramune SR"},
   "#dssr1":{"ja":"虹色のアニマルラムネSSR","zh-Hant":"虹彩色的動物彈珠汽水SSR","zh-Hans":"虹彩色的动物弹珠汽水SSR","en":"Rainbow-Colored Animal Ramune SSR"},
   "#k4":{"ja":"キラキラ4","zh-Hant":"閃亮亮4","zh-Hans":"闪亮亮4","en":"Kirakira 4"},
+  "#k5":{"ja":"キラキラ5","zh-Hant":"閃亮亮5","zh-Hans":"闪亮亮5","en":"Kirakira 5"},
   "#k12":{"ja":"キラキラ12","zh-Hant":"閃亮亮12","zh-Hans":"闪亮亮12","en":"Kirakira 12"},
   "#k20":{"ja":"キラキラ20","zh-Hant":"閃亮亮20","zh-Hans":"闪亮亮20","en":"Kirakira 20"},
   "#k25":{"ja":"キラキラ25","zh-Hant":"閃亮亮25","zh-Hans":"闪亮亮25","en":"Kirakira 25"},
