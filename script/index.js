@@ -458,8 +458,8 @@ document.addEventListener('DOMContentLoaded',function(){
     let lukeys = ["l5", "l250"]
     let kagayakis = ["kg5", "kg10", "kg30"]
     let golds = ["g1000", "g5000"]
-    let japamans = ["jb10", "jb30", "jb120"]
-    let kirakiras = ["k4", "k12", "k25", "k50", "k75", "k100", "k150", "k250", "k300", "k500", "k1000"]
+    let japamans = ["jb10", "jb30", "jb120", "jb200"]
+    let kirakiras = ["k4", "k5", "k12", "k20", "k25", "k50", "k75", "k100", "k150", "k250", "k300", "k500", "k1000"]
     let shoutaikens = ["i1", "i10"]
     let flags = {"lukeys": true, "kagayakis": true, "golds": true, "japamans": true, "kirakiras": true, "shoutaikens": true}
 

@@ -183,6 +183,7 @@ const $iconsImages = {
   "#jb10":{"ja":"ジャパまん（オール）大10","zh-Hant":"加帕里饅頭（全）大10","zh-Hans":"加帕里馒头（全）大10","en":"Japari Bun (All) Large 10"},
   "#jb30":{"ja":"ジャパまん（オール）大30","zh-Hant":"加帕里饅頭（全）大30","zh-Hans":"加帕里馒头（全）大30","en":"Japari Bun (All) Large 30"},
   "#jb120":{"ja":"ジャパまん（オール）大120","zh-Hant":"加帕里饅頭（全）大120","zh-Hans":"加帕里馒头（全）大120","en":"Japari Bun (All) Large 120"},
+  "#jb200":{"ja":"ジャパまん（オール）大200","zh-Hant":"加帕里饅頭（全）大200","zh-Hans":"加帕里馒头（全）大200","en":"Japari Bun (All) Large 200"},
   "#b1":{"ja":"ジャパリパン","zh-Hant":"加帕里麵包","zh-Hans":"加帕里面包","en":"Japari Bread"},
   "#dsr1":{"ja":"虹色のアニマルラムネSR","zh-Hant":"虹彩色的動物彈珠汽水SR","zh-Hans":"虹彩色的动物弹珠汽水SR","en":"Rainbow-Colored Animal Ramune SR"},
   "#dssr1":{"ja":"虹色のアニマルラムネSSR","zh-Hant":"虹彩色的動物彈珠汽水SSR","zh-Hans":"虹彩色的动物弹珠汽水SSR","en":"Rainbow-Colored Animal Ramune SSR"},
