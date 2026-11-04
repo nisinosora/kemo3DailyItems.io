@@ -282,6 +282,9 @@ document.addEventListener('DOMContentLoaded',function(){
       case "i":
         serch = "i[0-9]+";
         break;
+      case "krm":
+        serch = "krm[0-9]+"
+        break;
       case "none":
         serch = "";
         break;
@@ -461,7 +464,8 @@ document.addEventListener('DOMContentLoaded',function(){
     let japamans = ["jb10", "jb30", "jb120", "jb200"]
     let kirakiras = ["k4", "k5", "k12", "k20", "k25", "k50", "k75", "k100", "k150", "k250", "k300", "k500", "k1000"]
     let shoutaikens = ["i1", "i10"]
-    let flags = {"lukeys": true, "kagayakis": true, "golds": true, "japamans": true, "kirakiras": true, "shoutaikens": true}
+    let kirins = ["krm50"]
+    let flags = {"lukeys": true, "kagayakis": true, "golds": true, "japamans": true, "kirakiras": true, "shoutaikens": true, "kirins": true}
 
     if(!filter){
       $("#result_list_filter").children().remove();
@@ -536,6 +540,11 @@ document.addEventListener('DOMContentLoaded',function(){
               $("#result_list_filter").append(`<option value="i">${$multiItems[item_id][$lang]}</option>`)
             }
             flags.shoutaikens = false;
+          }else if(kirins.includes(item_id) && !filter){
+            if(flags.kirins){
+              $("#result_list_filter").append(`<option value="krm">${$multiItems[item_id][$lang]}</option>`)
+            }
+            flags.kirins = false;
           }else{
             if(!filter){
               let regex = new RegExp(/\D+\d+\D|\D+\d/)
