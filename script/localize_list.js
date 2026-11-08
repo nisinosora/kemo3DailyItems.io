@@ -208,7 +208,8 @@ const $iconsImages = {
   "#s41":{"ja":"☆4しょうたい券","zh-Hant":"☆4招待券","zh-Hans":"☆4招待券","en":"4&#42; Invitation Ticket"},
   "#sft41":{"ja":"☆4フレンズしょうたいチケット","zh-Hant":"☆4朋友招待券碎片","zh-Hans":"☆4朋友招待券碎片","en":"4&#42; Friend Invitation Ticket Shard"},
   "#sf41":{"ja":"☆4フレンズしょうたい券","zh-Hant":"☆4朋友招待券","zh-Hans":"☆4朋友招待券","en":"4&#42; Friend Invitation Ticket"},
-  "#krm50":{"ja":"麒麟のめぐみ50","zh-Hant":"麒麟的恩惠50","zh-Hans": "麒麟的恩惠50", "en": "50&#42; Kirin’s Blessings"},
+  "#krm50":{"ja":"麒麟のめぐみ50","zh-Hant":"麒麟的恩惠50","zh-Hans": "麒麟的恩惠50", "en": "Kirin’s Blessings 50"},
+  "#krm100":{"ja":"麒麟のめぐみ100","zh-Hant":"麒麟的恩惠100","zh-Hans": "麒麟的恩惠100", "en": "Kirin’s Blessings 100"},
   "#s0":{"ja":"空白","zh-Hant":"空白","zh-Hans":"空白","en":"Space"}
 }
 
@@ -239,7 +240,8 @@ const $multiItems = {
   "k1000":{"ja":"キラキラ","zh-Hant":"閃亮亮","zh-Hans":"闪亮亮","en":"Kirakira"},
   "i1":{"ja":"しょうたい券","zh-Hant":"招待券","zh-Hans":"招待券","en":"Invitation Ticket"},
   "i10":{"ja":"しょうたい券","zh-Hant":"招待券","zh-Hans":"招待券","en":"Invitation Ticket"},
-  "krm50":{"ja":"麒麟のめぐみ","zh-Hant":"麒麟的恩惠","zh-Hans": "麒麟的恩惠", "en": "Kirin’s Blessings"}
+  "krm50":{"ja":"麒麟のめぐみ","zh-Hant":"麒麟的恩惠","zh-Hans": "麒麟的恩惠", "en": "Kirin’s Blessings"},
+  "krm100":{"ja":"麒麟のめぐみ","zh-Hant":"麒麟的恩惠","zh-Hans": "麒麟的恩惠", "en": "Kirin’s Blessings"}
 }
 
 const $tablesTh = {

@@ -464,7 +464,7 @@ document.addEventListener('DOMContentLoaded',function(){
     let japamans = ["jb10", "jb30", "jb120", "jb200"]
     let kirakiras = ["k4", "k5", "k12", "k20", "k25", "k50", "k75", "k100", "k150", "k250", "k300", "k500", "k1000"]
     let shoutaikens = ["i1", "i10"]
-    let kirins = ["krm50"]
+    let kirins = ["krm50", "krm100"]
     let flags = {"lukeys": true, "kagayakis": true, "golds": true, "japamans": true, "kirakiras": true, "shoutaikens": true, "kirins": true}
 
     if(!filter){
