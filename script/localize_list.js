@@ -1,3 +1,5 @@
+const langlist = ["ja", "zh-Hant", "zh-Hans", "en"]
+
 const $alerts = {
   "nullIcons":{
     "ja": "削除するアイコンがありません", 

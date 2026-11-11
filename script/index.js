@@ -14,6 +14,9 @@ document.addEventListener('DOMContentLoaded',function(){
     if(!urlParam){
       url.searchParams.set('lang', "ja")
       window.location.href = url
+    }else if(!(langlist.includes(urlParam))){
+      url.searchParams.set('lang', "ja")
+      window.location.href = url
     }
 
     if(urlParamSpace){
